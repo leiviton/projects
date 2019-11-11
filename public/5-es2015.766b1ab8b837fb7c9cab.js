@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{"UPO+":function(n,t,o){"use strict";o.d(t,"a",function(){return s}),o("8Y7J"),o("s7LF");let s=(()=>{class n{static forRoot(){return{ngModule:n}}}return n})()}}]);

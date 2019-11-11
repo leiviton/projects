@@ -1,0 +1,22 @@
+$white: #FFFFFF;
+$primary: #2bbbad;
+
+.btn-success-custom {
+  background: $primary;
+}
+
+.card {
+  .modal-header-drs-green {
+    background-color: $primary;
+    h2 { color: $white; }
+  }
+}
+
+.navbar-nav.navbar-right {
+  margin-right: 0;
+}
+
+.navbar-collapse {
+  min-height: 60px !important;
+}
+

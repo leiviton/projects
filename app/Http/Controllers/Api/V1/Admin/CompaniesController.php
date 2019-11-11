@@ -1,0 +1,179 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: leviton
+ * Date: 17/08/2016
+ * Time: 15:26
+ */
+
+namespace ApiWebSac\Http\Controllers\Api\V1\Admin;
+
+use ApiWebSac\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use ApiWebSac\Services\CompanyService;
+
+class CompaniesController extends Controller
+{
+    use UtilTrait;
+    /**
+     * @var CompanyService
+     */
+    private $service;
+
+    /**
+     * CompaniesController constructor.
+     * @param CompanyService $service
+     */
+    public function __construct(CompanyService $service)
+    {
+        $this->service = $service;
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function index(Request $request)
+    {
+        return $this->service->getCompanies($request->get('status'));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+        $validator = Validator($data,
+            [
+                'cnpj' => 'required',
+                'name' => 'required',
+                'email' => 'required|unique:companies,email',
+                'phone' => 'required',
+                'contact_name' => 'required'
+            ],
+            [
+                'cnpj.required' => 'CNPJ é obrigatorio',
+                'name.required' => 'Razão Social é obrigatorio',
+                'phone.required' => 'Telefone é obrigatorio',
+                'contact_name.required' => 'Contato é obrigatorio',
+                'email.required' => 'Email é obrigatorio',
+                'email.unique' => 'Email já cadastrado no sistema'
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json([
+                'title' => 'Erro',
+                'status' => 'error',
+                'message' => $validator->errors()->unique()
+            ], 406);
+        }
+
+        /*$upload = $this->upload($request, 'companies');
+
+        if($upload == false) {
+            return response()->json([
+                'title' => 'Erro',
+                'status' => 'error',
+                'message' => 'Logo invalido'
+            ], 406);
+        }
+
+        $data["logo"] = $upload['file'];*/
+
+        $result = $this->service->create($data);
+
+        if ($result['status'] == 'success') {
+            return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success',
+                'title' => 'Sucesso'], 201);
+        } else if ($result['status'] == 'error') {
+            return response()->json(['message' => $result['message'], 'status' => 'error',
+                'title' => 'Erro'], 400);
+        } else {
+            return response()->json(['message' => 'Erro desconhecido, contate o Good do software', 'status' => 'error',
+                'title' => 'Erro'], 400);
+        }
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update($id, Request $request)
+    {
+        $validator = Validator($request->all(), [
+            'cnpj' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'contact_name' => 'required'
+        ],
+            [
+                'cnpj.required' => 'CNPJ é obrigatorio',
+                'name.required' => 'Razão Social é obrigatorio',
+                'phone.required' => 'Telefone é obrigatorio',
+                'contact_name.required' => 'Contato é obrigatorio'
+            ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'title' => 'Erro',
+                'status' => 'error',
+                'message' => $validator->errors()->unique()
+            ], 406);
+        }
+
+        $result = $this->service->update($id,$request->all());
+
+        if ($result['status'] == 'success') {
+            return response()->json(['message' => 'Cliente atualizado com sucesso', 'status' => 'success', 'title' => 'Sucesso'], 200);
+        } else if ($result['status'] == 'error') {
+            return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
+        }
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id) {
+        $result = $this->service->delete($id);
+
+        if ($result['status'] == 'success') {
+            return response()->json(['message' => 'Cliente excluido com sucesso', 'status' => 'success', 'title' => 'Sucesso'], 200);
+        } else if ($result['status'] == 'error') {
+            return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
+        }
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function edit($id) {
+        $result = $this->service->getId($id);
+
+        return $result;
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateStatus($id, Request $request)
+    {
+
+        $result = $this->service->updateStatus($id);
+
+        if ($result['status'] == 'success') {
+            return response()->json(['message' => 'Status atualizado com sucesso', 'status' => 'success', 'title' => 'Sucesso'], 200);
+        } else if ($result['status'] == 'error') {
+            return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
+        }
+    }
+}
