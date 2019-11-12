@@ -1,27 +1,27 @@
 version: '3'
 services:
-    api-web-sac:
+    api-web-psp:
         build: .
-        container_name: api-web-sac
-        entrypoint:  dockerize -template ./.docker/app/.env:.env -wait tcp://db-api-web-sac:3306 -timeout 40s ./.docker/entrypoint.sh
+        container_name: api-web-psp
+        entrypoint:  dockerize -template ./.docker/app/.env:.env -wait tcp://db-api-web-psp:3306 -timeout 40s ./.docker/entrypoint.sh
         environment:
-            - DB_HOST=db-api-web-sac
+            - DB_HOST=db-api-web-psp
             - DB_PORT=3306
-            - DB_DATABASE=api-web-sac
+            - DB_DATABASE=api-web-psp
             - DB_USERNAME=root
             - DB_PASSWORD=root
             - APP_URL=http://10.0.108.137:8080
         volumes:
             - .:/var/www
         networks:
-            - api-web-sac-network
+            - api-web-psp-network
         depends_on:
-            - db-api-web-sac
-            - redis-api-web-sac
+            - db-api-web-psp
+            - redis-api-web-psp
 
-    nginx-api-web-sac:
+    nginx-api-web-psp:
         build: .docker/nginx
-        container_name: nginx-api-web-sac
+        container_name: nginx-api-web-psp
         restart: always
         tty: true
         ports:
@@ -29,13 +29,13 @@ services:
         volumes:
             - .:/var/www
         networks:
-            - api-web-sac-network
+            - api-web-psp-network
         depends_on:
-            - api-web-sac
-    db-api-web-sac:
+            - api-web-psp
+    db-api-web-psp:
         image: mysql:5.7
         command: --innodb-use-native-aio=0
-        container_name: db-api-web-sac
+        container_name: db-api-web-psp
         restart: always
         tty: true
         ports:
@@ -43,20 +43,20 @@ services:
         volumes:
             - ./.docker/dbdata:/var/lib/mysql
         environment:
-            - MYSQL_DATABASE=api-web-sac
+            - MYSQL_DATABASE=api-web-psp
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_USER=root
         networks:
-            - api-web-sac-network
+            - api-web-psp-network
 
-    redis-api-web-sac:
+    redis-api-web-psp:
         image: redis:alpine
-        container_name: redis-api-web-sac
+        container_name: redis-api-web-psp
         expose:
             - 6379
         networks:
-            - api-web-sac-network
+            - api-web-psp-network
 
 networks:
-    api-web-sac-network:
+    api-web-psp-network:
         driver: bridge
