@@ -22,8 +22,15 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
      */
     public function listUsers($status)
     {
-        $result = $this->model->where('status',$status)->orderBy('name')
-            ->paginate();
+        if($status == 'all')
+        {
+            $result = $this->model->orderBy('name')
+                ->paginate();
+        }else{
+            $result = $this->model->where('status',$status)->orderBy('name')
+                ->paginate();
+        }
+
         if ($result){
             return $this->parserResult($result);
         }

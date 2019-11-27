@@ -22,7 +22,8 @@
         "prettus/l5-repository": "^2.6",
         "reliese/laravel": "^0.0.13",
         "ext-soap": "*",
-        "ext-simplexml": "*"
+        "ext-simplexml": "*",
+        "ext-calendar": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
