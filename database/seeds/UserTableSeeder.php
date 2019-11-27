@@ -91,5 +91,7 @@ class UserTableSeeder extends Seeder
                 'password' => bcrypt(123456),
                 'remember_token' => str_random(10),
             ]);
+
+        factory(User::class, 50)->create();
     }
 }
