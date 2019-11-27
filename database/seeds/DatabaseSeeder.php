@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ClientOauthTableSeeder::class);
         $this->call(CompanyTableSeeder::class);
         $this->call(ProductTableSeeder::class);
-        $this->call(StatusTableSeeder::class);
+        $this->call(PermissionTableSeeder::class);
         $this->call(CapabilityTableSeeder::class);
 
     }
