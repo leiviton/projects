@@ -27,6 +27,7 @@ class CreateSolicitationItemsTable extends Migration
             $table->integer('qtd');
             $table->string('lot')->nullable();
             $table->enum('pen',['sim','nao'])->default('nao');
+            $table->enum('unity_measure',['unidade','caixa','peça','conjunto','metro'])->default('unidade');
             $table->enum('item_type',['delivery','collect','exchange'])->default('delivery');
             $table->softDeletes();
             $table->timestamps();
