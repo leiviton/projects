@@ -51,6 +51,10 @@ $factory->define(Product::class, function (Faker $faker){
 
 });
 
+$factory->define(\ApiWebPsp\Models\SolicitationItem::class, function (Faker $faker){
+
+});
+
 $factory->define(Patient::class, function (Faker $faker) {
     return [
         'name' => $faker->phoneNumber,
@@ -65,6 +69,6 @@ $factory->define(Solicitation::class, function (Faker $faker){
     return [
         'patient_id' => rand(1,10),
         'status' => 'created',
-        'voucher' => $faker->creditCardNumber
+        'voucher' => $faker->numerify('###A###X###E##'),
     ];
 });
