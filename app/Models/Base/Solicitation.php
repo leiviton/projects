@@ -43,6 +43,17 @@ class Solicitation extends Eloquent
 {
 	use SoftDeletes;
 
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
+    protected $casts = [
+        'company_id' => 'int',
+        'patient_id' => 'int',
+        'address_id' => 'int',
+        'id' => 'string'
+    ];
+
 	protected static function boot()
     {
         parent::boot();
