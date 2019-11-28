@@ -15,13 +15,13 @@ class CreateSolicitationsTable extends Migration
     {
         Schema::create('solicitations', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->bigInteger('company_id')->index()->nullable();
+            $table->bigInteger('company_id')->unsigned()->nullable();
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->bigInteger('patient_id')->index()->nullable();
+            $table->bigInteger('patient_id')->unsigned()->nullable();
             $table->foreign('patient_id')->references('id')->on('patients');
-            $table->bigInteger('address_id')->index()->nullable();
+            $table->bigInteger('address_id')->unsigned()->nullable();
             $table->foreign('address_id')->references('id')->on('addresses');
-            $table->bigInteger('user_id')->index()->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->enum('status',['created','sent','pending','success','frustrated','cancelled'])->default('created');
             $table->string('voucher');
