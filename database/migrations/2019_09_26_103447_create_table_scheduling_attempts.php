@@ -22,7 +22,7 @@ class CreateTableSchedulingAttempts extends Migration
             $table->enum('success',['sim','nao'])->default('sim');
             $table->uuid('solicitation_id')->index()->nullable();
             $table->foreign('solicitation_id')->references('id')->on('solicitations');
-            $table->uuid('user_id')->index()->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
