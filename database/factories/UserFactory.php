@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use ApiWebPsp\Models\Address;
-use ApiWebPsp\Models\Base\SolicitationItem;
+use ApiWebPsp\Models\SolicitationItem;
 use ApiWebPsp\Models\Company;
 use ApiWebPsp\Models\Patient;
 use ApiWebPsp\Models\Product;
