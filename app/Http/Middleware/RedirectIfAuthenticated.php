@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Http\Middleware;
+namespace ApiWebPsp\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

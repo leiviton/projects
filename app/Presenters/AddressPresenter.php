@@ -1,14 +1,14 @@
 <?php
 
-namespace ApiWebSac\Presenters;
+namespace ApiWebPsp\Presenters;
 
-use ApiWebSac\Transformers\AddressTransformer;
+use ApiWebPsp\Transformers\AddressTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
  * Class AddressPresenter.
  *
- * @package namespace ApiWebSac\Presenters;
+ * @package namespace ApiWebPsp\Presenters;
  */
 class AddressPresenter extends FractalPresenter
 {

@@ -6,11 +6,11 @@
  * Time: 16:03
  */
 
-namespace ApiWebSac\Services;
+namespace ApiWebPsp\Services;
 
-use ApiWebSac\Repositories\AddressRepository;
-use ApiWebSac\Repositories\PatientContactRepository;
-use ApiWebSac\Repositories\PatientRepository;
+use ApiWebPsp\Repositories\AddressRepository;
+use ApiWebPsp\Repositories\PatientContactRepository;
+use ApiWebPsp\Repositories\PatientRepository;
 use Faker\Provider\DateTime;
 use Illuminate\Support\Facades\DB;
 

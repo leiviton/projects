@@ -6,11 +6,11 @@
  * Time: 11:30
  */
 
-namespace ApiWebSac\Services;
+namespace ApiWebPsp\Services;
 
-use ApiWebSac\Repositories\PermissionRepository;
-use ApiWebSac\Repositories\UserPermissionRepository;
-use ApiWebSac\Repositories\UserRepository;
+use ApiWebPsp\Repositories\PermissionRepository;
+use ApiWebPsp\Repositories\UserPermissionRepository;
+use ApiWebPsp\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 
 class AclService

@@ -1,16 +1,16 @@
 <?php
 
-namespace ApiWebSac\Repositories;
+namespace ApiWebPsp\Repositories;
 
-use ApiWebSac\Presenters\PatientContactPresenter;
+use ApiWebPsp\Presenters\PatientContactPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebSac\Models\PatientContact;
+use ApiWebPsp\Models\PatientContact;
 
 /**
  * Class PatientContactRepositoryEloquent.
  *
- * @package namespace ApiWebSac\Repositories;
+ * @package namespace ApiWebPsp\Repositories;
  */
 class PatientContactRepositoryEloquent extends BaseRepository implements PatientContactRepository
 {

@@ -35,7 +35,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => ApiWebSac\User::class,
+        'model' => ApiWebPsp\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
         'webhook' => [

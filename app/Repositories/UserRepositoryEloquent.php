@@ -1,17 +1,17 @@
 <?php
 
-namespace ApiWebSac\Repositories;
+namespace ApiWebPsp\Repositories;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebSac\Presenters\UserPresenter;
-use ApiWebSac\Models\User;
+use ApiWebPsp\Presenters\UserPresenter;
+use ApiWebPsp\Models\User;
 
 /**
  * Class UserRepositoryEloquent.
  *
- * @package namespace ApiWebSac\Repositories;
+ * @package namespace ApiWebPsp\Repositories;
  */
 class UserRepositoryEloquent extends BaseRepository implements UserRepository
 {

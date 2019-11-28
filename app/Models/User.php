@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Models;
+namespace ApiWebPsp\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -23,7 +23,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
  *
  * @package namespace Stock\Models;
  */
-class User extends \ApiWebSac\Models\Base\User implements Transformable,
+class User extends \ApiWebPsp\Models\Base\User implements Transformable,
     AuthenticatableContract,
     AuthorizableContract,
     CanResetPasswordContract,

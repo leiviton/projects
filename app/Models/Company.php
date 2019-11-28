@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Models;
+namespace ApiWebPsp\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\Contracts\Auditable;
@@ -10,9 +10,9 @@ use Prettus\Repository\Traits\TransformableTrait;
 /**
  * Class Company.
  *
- * @package namespace ApiWebSac\Models;
+ * @package namespace ApiWebPsp\Models;
  */
-class Company extends \ApiWebSac\Models\Base\Company implements Transformable,Auditable
+class Company extends \ApiWebPsp\Models\Base\Company implements Transformable,Auditable
 {
     use TransformableTrait, SoftDeletes;
     use \OwenIt\Auditing\Auditable;

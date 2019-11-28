@@ -1,18 +1,18 @@
 <?php
 
-namespace ApiWebSac\Repositories;
+namespace ApiWebPsp\Repositories;
 
-use ApiWebSac\Presenters\SolicitationItemPresenter;
+use ApiWebPsp\Presenters\SolicitationItemPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebSac\Repositories\SolicitationItemRepository;
-use ApiWebSac\Models\SolicitationItem;
-use ApiWebSac\Validators\SolicitationItemValidator;
+use ApiWebPsp\Repositories\SolicitationItemRepository;
+use ApiWebPsp\Models\SolicitationItem;
+use ApiWebPsp\Validators\SolicitationItemValidator;
 
 /**
  * Class SolicitationItemRepositoryEloquent.
  *
- * @package namespace ApiWebSac\Repositories;
+ * @package namespace ApiWebPsp\Repositories;
  */
 class SolicitationItemRepositoryEloquent extends BaseRepository implements SolicitationItemRepository
 {

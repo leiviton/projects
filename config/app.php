@@ -170,12 +170,12 @@ return [
         /*
          * Application Service Providers...
          */
-        ApiWebSac\Providers\AppServiceProvider::class,
-        ApiWebSac\Providers\AuthServiceProvider::class,
-        // ApiWebSac\Providers\BroadcastServiceProvider::class,
-        ApiWebSac\Providers\EventServiceProvider::class,
-        ApiWebSac\Providers\RouteServiceProvider::class,
-        ApiWebSac\Providers\RepositoryServiceProvider::class,
+        ApiWebPsp\Providers\AppServiceProvider::class,
+        ApiWebPsp\Providers\AuthServiceProvider::class,
+        // ApiWebPsp\Providers\BroadcastServiceProvider::class,
+        ApiWebPsp\Providers\EventServiceProvider::class,
+        ApiWebPsp\Providers\RouteServiceProvider::class,
+        ApiWebPsp\Providers\RepositoryServiceProvider::class,
 
     ],
 

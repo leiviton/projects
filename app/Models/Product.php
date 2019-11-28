@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Models;
+namespace ApiWebPsp\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
@@ -10,9 +10,9 @@ use Prettus\Repository\Traits\TransformableTrait;
 /**
  * Class Product.
  *
- * @package namespace ApiWebSac\Models;
+ * @package namespace ApiWebPsp\Models;
  */
-class Product extends \ApiWebSac\Models\Base\Product implements Transformable,Auditable
+class Product extends \ApiWebPsp\Models\Base\Product implements Transformable,Auditable
 {
     use TransformableTrait;
     use \OwenIt\Auditing\Auditable;

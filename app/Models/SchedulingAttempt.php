@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Models;
+namespace ApiWebPsp\Models;
 
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -8,9 +8,9 @@ use Prettus\Repository\Traits\TransformableTrait;
 /**
  * Class SchedulingAttempt.
  *
- * @package namespace ApiWebSac\Models;
+ * @package namespace ApiWebPsp\Models;
  */
-class SchedulingAttempt extends \ApiWebSac\Models\Base\SchedulingAttempt implements Transformable
+class SchedulingAttempt extends \ApiWebPsp\Models\Base\SchedulingAttempt implements Transformable
 {
     use TransformableTrait;
 

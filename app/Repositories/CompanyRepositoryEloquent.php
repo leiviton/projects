@@ -1,17 +1,17 @@
 <?php
 
-namespace ApiWebSac\Repositories;
+namespace ApiWebPsp\Repositories;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebSac\Presenters\CompanyPresenter;
-use ApiWebSac\Models\Company;
+use ApiWebPsp\Presenters\CompanyPresenter;
+use ApiWebPsp\Models\Company;
 
 /**
  * Class CompanyRepositoryEloquent.
  *
- * @package namespace ApiWebSac\Repositories;
+ * @package namespace ApiWebPsp\Repositories;
  */
 class CompanyRepositoryEloquent extends BaseRepository implements CompanyRepository
 {

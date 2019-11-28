@@ -1,21 +1,21 @@
 <?php
 
-namespace ApiWebSac\Transformers;
+namespace ApiWebPsp\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use ApiWebSac\Models\Address;
+use ApiWebPsp\Models\Address;
 
 /**
  * Class AddressTransformer.
  *
- * @package namespace ApiWebSac\Transformers;
+ * @package namespace ApiWebPsp\Transformers;
  */
 class AddressTransformer extends TransformerAbstract
 {
     /**
      * Transform the Address entity.
      *
-     * @param \ApiWebSac\Models\Address $model
+     * @param \ApiWebPsp\Models\Address $model
      *
      * @return array
      */

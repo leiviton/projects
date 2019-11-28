@@ -6,10 +6,10 @@
  * Time: 15:26
  */
 
-namespace ApiWebSac\Http\Controllers\Api\V1\Admin;
+namespace ApiWebPsp\Http\Controllers\Api\V1\Admin;
 
-use ApiWebSac\Http\Controllers\Controller;
-use ApiWebSac\Services\ProductService;
+use ApiWebPsp\Http\Controllers\Controller;
+use ApiWebPsp\Services\ProductService;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller

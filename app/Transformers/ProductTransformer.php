@@ -1,21 +1,21 @@
 <?php
 
-namespace ApiWebSac\Transformers;
+namespace ApiWebPsp\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use ApiWebSac\Models\Product;
+use ApiWebPsp\Models\Product;
 
 /**
  * Class ProductTransformer.
  *
- * @package namespace ApiWebSac\Transformers;
+ * @package namespace ApiWebPsp\Transformers;
  */
 class ProductTransformer extends TransformerAbstract
 {
     /**
      * Transform the Product entity.
      *
-     * @param \ApiWebSac\Models\Product $model
+     * @param \ApiWebPsp\Models\Product $model
      *
      * @return array
      */

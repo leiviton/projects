@@ -1,9 +1,9 @@
 <?php
 
-namespace ApiWebSac\Http\Controllers\Auth;
+namespace ApiWebPsp\Http\Controllers\Auth;
 
-use ApiWebSac\User;
-use ApiWebSac\Http\Controllers\Controller;
+use ApiWebPsp\User;
+use ApiWebPsp\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -59,7 +59,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \ApiWebSac\User
+     * @return \ApiWebPsp\User
      */
     protected function create(array $data)
     {

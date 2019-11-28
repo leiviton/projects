@@ -1,16 +1,16 @@
 <?php
 
-namespace ApiWebSac\Repositories;
+namespace ApiWebPsp\Repositories;
 
-use ApiWebSac\Presenters\AddressPresenter;
+use ApiWebPsp\Presenters\AddressPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebSac\Models\Address;
+use ApiWebPsp\Models\Address;
 
 /**
  * Class AddressRepositoryEloquent.
  *
- * @package namespace ApiWebSac\Repositories;
+ * @package namespace ApiWebPsp\Repositories;
  */
 class AddressRepositoryEloquent extends BaseRepository implements AddressRepository
 {

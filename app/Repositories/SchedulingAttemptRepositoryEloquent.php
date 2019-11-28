@@ -1,16 +1,16 @@
 <?php
 
-namespace ApiWebSac\Repositories;
+namespace ApiWebPsp\Repositories;
 
-use ApiWebSac\Presenters\SchedulingAttemptPresenter;
+use ApiWebPsp\Presenters\SchedulingAttemptPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebSac\Models\SchedulingAttempt;
+use ApiWebPsp\Models\SchedulingAttempt;
 
 /**
  * Class SchedulingAttemptRepositoryEloquent.
  *
- * @package namespace ApiWebSac\Repositories;
+ * @package namespace ApiWebPsp\Repositories;
  */
 class SchedulingAttemptRepositoryEloquent extends BaseRepository implements SchedulingAttemptRepository
 {

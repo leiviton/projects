@@ -1,14 +1,14 @@
 <?php
 
-namespace ApiWebSac\Transformers;
+namespace ApiWebPsp\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use ApiWebSac\Models\Company;
+use ApiWebPsp\Models\Company;
 
 /**
  * Class CompanyTransformer.
  *
- * @package namespace ApiWebSac\Transformers;
+ * @package namespace ApiWebPsp\Transformers;
  */
 class CompanyTransformer extends TransformerAbstract
 {
@@ -17,7 +17,7 @@ class CompanyTransformer extends TransformerAbstract
     /**
      * Transform the Company entity.
      *
-     * @param \ApiWebSac\Models\Company $model
+     * @param \ApiWebPsp\Models\Company $model
      *
      * @return array
      */

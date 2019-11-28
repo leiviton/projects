@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Models;
+namespace ApiWebPsp\Models;
 
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -8,9 +8,9 @@ use Prettus\Repository\Traits\TransformableTrait;
 /**
  * Class Capability.
  *
- * @package namespace ApiWebSac\Models;
+ * @package namespace ApiWebPsp\Models;
  */
-class Capability extends \ApiWebSac\Models\Base\Capability implements Transformable
+class Capability extends \ApiWebPsp\Models\Base\Capability implements Transformable
 {
     use TransformableTrait;
 

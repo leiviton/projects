@@ -5,9 +5,9 @@
  * Date: Mon, 12 Aug 2019 21:21:13 +0000.
  */
 
-namespace ApiWebSac\Models\Base;
+namespace ApiWebPsp\Models\Base;
 
-use ApiWebSac\Models\Traits\UuidTrait;
+use ApiWebPsp\Models\Traits\UuidTrait;
 use Illuminate\Foundation\Auth\User as Eloquent;
 
 /**
@@ -26,11 +26,11 @@ use Illuminate\Foundation\Auth\User as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \ApiWebSac\Models\Company $company
+ * @property \ApiWebPsp\Models\Company $company
  * 
  * @property \Illuminate\Database\Eloquent\Collection $patients
  *
- * @package ApiWebSac\Models\Base
+ * @package ApiWebPsp\Models\Base
  */
 class User extends Eloquent
 {
@@ -47,11 +47,11 @@ class User extends Eloquent
 
 	public function patients()
 	{
-		return $this->hasMany(\ApiWebSac\Models\Patient::class);
+		return $this->hasMany(\ApiWebPsp\Models\Patient::class);
 	}
 
     public function company()
     {
-        return $this->belongsTo(\ApiWebSac\Models\Company::class);
+        return $this->belongsTo(\ApiWebPsp\Models\Company::class);
     }
 }

@@ -5,7 +5,7 @@
  * Date: Thu, 22 Aug 2019 20:37:41 +0000.
  */
 
-namespace ApiWebSac\Models\Base;
+namespace ApiWebPsp\Models\Base;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
 
@@ -27,9 +27,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \ApiWebSac\Models\User $user
+ * @property \ApiWebPsp\Models\User $user
  *
- * @package ApiWebSac\Models\Base
+ * @package ApiWebPsp\Models\Base
  */
 class Audit extends Eloquent
 {
@@ -38,6 +38,6 @@ class Audit extends Eloquent
      */
     public function user()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\User::class);
+		return $this->belongsTo(\ApiWebPsp\Models\User::class);
 	}
 }
