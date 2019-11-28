@@ -2,10 +2,12 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use ApiWebSac\Models\Company;
-use ApiWebSac\Models\Product;
-use ApiWebSac\Models\StatusSolicitation;
-use ApiWebSac\Models\User;
+use ApiWebPsp\Models\Address;
+use ApiWebPsp\Models\Company;
+use ApiWebPsp\Models\Patient;
+use ApiWebPsp\Models\Product;
+use ApiWebPsp\Models\Solicitation;
+use ApiWebPsp\Models\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -34,10 +36,34 @@ $factory->define(Company::class, function (Faker $faker){
 
 });
 
+$factory->define(Address::class, function (Faker $faker){
+    return [
+        'street' => $faker->streetName,
+        'number' => $faker->numberBetween(0,1000),
+        'complement' => $faker->word,
+        'neighborhood' => $faker->word,
+        'postal_code' => $faker->postcode,
+        'city' => $faker->city,
+        'uf' => 'SP'
+    ];
+});
 $factory->define(Product::class, function (Faker $faker){
 
 });
 
-$factory->define(StatusSolicitation::class, function (Faker $faker){
+$factory->define(Patient::class, function (Faker $faker) {
+    return [
+        'name' => $faker->phoneNumber,
+        'cpf' => $faker->numerify('###.###.###-##'),
+        'cpf_verify' => 'sim',
+        'genre' => 'masculino',
+        'date_birth' => $faker->date()
+    ];
+});
 
+$factory->define(Solicitation::class, function (Faker $faker){
+    return [
+        'patient_id' => rand(1,10),
+        'status' => 'created',
+    ];
 });

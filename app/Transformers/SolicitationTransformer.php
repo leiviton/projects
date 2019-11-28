@@ -1,15 +1,15 @@
 <?php
 
-namespace ApiWebSac\Transformers;
+namespace ApiWebPsp\Transformers;
 
-use ApiWebSac\Models\User;
+use ApiWebPsp\Models\User;
 use League\Fractal\TransformerAbstract;
-use ApiWebSac\Models\Solicitation;
+use ApiWebPsp\Models\Solicitation;
 
 /**
  * Class SolicitationTransformer.
  *
- * @package namespace ApiWebSac\Transformers;
+ * @package namespace ApiWebPsp\Transformers;
  */
 class SolicitationTransformer extends TransformerAbstract
 {
@@ -21,7 +21,7 @@ class SolicitationTransformer extends TransformerAbstract
     /**
      * Transform the Solicitation entity.
      *
-     * @param \ApiWebSac\Models\Solicitation $model
+     * @param \ApiWebPsp\Models\Solicitation $model
      *
      * @return array
      */

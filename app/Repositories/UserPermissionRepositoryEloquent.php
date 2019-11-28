@@ -1,16 +1,16 @@
 <?php
 
-namespace ApiWebSac\Repositories;
+namespace ApiWebPsp\Repositories;
 
-use ApiWebSac\Presenters\UserPermissionPresenter;
+use ApiWebPsp\Presenters\UserPermissionPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebSac\Models\UserPermission;
+use ApiWebPsp\Models\UserPermission;
 
 /**
  * Class UserPermissionRepositoryEloquent.
  *
- * @package namespace ApiWebSac\Repositories;
+ * @package namespace ApiWebPsp\Repositories;
  */
 class UserPermissionRepositoryEloquent extends BaseRepository implements UserPermissionRepository
 {

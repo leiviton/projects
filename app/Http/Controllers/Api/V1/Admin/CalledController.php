@@ -1,10 +1,10 @@
 <?php
 
 
-namespace ApiWebSac\Http\Controllers\Api\V1\Admin;
+namespace ApiWebPsp\Http\Controllers\Api\V1\Admin;
 
 
-use ApiWebSac\Http\Controllers\Controller;
+use ApiWebPsp\Http\Controllers\Controller;
 use FontLib\Table\Type\name;
 use Illuminate\Http\Request;
 

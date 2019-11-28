@@ -1,14 +1,14 @@
 <?php
 
-namespace ApiWebSac\Transformers;
+namespace ApiWebPsp\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use ApiWebSac\Models\SchedulingAttempt;
+use ApiWebPsp\Models\SchedulingAttempt;
 
 /**
  * Class SchedulingAttemptTransformer.
  *
- * @package namespace ApiWebSac\Transformers;
+ * @package namespace ApiWebPsp\Transformers;
  */
 class SchedulingAttemptTransformer extends TransformerAbstract
 {
@@ -16,7 +16,7 @@ class SchedulingAttemptTransformer extends TransformerAbstract
     /**
      * Transform the SchedulingAttempt entity.
      *
-     * @param \ApiWebSac\Models\SchedulingAttempt $model
+     * @param \ApiWebPsp\Models\SchedulingAttempt $model
      *
      * @return array
      */

@@ -6,11 +6,11 @@
  * Time: 10:21
  */
 
-namespace ApiWebSac\Services;
+namespace ApiWebPsp\Services;
 
 
-use ApiWebSac\Repositories\AddressRepository;
-use ApiWebSac\Repositories\PatientRepository;
+use ApiWebPsp\Repositories\AddressRepository;
+use ApiWebPsp\Repositories\PatientRepository;
 use Illuminate\Support\Facades\DB;
 
 class AddressService

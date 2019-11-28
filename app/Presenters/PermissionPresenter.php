@@ -1,14 +1,14 @@
 <?php
 
-namespace ApiWebSac\Presenters;
+namespace ApiWebPsp\Presenters;
 
-use ApiWebSac\Transformers\PermissionTransformer;
+use ApiWebPsp\Transformers\PermissionTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
  * Class PermissionPresenter.
  *
- * @package namespace ApiWebSac\Presenters;
+ * @package namespace ApiWebPsp\Presenters;
  */
 class PermissionPresenter extends FractalPresenter
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace ApiWebSac\Presenters;
+namespace ApiWebPsp\Presenters;
 
-use ApiWebSac\Transformers\AuditTransformer;
+use ApiWebPsp\Transformers\AuditTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
  * Class AuditPresenter.
  *
- * @package namespace ApiWebSac\Presenters;
+ * @package namespace ApiWebPsp\Presenters;
  */
 class AuditPresenter extends FractalPresenter
 {

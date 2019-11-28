@@ -1,10 +1,10 @@
 <?php
 
-namespace ApiWebSac\Http\Controllers\Api\V1\Admin;
+namespace ApiWebPsp\Http\Controllers\Api\V1\Admin;
 
-use ApiWebSac\Services\AddressService;
+use ApiWebPsp\Services\AddressService;
 use Illuminate\Http\Request;
-use ApiWebSac\Http\Controllers\Controller;
+use ApiWebPsp\Http\Controllers\Controller;
 
 class AddressController extends Controller
 {

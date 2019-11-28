@@ -5,9 +5,9 @@
  * Date: Mon, 19 Aug 2019 15:30:22 +0000.
  */
 
-namespace ApiWebSac\Models\Base;
+namespace ApiWebPsp\Models\Base;
 
-use ApiWebSac\Models\Traits\UuidTrait;
+use ApiWebPsp\Models\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Ramsey\Uuid\Uuid;
 use Reliese\Database\Eloquent\Model as Eloquent;
@@ -32,7 +32,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Illuminate\Database\Eloquent\Collection $solicitations
  * @property \Illuminate\Database\Eloquent\Collection $users
  *
- * @package ApiWebSac\Models\Base
+ * @package ApiWebPsp\Models\Base
  */
 class Company extends Eloquent
 {
@@ -45,16 +45,16 @@ class Company extends Eloquent
 
     public function products()
 	{
-		return $this->hasMany(\ApiWebSac\Models\Product::class);
+		return $this->hasMany(\ApiWebPsp\Models\Product::class);
 	}
 
 	public function solicitations()
 	{
-		return $this->hasMany(\ApiWebSac\Models\Solicitation::class);
+		return $this->hasMany(\ApiWebPsp\Models\Solicitation::class);
 	}
 
 	public function users()
 	{
-		return $this->hasMany(\ApiWebSac\Models\User::class);
+		return $this->hasMany(\ApiWebPsp\Models\User::class);
 	}
 }

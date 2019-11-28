@@ -6,9 +6,9 @@
  * Time: 16:03
  */
 
-namespace ApiWebSac\Services;
+namespace ApiWebPsp\Services;
 
-use ApiWebSac\Repositories\CompanyRepository;
+use ApiWebPsp\Repositories\CompanyRepository;
 use Illuminate\Support\Facades\DB;
 
 class CompanyService

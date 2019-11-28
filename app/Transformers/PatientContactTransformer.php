@@ -1,21 +1,21 @@
 <?php
 
-namespace ApiWebSac\Transformers;
+namespace ApiWebPsp\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use ApiWebSac\Models\PatientContact;
+use ApiWebPsp\Models\PatientContact;
 
 /**
  * Class PatientContactTransformer.
  *
- * @package namespace ApiWebSac\Transformers;
+ * @package namespace ApiWebPsp\Transformers;
  */
 class PatientContactTransformer extends TransformerAbstract
 {
     /**
      * Transform the PatientContact entity.
      *
-     * @param \ApiWebSac\Models\PatientContact $model
+     * @param \ApiWebPsp\Models\PatientContact $model
      *
      * @return array
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Http;
+namespace ApiWebPsp\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -14,10 +14,10 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-        \ApiWebSac\Http\Middleware\TrustProxies::class,
-        \ApiWebSac\Http\Middleware\CheckForMaintenanceMode::class,
+        \ApiWebPsp\Http\Middleware\TrustProxies::class,
+        \ApiWebPsp\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \ApiWebSac\Http\Middleware\TrimStrings::class,
+        \ApiWebPsp\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \Barryvdh\Cors\HandleCors::class,
     ];
@@ -29,12 +29,12 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \ApiWebSac\Http\Middleware\EncryptCookies::class,
+            \ApiWebPsp\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \ApiWebSac\Http\Middleware\VerifyCsrfToken::class,
+            \ApiWebPsp\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
@@ -52,12 +52,12 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \ApiWebSac\Http\Middleware\Authenticate::class,
+        'auth' => \ApiWebPsp\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \ApiWebSac\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \ApiWebPsp\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
@@ -73,7 +73,7 @@ class Kernel extends HttpKernel
     protected $middlewarePriority = [
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \ApiWebSac\Http\Middleware\Authenticate::class,
+        \ApiWebPsp\Http\Middleware\Authenticate::class,
         \Illuminate\Session\Middleware\AuthenticateSession::class,
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \Illuminate\Auth\Middleware\Authorize::class,

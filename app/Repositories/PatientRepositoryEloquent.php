@@ -1,17 +1,17 @@
 <?php
 
-namespace ApiWebSac\Repositories;
+namespace ApiWebPsp\Repositories;
 
-use ApiWebSac\Presenters\PatientPresenter;
+use ApiWebPsp\Presenters\PatientPresenter;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebSac\Models\Patient;
+use ApiWebPsp\Models\Patient;
 
 /**
  * Class PatientRepositoryEloquent.
  *
- * @package namespace ApiWebSac\Repositories;
+ * @package namespace ApiWebPsp\Repositories;
  */
 class PatientRepositoryEloquent extends BaseRepository implements PatientRepository
 {

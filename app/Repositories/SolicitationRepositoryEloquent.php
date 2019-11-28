@@ -1,18 +1,18 @@
 <?php
 
-namespace ApiWebSac\Repositories;
+namespace ApiWebPsp\Repositories;
 
-use ApiWebSac\Presenters\SolicitationPresenter;
+use ApiWebPsp\Presenters\SolicitationPresenter;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebSac\Models\Solicitation;
+use ApiWebPsp\Models\Solicitation;
 
 /**
  * Class SolicitationRepositoryEloquent.
  *
- * @package namespace ApiWebSac\Repositories;
+ * @package namespace ApiWebPsp\Repositories;
  */
 class SolicitationRepositoryEloquent extends BaseRepository implements SolicitationRepository
 {

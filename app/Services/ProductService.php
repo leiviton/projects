@@ -6,9 +6,9 @@
  * Time: 16:03
  */
 
-namespace ApiWebSac\Services;
+namespace ApiWebPsp\Services;
 
-use ApiWebSac\Repositories\ProductRepository;
+use ApiWebPsp\Repositories\ProductRepository;
 use Illuminate\Support\Facades\DB;
 
 class ProductService

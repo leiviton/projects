@@ -6,10 +6,10 @@
  * Time: 15:26
  */
 
-namespace ApiWebSac\Http\Controllers\Api\V1\Admin;
+namespace ApiWebPsp\Http\Controllers\Api\V1\Admin;
 
-use ApiWebSac\Http\Controllers\Controller;
-use ApiWebSac\Services\PermissionService;
+use ApiWebPsp\Http\Controllers\Controller;
+use ApiWebPsp\Services\PermissionService;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller

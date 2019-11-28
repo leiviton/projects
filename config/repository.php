@@ -227,7 +227,7 @@ return [
     */
     'generator'  => [
         'basePath'      => app()->path(),
-        'rootNamespace' => 'ApiWebSac\\',
+        'rootNamespace' => 'ApiWebPsp\\',
         'stubsOverridePath' => app()->path(),
         'paths'         => [
             'models'       => 'Models',

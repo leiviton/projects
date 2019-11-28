@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Providers;
+namespace ApiWebPsp\Providers;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;

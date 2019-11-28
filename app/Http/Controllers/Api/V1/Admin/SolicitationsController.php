@@ -6,12 +6,12 @@
  * Time: 15:26
  */
 
-namespace ApiWebSac\Http\Controllers\Api\V1\Admin;
+namespace ApiWebPsp\Http\Controllers\Api\V1\Admin;
 
-use ApiWebSac\Http\Controllers\Controller;
-use ApiWebSac\Mail\RegisterBuyer;
-use ApiWebSac\Services\SolicitationService;
-use ApiWebSac\Mail\InvoiceOrder;
+use ApiWebPsp\Http\Controllers\Controller;
+use ApiWebPsp\Mail\RegisterBuyer;
+use ApiWebPsp\Services\SolicitationService;
+use ApiWebPsp\Mail\InvoiceOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 

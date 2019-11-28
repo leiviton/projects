@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Mail;
+namespace ApiWebPsp\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

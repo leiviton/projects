@@ -1,8 +1,8 @@
 <?php
 
-namespace ApiWebSac\Http\Controllers\Auth;
+namespace ApiWebPsp\Http\Controllers\Auth;
 
-use ApiWebSac\Http\Controllers\Controller;
+use ApiWebPsp\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

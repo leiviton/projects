@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ApiWebSac\Models\Traits;
+namespace ApiWebPsp\Models\Traits;
 
 
 use Ramsey\Uuid\Uuid;

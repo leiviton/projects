@@ -28,17 +28,17 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    ApiWebSac\Http\Kernel::class
+    ApiWebPsp\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    ApiWebSac\Console\Kernel::class
+    ApiWebPsp\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    ApiWebSac\Exceptions\Handler::class
+    ApiWebPsp\Exceptions\Handler::class
 );
 
 /*

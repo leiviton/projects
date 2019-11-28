@@ -1,21 +1,21 @@
 <?php
 
-namespace ApiWebSac\Transformers;
+namespace ApiWebPsp\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use ApiWebSac\Models\UserPermission;
+use ApiWebPsp\Models\UserPermission;
 
 /**
  * Class UserPermissionTransformer.
  *
- * @package namespace ApiWebSac\Transformers;
+ * @package namespace ApiWebPsp\Transformers;
  */
 class UserPermissionTransformer extends TransformerAbstract
 {
     /**
      * Transform the UserPermission entity.
      *
-     * @param \ApiWebSac\Models\UserPermission $model
+     * @param \ApiWebPsp\Models\UserPermission $model
      *
      * @return array
      */

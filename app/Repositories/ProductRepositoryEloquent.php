@@ -1,16 +1,16 @@
 <?php
 
-namespace ApiWebSac\Repositories;
+namespace ApiWebPsp\Repositories;
 
-use ApiWebSac\Presenters\ProductPresenter;
+use ApiWebPsp\Presenters\ProductPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebSac\Models\Product;
+use ApiWebPsp\Models\Product;
 
 /**
  * Class ProductRepositoryEloquent.
  *
- * @package namespace ApiWebSac\Repositories;
+ * @package namespace ApiWebPsp\Repositories;
  */
 class ProductRepositoryEloquent extends BaseRepository implements ProductRepository
 {
