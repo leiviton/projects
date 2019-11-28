@@ -14,7 +14,7 @@ class UserTableSeeder extends Seeder
     {
         factory(User::class)->create(
             [
-                'id' => \Faker\Provider\Uuid::uuid(),
+                
                 'name' => 'Leiviton Carlos',
                 'email' => 'leivitoncs@gmail.com',
                 'role' => 'admin',
@@ -24,7 +24,7 @@ class UserTableSeeder extends Seeder
 
         factory(User::class)->create(
             [
-                'id' => \Faker\Provider\Uuid::uuid(),
+                
                 'name' => 'Caio Lavos',
                 'email' => 'caio.moraes@drsgroup.com.br',
                 'role' => 'admin',
@@ -34,7 +34,7 @@ class UserTableSeeder extends Seeder
 
         factory(User::class)->create(
             [
-                'id' => \Faker\Provider\Uuid::uuid(),
+                
                 'name' => 'Allan Santos',
                 'email' => 'allan.santos@drsgroup.com.br',
                 'role' => 'drs-analyst',
@@ -44,7 +44,7 @@ class UserTableSeeder extends Seeder
 
         factory(User::class)->create(
             [
-                'id' => \Faker\Provider\Uuid::uuid(),
+                
                 'name' => 'Raquel Mota',
                 'email' => 'raquel.mota@drsgroup.com.br',
                 'role' => 'admin',
@@ -54,7 +54,7 @@ class UserTableSeeder extends Seeder
 
         factory(User::class)->create(
             [
-                'id' => \Faker\Provider\Uuid::uuid(),
+                
                 'name' => 'Lucas Rilko',
                 'email' => 'lucas.rolko@drsgroup.com.br',
                 'role' => 'admin',
@@ -64,7 +64,7 @@ class UserTableSeeder extends Seeder
 
         factory(User::class)->create(
             [
-                'id' => \Faker\Provider\Uuid::uuid(),
+                
                 'name' => 'Atendente 2',
                 'email' => 'atendente1@drsgroup.com.br',
                 'role' => 'drs-attendant',
@@ -74,7 +74,7 @@ class UserTableSeeder extends Seeder
 
         factory(User::class)->create(
             [
-                'id' => \Faker\Provider\Uuid::uuid(),
+                
                 'name' => 'Atendente 2',
                 'email' => 'atendente2@drsgroup.com.br',
                 'role' => 'drs-attendant',
@@ -84,7 +84,7 @@ class UserTableSeeder extends Seeder
 
         factory(User::class)->create(
             [
-                'id' => \Faker\Provider\Uuid::uuid(),
+                
                 'name' => 'Atendente 3',
                 'email' => 'atendente3@drsgroup.com.br',
                 'role' => 'drs-attendant',
@@ -92,6 +92,6 @@ class UserTableSeeder extends Seeder
                 'remember_token' => str_random(10),
             ]);
 
-        factory(User::class, 50)->create();
+        factory(User::class,50)->create();
     }
 }

@@ -7,7 +7,6 @@
 
 namespace ApiWebSac\Models\Base;
 
-use ApiWebSac\Models\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
@@ -17,25 +16,22 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * Class Solicitation
  * 
  * @property string $id
- * @property string $company_id
- * @property string $patient_id
- * @property string $address_id
- * @property string $user_id
- * @property string $status_solicitation_id
+ * @property int $company_id
+ * @property int $patient_id
+ * @property int $address_id
+ * @property int $user_id
  * @property string $protocol
  * @property string $manifestation
  * @property string $description_other_type
- * @property \Carbon\Carbon $date_scheduling
- * @property string $schedule_time
  * @property string $type
  * @property string $deleted_at
+ * @property string $status
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
  * @property \ApiWebSac\Models\Company $company
  * @property \ApiWebSac\Models\Patient $patient
  * @property \ApiWebSac\Models\Address $address
- * @property \ApiWebSac\Models\StatusSolicitation $status_solicitation
  * @property \ApiWebSac\Models\User $user
  * @property \Illuminate\Database\Eloquent\Collection $scheduling_solicitations
  * @property \Illuminate\Database\Eloquent\Collection $attempt_solicitations
@@ -47,23 +43,12 @@ class Solicitation extends Eloquent
 {
 	use SoftDeletes;
 
-	public $incrementing = false;
-
-	protected $dates = [
-		'date_scheduling'
-	];
-
-	protected $casts = [
-	    'status_solicitation_id' => 'string'
-    ];
-
 	protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($obj) {
             $obj->id = Uuid::uuid4();
-            $obj->status_solicitation_id = DB::table('status_solicitation')->where('short_description','Chamado Novo')->first()->id;
             $obj->company_id = DB::table('companies')->first()->id;
         });
     }
@@ -82,11 +67,6 @@ class Solicitation extends Eloquent
     {
         return $this->belongsTo(\ApiWebSac\Models\Address::class);
     }
-
-	public function status_solicitation()
-	{
-		return $this->belongsTo(\ApiWebSac\Models\StatusSolicitation::class);
-	}
 
 	public function user()
 	{

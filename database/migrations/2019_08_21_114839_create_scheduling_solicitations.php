@@ -14,7 +14,7 @@ class CreateSchedulingSolicitations extends Migration
     public function up()
     {
         Schema::create('scheduling_solicitations', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->bigIncrements('id')->primary();
             $table->uuid('solicitation_id')->index()->nullable();
             $table->foreign('solicitation_id')->references('id')->on('solicitations');
             $table->date('date_scheduling');

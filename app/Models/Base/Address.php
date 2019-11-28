@@ -13,8 +13,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 /**
  * Class Address
  * 
- * @property string $id
- * @property string $patient_id
+ * @property int $id
+ * @property int $patient_id
  * @property string $street
  * @property string $number
  * @property string $complement
@@ -33,15 +33,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Address extends Eloquent
 {
-    use UuidTrait;
-
-    protected $keyType = 'string';
-
-    public $incrementing = false;
-
 	protected $casts = [
-		'patient_id' => 'string',
-        'id' => 'string'
+		'patient_id' => 'int',
+        'id' => 'int'
 	];
 
 	protected $dates = [

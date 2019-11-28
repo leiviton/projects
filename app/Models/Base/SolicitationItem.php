@@ -13,8 +13,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 /**
  * Class SolicitationItem
  * 
- * @property string $id
- * @property string $product_id
+ * @property int $id
+ * @property int $product_id
  * @property string $solicitation_id
  * @property float $total
  * @property float $price_unitary
@@ -34,14 +34,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class SolicitationItem extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes, UuidTrait;
-
-    protected $keyType = 'string';
-
-    public $incrementing = false;
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'product_id' => 'string',
+		'product_id' => 'int',
 		'solicitation_id' => 'string',
 		'total' => 'float',
 		'price_unitary' => 'float',

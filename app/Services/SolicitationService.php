@@ -13,7 +13,6 @@ use ApiWebSac\Repositories\PatientRepository;
 use ApiWebSac\Repositories\SchedulingAttemptRepository;
 use ApiWebSac\Repositories\SchedulingSolicitationRepository;
 use ApiWebSac\Repositories\SolicitationRepository;
-use ApiWebSac\Repositories\StatusSolicitationRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -27,10 +26,6 @@ class SolicitationService
      * @var PatientRepository
      */
     private $repositoryPatient;
-    /**
-     * @var StatusSolicitationRepository
-     */
-    private $statusSolicitationRepository;
     /**
      * @var SchedulingSolicitationRepository
      */
@@ -48,21 +43,18 @@ class SolicitationService
      * SolicitationService constructor.
      * @param SolicitationRepository $repository
      * @param PatientRepository $repositoryPatient
-     * @param StatusSolicitationRepository $statusSolicitationRepository
      * @param SchedulingSolicitationRepository $schedulingSolicitationRepository
      * @param AddressRepository $addressRepository
      * @param SchedulingAttemptRepository $attemptRepository
      */
     public function __construct(SolicitationRepository $repository,
                                 PatientRepository $repositoryPatient,
-                                StatusSolicitationRepository $statusSolicitationRepository,
                                 SchedulingSolicitationRepository $schedulingSolicitationRepository,
                                 AddressRepository $addressRepository,
                                 SchedulingAttemptRepository $attemptRepository)
     {
         $this->repository = $repository;
         $this->repositoryPatient = $repositoryPatient;
-        $this->statusSolicitationRepository = $statusSolicitationRepository;
         $this->schedulingSolicitationRepository = $schedulingSolicitationRepository;
         $this->addressRepository = $addressRepository;
         $this->attemptRepository = $attemptRepository;
@@ -132,7 +124,7 @@ class SolicitationService
         DB::beginTransaction();
         try {
 
-            $result = $this->repository->update($data, $id);
+            $this->repository->update($data, $id);
 
             DB::commit();
 
@@ -153,7 +145,7 @@ class SolicitationService
         DB::beginTransaction();
         try {
 
-            $result = $this->repository->delete($id);
+            $this->repository->delete($id);
 
             DB::commit();
 
@@ -222,27 +214,13 @@ class SolicitationService
      */
     public function countStatus()
     {
-        $statusEnviadoAoSite = $this->statusSolicitationRepository->findWhere(['short_description' => 'Enviado ao site'])->first();
-        $statusEmTransito = $this->statusSolicitationRepository->findWhere(['short_description' => 'Em Transito'])->first();
-        $statusConcluido = $this->statusSolicitationRepository->findWhere(['short_description' => 'Concluido'])->first();
-        $statusAguardandoExpedicao = $this->statusSolicitationRepository->findWhere(['short_description' => 'Aguardando expedicao'])->first();
-        $statusPendente = $this->statusSolicitationRepository->findWhere(['short_description' => 'Pendente'])->first();
-        $statusCancelados = $this->statusSolicitationRepository->findWhere(['short_description' => 'Cancelado'])->first();
-        $statusEmAtendimento = $this->statusSolicitationRepository->findWhere(['short_description' => 'Em atendimento'])->first();
-        $statusNovo = $this->statusSolicitationRepository->findWhere(['short_description' => 'Chamado Novo'])->first();
+        $contadorConcluido = $this->repository->countSatus('success');
+        $contadorPendente = $this->repository->countSatus('pending');
+        $contadorCancelados = $this->repository->countSatus('canceled');
+        $contadorNovo = $this->repository->countSatus('created');
 
-        $contadorEnviadoAoSite = $this->repository->countSatus($statusEnviadoAoSite->id);
-        $contadorEmTransito = $this->repository->countSatus($statusEmTransito->id);
-        $contadorConcluido = $this->repository->countSatus($statusConcluido->id);
-        $contadorAguardandoExpedicao = $this->repository->countSatus($statusAguardandoExpedicao->id);
-        $contadorPendente = $this->repository->countSatus($statusPendente->id);
-        $contadorCancelados = $this->repository->countSatus($statusCancelados->id);
-        $contadorEmAtendimento = $this->repository->countSatus($statusEmAtendimento->id);
-        $contadorNovo = $this->repository->countSatus($statusNovo->id);
-
-        return ['novo' => $contadorNovo->qtd, 'em_atendimento' => $contadorEmAtendimento->qtd, 'enviado_site' => $contadorEnviadoAoSite->qtd,
-            'em_transito' => $contadorEmTransito->qtd, 'concluido' => $contadorConcluido->qtd, 'aguardando_expedicao' => $contadorAguardandoExpedicao->qtd,
-            'pendente' => $contadorPendente->qtd, 'cancelados' => $contadorCancelados->qtd];
+        return ['created' => $contadorNovo->qtd, 'success' => $contadorConcluido->qtd, 'pending' => $contadorPendente->qtd,
+            'canceled' => $contadorCancelados->qtd];
     }
 
     /**
@@ -253,11 +231,11 @@ class SolicitationService
     {
         DB::beginTransaction();
         try {
-            $status = $this->statusSolicitationRepository->findWhere(['short_description' => 'Em atendimento'])->first();
+            //$status = $this->statusSolicitationRepository->findWhere(['short_description' => 'Em atendimento'])->first();
 
             $solicitation = $this->repository->find($id);
 
-            $solicitation->status_solicitation_id = $status->id;
+            //$solicitation->status_solicitation_id = $status->id;
 
             $solicitation->save();
 
@@ -286,10 +264,6 @@ class SolicitationService
                 $solicitation = $this->repository->find($data['solicitation_id']);
                 //dd($solicitation);
                 $result = $this->schedulingSolicitationRepository->create($data);
-
-                $statusEmAtendimento = $this->statusSolicitationRepository->findWhere(['short_description' => 'Agendado aguardando visita'])->first();
-
-                $solicitation->status_solicitation_id = $statusEmAtendimento->id;
 
                 $solicitation->save();
 
@@ -320,9 +294,7 @@ class SolicitationService
 
             $solicitation = $this->repository->find($result->solicitation_id);
 
-            $statusCancelados = $this->statusSolicitationRepository->findWhere(['short_description' => 'Cancelado'])->first();
-
-            $solicitation->status_solicitation_id = $statusCancelados->id;
+            $solicitation->status = 'cancelled';
 
             $result->save();
 
@@ -393,8 +365,8 @@ class SolicitationService
      */
     public function countMounth()
     {
-        $statusConcluido = $this->statusSolicitationRepository->findWhere(['short_description' => 'Concluido'])->first();
-        $statusCancelados = $this->statusSolicitationRepository->findWhere(['short_description' => 'Cancelado'])->first();
+        $statusConcluido = $this->repository->findWhere(['status' => 'success'])->first();
+        $statusCancelados = $this->repository->findWhere(['status' => 'cancelled'])->first();
 
         return $this->repository->countMounth($statusCancelados->id, $statusConcluido->id);
     }
