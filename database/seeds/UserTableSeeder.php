@@ -1,6 +1,6 @@
 <?php
 
-use ApiWebSac\Models\User;
+use ApiWebPsp\Models\User;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
