@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => ApiWebSac\Models\User::class,
+            'model' => ApiWebPsp\Models\User::class,
         ],
 
         // 'users' => [
