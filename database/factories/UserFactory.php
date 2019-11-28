@@ -75,8 +75,9 @@ $factory->define(Patient::class, function (Faker $faker) {
 
 $factory->define(Solicitation::class, function (Faker $faker){
     return [
+        'id' =>\Faker\Provider\Uuid::uuid(),
         'patient_id' => rand(1,10),
         'status' => 'created',
-        'voucher' => $faker->numerify('###A###X###E##'),
+        'voucher' => $faker->numerify('###A###X###E##')
     ];
 });
