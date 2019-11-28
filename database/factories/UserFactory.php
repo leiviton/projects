@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use ApiWebPsp\Models\Address;
+use ApiWebPsp\Models\Base\SolicitationItem;
 use ApiWebPsp\Models\Company;
 use ApiWebPsp\Models\Patient;
 use ApiWebPsp\Models\Product;
@@ -51,8 +52,15 @@ $factory->define(Product::class, function (Faker $faker){
 
 });
 
-$factory->define(\ApiWebPsp\Models\SolicitationItem::class, function (Faker $faker){
-
+$factory->define(SolicitationItem::class, function (Faker $faker){
+    return [
+        'product_id' => rand(1,5),
+        'qtd' => 2,
+        'price_unitary' => 50,
+        'lot' => 'LT555',
+        'pen' => 'sim',
+        'expiration_date' => '2025-04-30'
+    ];
 });
 
 $factory->define(Patient::class, function (Faker $faker) {
