@@ -18,7 +18,7 @@ class CreatePatientContactsTable extends Migration
 	{
         Schema::create('patient_contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('patient_id')->index()->nullable();
+            $table->bigInteger('patient_id')->unsigned()->nullable();
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->string('email')->nullable();
             $table->string('cellphone');
