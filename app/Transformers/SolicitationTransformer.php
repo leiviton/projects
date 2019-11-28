@@ -16,7 +16,7 @@ class SolicitationTransformer extends TransformerAbstract
     /**
      * @var array include relationships
      */
-    protected $defaultIncludes = ['status','patient','items','company','scheduling','address','user','attempts'];
+    protected $defaultIncludes = ['patient','items','company','scheduling','address','user','attempts'];
 
     /**
      * Transform the Solicitation entity.
