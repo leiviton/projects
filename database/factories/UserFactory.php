@@ -65,5 +65,6 @@ $factory->define(Solicitation::class, function (Faker $faker){
     return [
         'patient_id' => rand(1,10),
         'status' => 'created',
+        'voucher' => $faker->creditCardNumber
     ];
 });
