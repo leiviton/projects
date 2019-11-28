@@ -13,16 +13,9 @@ class SolicitationTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Solicitation::class,50)->create()->each(function ($c) {
-            for ($i=0; $i<=2; $i++){
-                $c->solicitation_items()->save(factory(SolicitationItem::class)->make([
-                    'product_id' => rand(1,5),
-                    'qtd' => 2,
-                    'price_unitary' => 50,
-                    'lot' => 'LT555',
-                    'pen' => 'sim',
-                    'expiration_date' => date('Y-m-d')
-                ]));
+        factory(Solicitation::class,50)->create()->each(function ($p) {
+            for ($i=0; $i<3; $i++) {
+                $p->solicitation_items()->save(factory(SolicitationItem::class)->make());
             }
         });
     }
