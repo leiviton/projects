@@ -20,8 +20,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $patient_id
  * @property int $address_id
  * @property int $user_id
- * @property string $protocol
- * @property string $manifestation
+ * @property string $voucher
+ * @property string $document
  * @property string $description_other_type
  * @property string $type
  * @property string $deleted_at
