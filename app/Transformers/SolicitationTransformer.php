@@ -29,7 +29,6 @@ class SolicitationTransformer extends TransformerAbstract
     {
         return [
             'id' => $model->id,
-            'protocol' => $model->protocol,
             'voucher' => $model->voucher,
             'document' => $model->document,
             'description_other_type' => $model->description_other_type,
