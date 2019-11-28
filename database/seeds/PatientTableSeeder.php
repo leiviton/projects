@@ -14,7 +14,7 @@ class PatientTableSeeder extends Seeder
     public function run()
     {
         factory(Patient::class,10)->create()->each(function ($p) {
-            $p->addresses()->save(factory(Address::class));
+            $p->addresses()->save(factory(Address::class))->make();
         });
     }
 }
