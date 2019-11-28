@@ -1,14 +1,14 @@
 <?php
 
-namespace ApiWebSac\Presenters;
+namespace ApiWebPsp\Presenters;
 
-use ApiWebSac\Transformers\PatientContactTransformer;
+use ApiWebPsp\Transformers\PatientContactTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
  * Class PatientContactPresenter.
  *
- * @package namespace ApiWebSac\Presenters;
+ * @package namespace ApiWebPsp\Presenters;
  */
 class PatientContactPresenter extends FractalPresenter
 {

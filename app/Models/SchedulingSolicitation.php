@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Models;
+namespace ApiWebPsp\Models;
 
 use OwenIt\Auditing\Contracts\Auditable;
 use Prettus\Repository\Contracts\Transformable;
@@ -9,9 +9,9 @@ use Prettus\Repository\Traits\TransformableTrait;
 /**
  * Class SchedulingSolicitation.
  *
- * @package namespace ApiWebSac\Models;
+ * @package namespace ApiWebPsp\Models;
  */
-class SchedulingSolicitation extends \ApiWebSac\Models\Base\SchedulingSolicitation implements Transformable,Auditable
+class SchedulingSolicitation extends \ApiWebPsp\Models\Base\SchedulingSolicitation implements Transformable,Auditable
 {
     use TransformableTrait;
     use \OwenIt\Auditing\Auditable;

@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Http\Controllers;
+namespace ApiWebPsp\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

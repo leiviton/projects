@@ -1,21 +1,21 @@
 <?php
 
-namespace ApiWebSac\Transformers;
+namespace ApiWebPsp\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use ApiWebSac\Models\Capability;
+use ApiWebPsp\Models\Capability;
 
 /**
  * Class CapabilityTransformer.
  *
- * @package namespace ApiWebSac\Transformers;
+ * @package namespace ApiWebPsp\Transformers;
  */
 class CapabilityTransformer extends TransformerAbstract
 {
     /**
      * Transform the Capability entity.
      *
-     * @param \ApiWebSac\Models\Capability $model
+     * @param \ApiWebPsp\Models\Capability $model
      *
      * @return array
      */

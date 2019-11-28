@@ -5,7 +5,7 @@
  * Date: Mon, 30 Sep 2019 15:17:05 -0300.
  */
 
-namespace ApiWebSac\Models\Base;
+namespace ApiWebPsp\Models\Base;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
 
@@ -22,20 +22,20 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \ApiWebSac\Models\Solicitation $solicitation
- * @property \ApiWebSac\Models\User $user
+ * @property \ApiWebPsp\Models\Solicitation $solicitation
+ * @property \ApiWebPsp\Models\User $user
  *
- * @package ApiWebSac\Models\Base
+ * @package ApiWebPsp\Models\Base
  */
 class SchedulingAttempt extends Eloquent
 {
 	public function solicitation()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\Solicitation::class);
+		return $this->belongsTo(\ApiWebPsp\Models\Solicitation::class);
 	}
 
 	public function user()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\User::class);
+		return $this->belongsTo(\ApiWebPsp\Models\User::class);
 	}
 }

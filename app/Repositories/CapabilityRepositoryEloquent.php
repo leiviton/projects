@@ -1,16 +1,16 @@
 <?php
 
-namespace ApiWebSac\Repositories;
+namespace ApiWebPsp\Repositories;
 
-use ApiWebSac\Presenters\CapabilityPresenter;
+use ApiWebPsp\Presenters\CapabilityPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebSac\Models\Capability;
+use ApiWebPsp\Models\Capability;
 
 /**
  * Class CapabilityRepositoryEloquent.
  *
- * @package namespace ApiWebSac\Repositories;
+ * @package namespace ApiWebPsp\Repositories;
  */
 class CapabilityRepositoryEloquent extends BaseRepository implements CapabilityRepository
 {

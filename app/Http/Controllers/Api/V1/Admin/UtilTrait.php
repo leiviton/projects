@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ApiWebSac\Http\Controllers\Api\V1\Admin;
+namespace ApiWebPsp\Http\Controllers\Api\V1\Admin;
 
 
 use Faker\Provider\ka_GE\DateTime;

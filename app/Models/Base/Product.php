@@ -5,9 +5,9 @@
  * Date: Fri, 16 Aug 2019 19:02:12 +0000.
  */
 
-namespace ApiWebSac\Models\Base;
+namespace ApiWebPsp\Models\Base;
 
-use ApiWebSac\Models\Traits\UuidTrait;
+use ApiWebPsp\Models\Traits\UuidTrait;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -32,9 +32,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \ApiWebSac\Models\Company $company
+ * @property \ApiWebPsp\Models\Company $company
  *
- * @package ApiWebSac\Models\Base
+ * @package ApiWebPsp\Models\Base
  */
 class Product extends Eloquent
 {
@@ -54,6 +54,6 @@ class Product extends Eloquent
 
 	public function company()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\Company::class);
+		return $this->belongsTo(\ApiWebPsp\Models\Company::class);
 	}
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace ApiWebSac\Transformers;
+namespace ApiWebPsp\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use ApiWebSac\Models\Audit;
+use ApiWebPsp\Models\Audit;
 
 /**
  * Class AuditTransformer.
  *
- * @package namespace ApiWebSac\Transformers;
+ * @package namespace ApiWebPsp\Transformers;
  */
 class AuditTransformer extends TransformerAbstract
 {
@@ -16,7 +16,7 @@ class AuditTransformer extends TransformerAbstract
     /**
      * Transform the Audit entity.
      *
-     * @param \ApiWebSac\Models\Audit $model
+     * @param \ApiWebPsp\Models\Audit $model
      *
      * @return array
      */

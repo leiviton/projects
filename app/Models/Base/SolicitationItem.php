@@ -5,9 +5,9 @@
  * Date: Mon, 19 Aug 2019 15:29:16 +0000.
  */
 
-namespace ApiWebSac\Models\Base;
+namespace ApiWebPsp\Models\Base;
 
-use ApiWebSac\Models\Traits\UuidTrait;
+use ApiWebPsp\Models\Traits\UuidTrait;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -27,10 +27,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \ApiWebSac\Models\Product $product
- * @property \ApiWebSac\Models\Solicitation $solicitation
+ * @property \ApiWebPsp\Models\Product $product
+ * @property \ApiWebPsp\Models\Solicitation $solicitation
  *
- * @package ApiWebSac\Models\Base
+ * @package ApiWebPsp\Models\Base
  */
 class SolicitationItem extends Eloquent
 {
@@ -50,11 +50,11 @@ class SolicitationItem extends Eloquent
 
 	public function product()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\Product::class);
+		return $this->belongsTo(\ApiWebPsp\Models\Product::class);
 	}
 
 	public function solicitation()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\Solicitation::class);
+		return $this->belongsTo(\ApiWebPsp\Models\Solicitation::class);
 	}
 }

@@ -6,13 +6,13 @@
  * Time: 16:03
  */
 
-namespace ApiWebSac\Services;
+namespace ApiWebPsp\Services;
 
-use ApiWebSac\Repositories\AddressRepository;
-use ApiWebSac\Repositories\PatientRepository;
-use ApiWebSac\Repositories\SchedulingAttemptRepository;
-use ApiWebSac\Repositories\SchedulingSolicitationRepository;
-use ApiWebSac\Repositories\SolicitationRepository;
+use ApiWebPsp\Repositories\AddressRepository;
+use ApiWebPsp\Repositories\PatientRepository;
+use ApiWebPsp\Repositories\SchedulingAttemptRepository;
+use ApiWebPsp\Repositories\SchedulingSolicitationRepository;
+use ApiWebPsp\Repositories\SolicitationRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 

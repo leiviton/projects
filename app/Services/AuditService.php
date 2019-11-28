@@ -6,9 +6,9 @@
  * Time: 16:03
  */
 
-namespace ApiWebSac\Services;
+namespace ApiWebPsp\Services;
 
-use ApiWebSac\Repositories\AuditRepository;
+use ApiWebPsp\Repositories\AuditRepository;
 use Illuminate\Support\Facades\DB;
 
 class AuditService

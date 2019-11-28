@@ -6,11 +6,11 @@
  * Time: 15:26
  */
 
-namespace ApiWebSac\Http\Controllers\Api\V1\Admin;
+namespace ApiWebPsp\Http\Controllers\Api\V1\Admin;
 
-use ApiWebSac\Http\Controllers\Controller;
+use ApiWebPsp\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use ApiWebSac\Services\CompanyService;
+use ApiWebPsp\Services\CompanyService;
 
 class CompaniesController extends Controller
 {

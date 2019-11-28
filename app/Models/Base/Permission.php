@@ -5,7 +5,7 @@
  * Date: Mon, 25 Nov 2019 16:37:58 -0200.
  */
 
-namespace ApiWebSac\Models\Base;
+namespace ApiWebPsp\Models\Base;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
 
@@ -20,13 +20,13 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property \Illuminate\Database\Eloquent\Collection $users
  *
- * @package ApiWebSac\Models\Base
+ * @package ApiWebPsp\Models\Base
  */
 class Permission extends Eloquent
 {
 	public function users()
 	{
-		return $this->belongsToMany(\ApiWebSac\Models\User::class, 'user_permissions')
+		return $this->belongsToMany(\ApiWebPsp\Models\User::class, 'user_permissions')
 					->withPivot('id')
 					->withTimestamps();
 	}

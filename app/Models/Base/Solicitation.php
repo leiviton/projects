@@ -5,7 +5,7 @@
  * Date: Thu, 22 Aug 2019 18:32:38 +0000.
  */
 
-namespace ApiWebSac\Models\Base;
+namespace ApiWebPsp\Models\Base;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
@@ -29,15 +29,15 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \ApiWebSac\Models\Company $company
- * @property \ApiWebSac\Models\Patient $patient
- * @property \ApiWebSac\Models\Address $address
- * @property \ApiWebSac\Models\User $user
+ * @property \ApiWebPsp\Models\Company $company
+ * @property \ApiWebPsp\Models\Patient $patient
+ * @property \ApiWebPsp\Models\Address $address
+ * @property \ApiWebPsp\Models\User $user
  * @property \Illuminate\Database\Eloquent\Collection $scheduling_solicitations
  * @property \Illuminate\Database\Eloquent\Collection $attempt_solicitations
  * @property \Illuminate\Database\Eloquent\Collection $solicitation_items
  *
- * @package ApiWebSac\Models\Base
+ * @package ApiWebPsp\Models\Base
  */
 class Solicitation extends Eloquent
 {
@@ -55,36 +55,36 @@ class Solicitation extends Eloquent
 
     public function company()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\Company::class);
+		return $this->belongsTo(\ApiWebPsp\Models\Company::class);
 	}
 
 	public function patient()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\Patient::class);
+		return $this->belongsTo(\ApiWebPsp\Models\Patient::class);
 	}
 
     public function address()
     {
-        return $this->belongsTo(\ApiWebSac\Models\Address::class);
+        return $this->belongsTo(\ApiWebPsp\Models\Address::class);
     }
 
 	public function user()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\User::class);
+		return $this->belongsTo(\ApiWebPsp\Models\User::class);
 	}
 
 	public function scheduling_solicitations()
 	{
-		return $this->hasMany(\ApiWebSac\Models\SchedulingSolicitation::class);
+		return $this->hasMany(\ApiWebPsp\Models\SchedulingSolicitation::class);
 	}
 
 	public function solicitation_items()
 	{
-		return $this->hasMany(\ApiWebSac\Models\SolicitationItem::class);
+		return $this->hasMany(\ApiWebPsp\Models\SolicitationItem::class);
 	}
 
     public function attempt_solicitations()
     {
-        return $this->hasMany(\ApiWebSac\Models\SchedulingAttempt::class);
+        return $this->hasMany(\ApiWebPsp\Models\SchedulingAttempt::class);
     }
 }

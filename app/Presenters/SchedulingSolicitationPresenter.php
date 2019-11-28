@@ -1,14 +1,14 @@
 <?php
 
-namespace ApiWebSac\Presenters;
+namespace ApiWebPsp\Presenters;
 
-use ApiWebSac\Transformers\SchedulingSolicitationTransformer;
+use ApiWebPsp\Transformers\SchedulingSolicitationTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
  * Class SchedulingSolicitationPresenter.
  *
- * @package namespace ApiWebSac\Presenters;
+ * @package namespace ApiWebPsp\Presenters;
  */
 class SchedulingSolicitationPresenter extends FractalPresenter
 {

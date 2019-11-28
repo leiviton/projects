@@ -1,16 +1,16 @@
 <?php
 
-namespace ApiWebSac\Repositories;
+namespace ApiWebPsp\Repositories;
 
-use ApiWebSac\Presenters\AuditPresenter;
+use ApiWebPsp\Presenters\AuditPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebSac\Models\Audit;
+use ApiWebPsp\Models\Audit;
 
 /**
  * Class AuditRepositoryEloquent.
  *
- * @package namespace ApiWebSac\Repositories;
+ * @package namespace ApiWebPsp\Repositories;
  */
 class AuditRepositoryEloquent extends BaseRepository implements AuditRepository
 {

@@ -5,9 +5,9 @@
  * Date: Mon, 19 Aug 2019 15:20:26 +0000.
  */
 
-namespace ApiWebSac\Models\Base;
+namespace ApiWebPsp\Models\Base;
 
-use ApiWebSac\Models\Traits\UuidTrait;
+use ApiWebPsp\Models\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
@@ -24,12 +24,12 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \ApiWebSac\Models\User $user
+ * @property \ApiWebPsp\Models\User $user
  * @property \Illuminate\Database\Eloquent\Collection $addresses
  * @property \Illuminate\Database\Eloquent\Collection $patient_contacts
  * @property \Illuminate\Database\Eloquent\Collection $solicitations
  *
- * @package ApiWebSac\Models\Base
+ * @package ApiWebPsp\Models\Base
  */
 class Patient extends Eloquent
 {
@@ -46,21 +46,21 @@ class Patient extends Eloquent
 
 	public function user()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\User::class);
+		return $this->belongsTo(\ApiWebPsp\Models\User::class);
 	}
 
 	public function addresses()
 	{
-		return $this->hasMany(\ApiWebSac\Models\Address::class);
+		return $this->hasMany(\ApiWebPsp\Models\Address::class);
 	}
 
 	public function patient_contacts()
 	{
-		return $this->hasMany(\ApiWebSac\Models\PatientContact::class);
+		return $this->hasMany(\ApiWebPsp\Models\PatientContact::class);
 	}
 
 	public function solicitations()
 	{
-		return $this->hasMany(\ApiWebSac\Models\Solicitation::class);
+		return $this->hasMany(\ApiWebPsp\Models\Solicitation::class);
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Models;
+namespace ApiWebPsp\Models;
 
 use OwenIt\Auditing\Contracts\Auditable;
 use Prettus\Repository\Contracts\Transformable;
@@ -9,9 +9,9 @@ use Prettus\Repository\Traits\TransformableTrait;
 /**
  * Class PatientContact.
  *
- * @package namespace ApiWebSac\Models;
+ * @package namespace ApiWebPsp\Models;
  */
-class PatientContact extends \ApiWebSac\Models\Base\PatientContact implements Transformable,Auditable
+class PatientContact extends \ApiWebPsp\Models\Base\PatientContact implements Transformable,Auditable
 {
     use TransformableTrait;
     use \OwenIt\Auditing\Auditable;

@@ -5,7 +5,7 @@
  * Date: Mon, 25 Nov 2019 16:38:19 -0200.
  */
 
-namespace ApiWebSac\Models\Base;
+namespace ApiWebPsp\Models\Base;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
 
@@ -18,10 +18,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \ApiWebSac\Models\Permission $permission
- * @property \ApiWebSac\Models\User $user
+ * @property \ApiWebPsp\Models\Permission $permission
+ * @property \ApiWebPsp\Models\User $user
  *
- * @package ApiWebSac\Models\Base
+ * @package ApiWebPsp\Models\Base
  */
 class UserPermission extends Eloquent
 {
@@ -32,11 +32,11 @@ class UserPermission extends Eloquent
 
 	public function permission()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\Permission::class);
+		return $this->belongsTo(\ApiWebPsp\Models\Permission::class);
 	}
 
 	public function user()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\User::class);
+		return $this->belongsTo(\ApiWebPsp\Models\User::class);
 	}
 }

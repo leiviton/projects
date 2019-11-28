@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Providers;
+namespace ApiWebPsp\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'ApiWebSac\Model' => 'ApiWebSac\Policies\ModelPolicy',
+        // 'ApiWebPsp\Model' => 'ApiWebPsp\Policies\ModelPolicy',
     ];
 
     /**

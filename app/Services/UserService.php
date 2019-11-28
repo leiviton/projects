@@ -6,9 +6,9 @@
  * Time: 10:33
  */
 
-namespace ApiWebSac\Services;
+namespace ApiWebPsp\Services;
 
-use ApiWebSac\Repositories\UserRepository;
+use ApiWebPsp\Repositories\UserRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 

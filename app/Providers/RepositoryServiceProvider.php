@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiWebSac\Providers;
+namespace ApiWebPsp\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -24,48 +24,48 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'ApiWebSac\Repositories\UserRepository',
-            'ApiWebSac\Repositories\UserRepositoryEloquent'
+            'ApiWebPsp\Repositories\UserRepository',
+            'ApiWebPsp\Repositories\UserRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebSac\Repositories\CompanyRepository',
-            'ApiWebSac\Repositories\CompanyRepositoryEloquent'
+            'ApiWebPsp\Repositories\CompanyRepository',
+            'ApiWebPsp\Repositories\CompanyRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebSac\Repositories\AddressRepository',
-            'ApiWebSac\Repositories\AddressRepositoryEloquent'
+            'ApiWebPsp\Repositories\AddressRepository',
+            'ApiWebPsp\Repositories\AddressRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebSac\Repositories\PatientRepository',
-            'ApiWebSac\Repositories\PatientRepositoryEloquent'
+            'ApiWebPsp\Repositories\PatientRepository',
+            'ApiWebPsp\Repositories\PatientRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebSac\Repositories\ProductRepository',
-            'ApiWebSac\Repositories\ProductRepositoryEloquent'
+            'ApiWebPsp\Repositories\ProductRepository',
+            'ApiWebPsp\Repositories\ProductRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebSac\Repositories\PatientContactRepository',
-            'ApiWebSac\Repositories\PatientContactRepositoryEloquent'
+            'ApiWebPsp\Repositories\PatientContactRepository',
+            'ApiWebPsp\Repositories\PatientContactRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebSac\Repositories\SolicitationRepository',
-            'ApiWebSac\Repositories\SolicitationRepositoryEloquent'
+            'ApiWebPsp\Repositories\SolicitationRepository',
+            'ApiWebPsp\Repositories\SolicitationRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebSac\Repositories\SolicitationItemRepository',
-            'ApiWebSac\Repositories\SolicitationItemRepositoryEloquent'
+            'ApiWebPsp\Repositories\SolicitationItemRepository',
+            'ApiWebPsp\Repositories\SolicitationItemRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebSac\Repositories\SchedulingSolicitationRepository',
-            'ApiWebSac\Repositories\SchedulingSolicitationRepositoryEloquent'
+            'ApiWebPsp\Repositories\SchedulingSolicitationRepository',
+            'ApiWebPsp\Repositories\SchedulingSolicitationRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebSac\Repositories\SchedulingAttemptRepository',
-            'ApiWebSac\Repositories\SchedulingAttemptRepositoryEloquent'
+            'ApiWebPsp\Repositories\SchedulingAttemptRepository',
+            'ApiWebPsp\Repositories\SchedulingAttemptRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebSac\Repositories\AuditRepository',
-            'ApiWebSac\Repositories\AuditRepositoryEloquent'
+            'ApiWebPsp\Repositories\AuditRepository',
+            'ApiWebPsp\Repositories\AuditRepositoryEloquent'
         );
     }
 }

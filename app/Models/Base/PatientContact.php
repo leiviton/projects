@@ -5,9 +5,9 @@
  * Date: Mon, 19 Aug 2019 15:13:46 +0000.
  */
 
-namespace ApiWebSac\Models\Base;
+namespace ApiWebPsp\Models\Base;
 
-use ApiWebSac\Models\Traits\UuidTrait;
+use ApiWebPsp\Models\Traits\UuidTrait;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -23,9 +23,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \ApiWebSac\Models\Patient $patient
+ * @property \ApiWebPsp\Models\Patient $patient
  *
- * @package ApiWebSac\Models\Base
+ * @package ApiWebPsp\Models\Base
  */
 class PatientContact extends Eloquent
 {
@@ -38,6 +38,6 @@ class PatientContact extends Eloquent
 
 	public function patient()
 	{
-		return $this->belongsTo(\ApiWebSac\Models\Patient::class);
+		return $this->belongsTo(\ApiWebPsp\Models\Patient::class);
 	}
 }

@@ -5,7 +5,7 @@
  * Date: Mon, 25 Nov 2019 16:37:31 -0200.
  */
 
-namespace ApiWebSac\Models\Base;
+namespace ApiWebPsp\Models\Base;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
 
@@ -30,7 +30,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @package ApiWebSac\Models\Base
+ * @package ApiWebPsp\Models\Base
  */
 class Capability extends Eloquent
 {
