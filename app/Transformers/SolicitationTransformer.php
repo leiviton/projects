@@ -30,11 +30,10 @@ class SolicitationTransformer extends TransformerAbstract
         return [
             'id' => $model->id,
             'protocol' => $model->protocol,
-            'manifestation' => $model->manifestation,
+            'voucher' => $model->voucher,
+            'document' => $model->document,
             'description_other_type' => $model->description_other_type,
             'type' => $model->type,
-            'date_scheduling' => $model->date_scheduling,
-            'schedule_time' => $model->schedule_time,
             'status' => $model->status,
             /* place your other model properties here */
             'created_at' => $model->created_at,
