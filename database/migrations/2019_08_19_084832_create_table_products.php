@@ -15,7 +15,7 @@ class CreateTableProducts extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('company_id')->index()->nullable();
+            $table->bigInteger('company_id')->unsigned()->nullable();
             $table->foreign('company_id')->references('id')->on('companies');
             $table->text('active_principle')->nullable();
             $table->string('cnpj',20);

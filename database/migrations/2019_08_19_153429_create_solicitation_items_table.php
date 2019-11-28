@@ -18,7 +18,7 @@ class CreateSolicitationItemsTable extends Migration
 	{
         Schema::create('solicitation_items', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('product_id')->index()->nullable();
+            $table->bigInteger('product_id')->unsigned()->nullable();
             $table->foreign('product_id')->references('id')->on('products');
             $table->uuid('solicitation_id')->index()->nullable();
             $table->foreign('solicitation_id')->references('id')->on('solicitations');
