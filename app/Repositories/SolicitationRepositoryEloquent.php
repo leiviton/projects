@@ -18,6 +18,10 @@ class SolicitationRepositoryEloquent extends BaseRepository implements Solicitat
 {
     protected $skipPresenter = true;
 
+    protected $fieldSearchable = [
+      'voucher' => 'like'
+    ];
+
     /**
      * Specify Model class name
      *
