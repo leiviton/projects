@@ -1,6 +1,6 @@
 <?php
 
-use ApiWebPsp\Models\Base\SolicitationItem;
+use ApiWebPsp\Models\SolicitationItem;
 use ApiWebPsp\Models\Solicitation;
 use Illuminate\Database\Seeder;
 
