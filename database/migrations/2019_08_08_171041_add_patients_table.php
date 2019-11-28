@@ -14,7 +14,7 @@ class AddPatientsTable extends Migration
     public function up()
     {
         Schema::create('patients', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->bigIncrements('id');
             $table->string('name', 120);
             $table->string('cpf', 14);
             $table->enum('cpf_verify', ['sim', 'nao', 'offline'])->default('nao');
@@ -33,6 +33,5 @@ class AddPatientsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('patients');
-        Schema::dropIfExists('patient_contacts');
     }
 }

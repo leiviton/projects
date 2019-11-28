@@ -35,20 +35,11 @@ class SolicitationTransformer extends TransformerAbstract
             'type' => $model->type,
             'date_scheduling' => $model->date_scheduling,
             'schedule_time' => $model->schedule_time,
+            'status' => $model->status,
             /* place your other model properties here */
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];
-    }
-
-    /**
-     * @param Solicitation $solicitation
-     * @return \League\Fractal\Resource\Item|null
-     */
-    public function includeStatus(Solicitation $solicitation)
-    {
-        return $solicitation->status_solicitation ? $this->item($solicitation->status_solicitation,
-            new StatusSolicitationTransformer()) : null;
     }
 
     /**

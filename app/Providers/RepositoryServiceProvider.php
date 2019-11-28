@@ -56,10 +56,6 @@ class RepositoryServiceProvider extends ServiceProvider
             'ApiWebSac\Repositories\SolicitationItemRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebSac\Repositories\StatusSolicitationRepository',
-            'ApiWebSac\Repositories\StatusSolicitationRepositoryEloquent'
-        );
-        $this->app->bind(
             'ApiWebSac\Repositories\SchedulingSolicitationRepository',
             'ApiWebSac\Repositories\SchedulingSolicitationRepositoryEloquent'
         );

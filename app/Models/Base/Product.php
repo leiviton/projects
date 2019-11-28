@@ -13,8 +13,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 /**
  * Class Product
  * 
- * @property string $id
- * @property string $company_id
+ * @property int $id
+ * @property int $company_id
  * @property string $active_principle
  * @property string $cnpj
  * @property string $laboratory
@@ -38,15 +38,11 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Product extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes, UuidTrait;
-
-    protected $keyType = 'string';
-
-    public $incrementing = false;
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'company_id' => 'string',
-        'id' => 'string'
+		'company_id' => 'int',
+        'id' => 'int'
 	];
 
 	protected $dates = [

@@ -72,7 +72,7 @@ class SolicitationRepositoryEloquent extends BaseRepository implements Solicitat
         //dd($id_status);
         $results = $this->model
             ->select(DB::raw('count(id) as qtd'))
-            ->where('status_solicitation_id', $id_status)
+            ->where('status', $id_status)
             ->first();
 
         if ($results) {
@@ -97,18 +97,18 @@ class SolicitationRepositoryEloquent extends BaseRepository implements Solicitat
         $mes2 = date_format((new Carbon())->subMonth(2), 'm');
         $mes1 = date_format((new Carbon())->subMonth(1), 'm');
 
-        $count1concluido = $this->model->where('status_solicitation_id', $concluidos)->whereMonth("updated_at", $mes1)->count();
-        $count1cancelado = $this->model->where('status_solicitation_id', $cancelados)->whereMonth("updated_at", $mes1)->count();
-        $count2concluido = $this->model->where('status_solicitation_id', $concluidos)->whereMonth("updated_at", $mes2)->count();
-        $count2cancelado = $this->model->where('status_solicitation_id', $cancelados)->whereMonth("updated_at", $mes2)->count();
-        $count3concluido = $this->model->where('status_solicitation_id', $concluidos)->whereMonth("updated_at", $mes3)->count();
-        $count3cancelado = $this->model->where('status_solicitation_id', $cancelados)->whereMonth("updated_at", $mes3)->count();
-        $count4concluido = $this->model->where('status_solicitation_id', $concluidos)->whereMonth("updated_at", $mes4)->count();
-        $count4cancelado = $this->model->where('status_solicitation_id', $cancelados)->whereMonth("updated_at", $mes4)->count();
-        $count5concluido = $this->model->where('status_solicitation_id', $concluidos)->whereMonth("updated_at", $mes5)->count();
-        $count5cancelado = $this->model->where('status_solicitation_id', $cancelados)->whereMonth("updated_at", $mes5)->count();
-        $count6concluido = $this->model->where('status_solicitation_id', $concluidos)->whereMonth("updated_at", $mes6)->count();
-        $count6cancelado = $this->model->where('status_solicitation_id', $cancelados)->whereMonth("updated_at", $mes6)->count();
+        $count1concluido = $this->model->where('status', $concluidos)->whereMonth("updated_at", $mes1)->count();
+        $count1cancelado = $this->model->where('status', $cancelados)->whereMonth("updated_at", $mes1)->count();
+        $count2concluido = $this->model->where('status', $concluidos)->whereMonth("updated_at", $mes2)->count();
+        $count2cancelado = $this->model->where('status', $cancelados)->whereMonth("updated_at", $mes2)->count();
+        $count3concluido = $this->model->where('status', $concluidos)->whereMonth("updated_at", $mes3)->count();
+        $count3cancelado = $this->model->where('status', $cancelados)->whereMonth("updated_at", $mes3)->count();
+        $count4concluido = $this->model->where('status', $concluidos)->whereMonth("updated_at", $mes4)->count();
+        $count4cancelado = $this->model->where('status', $cancelados)->whereMonth("updated_at", $mes4)->count();
+        $count5concluido = $this->model->where('status', $concluidos)->whereMonth("updated_at", $mes5)->count();
+        $count5cancelado = $this->model->where('status', $cancelados)->whereMonth("updated_at", $mes5)->count();
+        $count6concluido = $this->model->where('status', $concluidos)->whereMonth("updated_at", $mes6)->count();
+        $count6cancelado = $this->model->where('status', $cancelados)->whereMonth("updated_at", $mes6)->count();
 
         $mes = array('', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro');
 

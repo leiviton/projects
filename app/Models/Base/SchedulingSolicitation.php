@@ -13,8 +13,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 /**
  * Class SchedulingSolicitation
  * 
- * @property string $id
- * @property string $solicitation_id
+ * @property int $id
+ * @property int $solicitation_id
  * @property \Carbon\Carbon $date_scheduling
  * @property \Carbon\Carbon $date_canceled
  * @property string $schedule_time
@@ -35,8 +35,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class SchedulingSolicitation extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes, UuidTrait;
-	public $incrementing = false;
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $dates = [
 		'date_scheduling',

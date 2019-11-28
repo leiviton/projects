@@ -16,11 +16,11 @@ class CreateAuditsTable extends Migration
         Schema::create('audits', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_type')->nullable();
-            $table->uuid('user_id')->index()->nullable();
+            $table->bigInteger('user_id')->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('event');
             $table->string('auditable_type');
-            $table->uuid('auditable_id');
+            $table->string('auditable_id');
             $table->text('old_values')->nullable();
             $table->text('new_values')->nullable();
             $table->text('url')->nullable();

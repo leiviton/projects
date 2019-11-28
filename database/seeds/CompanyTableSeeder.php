@@ -12,7 +12,6 @@ class CompanyTableSeeder extends Seeder
     public function run()
     {
         DB::table('companies')->insert([
-            'id' => \Faker\Provider\Uuid::uuid(),
             'cnpj' => '082.277.955/0001-55',
             'name' => 'NOVO NORDISK FARMACEUTICA DO BRASIL LTDA',
             'logo' => 'logo-default.jpg',

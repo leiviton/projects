@@ -14,7 +14,7 @@ class AddPatientIdTable extends Migration
     public function up()
     {
         Schema::table('addresses', function (Blueprint $table) {
-            $table->uuid('patient_id')->index()->nullable();
+            $table->bigIncrements('patient_id')->index()->nullable();
             $table->foreign('patient_id')->references('id')->on('patients');
         });
     }
