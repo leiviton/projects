@@ -14,7 +14,7 @@ class AddUserIdTable extends Migration
     public function up()
     {
         Schema::table('patients', function (Blueprint $table) {
-            $table->bigInteger('user_id')->index()->after('id')->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
         });
 
