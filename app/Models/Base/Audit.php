@@ -14,7 +14,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property int $id
  * @property string $user_type
- * @property string $user_id
+ * @property int $user_id
  * @property string $event
  * @property string $auditable_type
  * @property string $auditable_id

@@ -13,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Eloquent;
 /**
  * Class User
  * 
- * @property string $id
+ * @property int $id
  * @property string $name
  * @property string $role
  * @property string $status
@@ -34,7 +34,6 @@ use Illuminate\Foundation\Auth\User as Eloquent;
  */
 class User extends Eloquent
 {
-    use UuidTrait;
 
 	protected $dates = [
 		'email_verified_at',
@@ -44,11 +43,7 @@ class User extends Eloquent
         'updated_at'
 	];
 
-	protected $casts = ['id' => 'string'];
-
-    protected $keyType = 'string';
-
-    public $incrementing = false;
+	protected $casts = ['id' => 'int'];
 
 	public function patients()
 	{

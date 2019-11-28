@@ -17,8 +17,8 @@ class CreatePatientContactsTable extends Migration
 	public function up()
 	{
         Schema::create('patient_contacts', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('patient_id')->index()->nullable();
+            $table->bigIncrements('id');
+            $table->bigInteger('patient_id')->index()->nullable();
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->string('email')->nullable();
             $table->string('cellphone');

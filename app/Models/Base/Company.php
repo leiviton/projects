@@ -15,7 +15,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 /**
  * Class Company
  * 
- * @property string $id
+ * @property int $id
  * @property string $cnpj
  * @property string $name
  * @property string $contact_name
@@ -30,22 +30,18 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property \Illuminate\Database\Eloquent\Collection $products
  * @property \Illuminate\Database\Eloquent\Collection $solicitations
- * @property \Illuminate\Database\Eloquent\Collection $status_solicitations
  * @property \Illuminate\Database\Eloquent\Collection $users
  *
  * @package ApiWebSac\Models\Base
  */
 class Company extends Eloquent
 {
-	use SoftDeletes, UuidTrait;
+	use SoftDeletes;
 
 	protected $casts = [
 		'fiscal' => 'int',
-        'id' => 'string'
+        'id' => 'int'
 	];
-    protected $keyType = 'string';
-
-    public $incrementing = false;
 
     public function products()
 	{
@@ -55,11 +51,6 @@ class Company extends Eloquent
 	public function solicitations()
 	{
 		return $this->hasMany(\ApiWebSac\Models\Solicitation::class);
-	}
-
-	public function status_solicitations()
-	{
-		return $this->hasMany(\ApiWebSac\Models\StatusSolicitation::class);
 	}
 
 	public function users()

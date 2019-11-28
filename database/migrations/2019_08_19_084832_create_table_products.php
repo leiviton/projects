@@ -14,8 +14,8 @@ class CreateTableProducts extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('company_id')->index()->nullable();
+            $table->bigIncrements('id');
+            $table->bigInteger('company_id')->index()->nullable();
             $table->foreign('company_id')->references('id')->on('companies');
             $table->text('active_principle')->nullable();
             $table->string('cnpj',20);

@@ -14,7 +14,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 /**
  * Class Patient
  * 
- * @property string $id
+ * @property int $id
  * @property int $user_id
  * @property string $name
  * @property string $cpf
@@ -33,15 +33,11 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Patient extends Eloquent
 {
-	use SoftDeletes, UuidTrait;
-
-    protected $keyType = 'string';
-
-    public $incrementing = false;
+	use SoftDeletes;
 
 	protected $casts = [
 		'user_id' => 'int',
-        'id' => 'string'
+        'id' => 'int'
 	];
 
 	protected $dates = [

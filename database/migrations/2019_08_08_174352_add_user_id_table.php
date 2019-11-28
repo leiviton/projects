@@ -14,12 +14,13 @@ class AddUserIdTable extends Migration
     public function up()
     {
         Schema::table('patients', function (Blueprint $table) {
-            $table->uuid('user_id')->index()->after('id')->nullable();
+            $table->bigInteger('user_id')->index()->after('id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->string('company_id')->after('id')->nullable();
+            $table->bigIncrements('company_id')->after('id')->nullable();
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 
@@ -33,6 +34,11 @@ class AddUserIdTable extends Migration
         Schema::table('patients', function (Blueprint $table) {
             $table->dropColumn('user_id');
             $table->dropForeign('user_id');
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('company_id');
+            $table->dropForeign('company_id');
         });
     }
 }

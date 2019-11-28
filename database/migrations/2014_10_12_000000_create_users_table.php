@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->bigIncrements('id');
             $table->string('name');
             $table->enum('role',['admin','user_company','drs-analyst','drs-attendant'])->default('user_company');
             $table->enum('status',['ativo','inativo'])->default('ativo');

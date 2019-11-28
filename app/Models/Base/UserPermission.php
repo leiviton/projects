@@ -13,7 +13,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * Class UserPermission
  * 
  * @property int $id
- * @property string $user_id
+ * @property int $user_id
  * @property int $permission_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -26,7 +26,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class UserPermission extends Eloquent
 {
 	protected $casts = [
-		'permission_id' => 'int'
+		'permission_id' => 'int',
+		'user_id' => 'int'
 	];
 
 	public function permission()

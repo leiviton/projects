@@ -18,7 +18,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $sms
  * @property string $success
  * @property string $scheduling_solicitation_id
- * @property string $user_id
+ * @property int $user_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 

@@ -17,14 +17,14 @@ class CreateSolicitationItemsTable extends Migration
 	public function up()
 	{
         Schema::create('solicitation_items', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('product_id')->index()->nullable();
+            $table->bigIncrements('id');
+            $table->bigInteger('product_id')->index()->nullable();
             $table->foreign('product_id')->references('id')->on('products');
             $table->uuid('solicitation_id')->index()->nullable();
             $table->foreign('solicitation_id')->references('id')->on('solicitations');
             $table->decimal('total',12,2)->nullable();
             $table->decimal('price_unitary',12,2)->nullable();
-            $table->integer('qtd');
+            $table->integer('qtd')->default(1);
             $table->string('lot')->nullable();
             $table->enum('pen',['sim','nao'])->default('nao');
             $table->enum('unity_measure',['unidade','caixa','peça','conjunto','metro'])->default('unidade');

@@ -13,8 +13,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 /**
  * Class PatientContact
  * 
- * @property string $id
- * @property string $patient_id
+ * @property int $id
+ * @property int $patient_id
  * @property string $email
  * @property string $cellphone
  * @property string $phone
@@ -29,11 +29,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class PatientContact extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes, UuidTrait;
-
-    protected $keyType = 'string';
-
-    public $incrementing = false;
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
 		'patient_id' => 'string',
