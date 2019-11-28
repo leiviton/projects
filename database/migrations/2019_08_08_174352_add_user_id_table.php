@@ -19,7 +19,7 @@ class AddUserIdTable extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->bigIncrements('company_id')->unsigned()->nullable()->after('id');
+            $table->bigInteger('company_id')->unsigned()->nullable()->after('id');
             $table->foreign('company_id')->references('id')->on('companies');
         });
     }
