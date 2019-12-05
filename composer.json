@@ -23,7 +23,8 @@
         "reliese/laravel": "^0.0.13",
         "ext-soap": "*",
         "ext-simplexml": "*",
-        "ext-calendar": "*"
+        "ext-calendar": "*",
+        "ext-json": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
