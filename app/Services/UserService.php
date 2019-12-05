@@ -89,7 +89,7 @@ class UserService
 
             DB::commit();
 
-            return ['status' => 'success', 'id' => $result->id];
+            return ['status' => 'success', 'id' => $result];
 
         } catch (\Exception $exception) {
             DB::rollBack();
