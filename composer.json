@@ -24,7 +24,8 @@
         "ext-soap": "*",
         "ext-simplexml": "*",
         "ext-calendar": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-pdo": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
