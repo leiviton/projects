@@ -21,7 +21,8 @@ class Permission extends \ApiWebPsp\Models\Base\Permission implements Transforma
      */
     protected $fillable = [
         'name',
-        'label'
+        'label',
+        'entity'
     ];
 
 }

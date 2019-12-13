@@ -25,6 +25,7 @@ class PermissionTransformer extends TransformerAbstract
             'id'         => (int) $model->id,
             'name' => $model->name,
             'label' => $model->label,
+            'entity' => $model->entity,
             /* place your other model properties here */
 
             'created_at' => $model->created_at,
