@@ -8,6 +8,7 @@
 
 namespace ApiWebPsp\Services;
 
+use ApiWebPsp\Repositories\UserPermissionRepository;
 use ApiWebPsp\Repositories\UserRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -18,14 +19,20 @@ class UserService
      * @var UserRepository
      */
     private $userRepository;
+    /**
+     * @var UserPermissionRepository
+     */
+    private $permissionRepository;
 
     /**
      * SellerService constructor.
      * @param UserRepository $userRepository
+     * @param UserPermissionRepository $permissionRepository
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, UserPermissionRepository $permissionRepository)
     {
         $this->userRepository = $userRepository;
+        $this->permissionRepository = $permissionRepository;
     }
 
     /**
@@ -101,6 +108,7 @@ class UserService
      * @param $id
      * @param $password
      * @return array
+     * @throws \Exception
      */
     public function updatePassword($id, $password)
     {
@@ -124,6 +132,7 @@ class UserService
      * @param $id
      * @param $password
      * @return array
+     * @throws \Exception
      */
     public function updateStatus($id)
     {
@@ -153,6 +162,7 @@ class UserService
      * @param $data
      * @param $id
      * @return array
+     * @throws \Exception
      */
     public function update($data, $id)
     {
@@ -180,6 +190,7 @@ class UserService
     /**
      * @param $id
      * @return array
+     * @throws \Exception
      */
     public function delete($id)
     {
@@ -187,6 +198,34 @@ class UserService
         try {
             $this->userRepository->delete($id);
             DB::commit();
+            return ['status' => 'success'];
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return ['status' => 'error', 'message' => $exception->getMessage(), 'title' => 'Erro'];
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $permissionId
+     * @return array
+     * @throws \Exception
+     */
+    public function createPermission($id, $permissionId)
+    {
+        DB::beginTransaction();
+        try{
+            $user = $this->userRepository->find($id);
+
+            $data = [
+              "user_id" => $user->id,
+              "permission_id" => $permissionId
+            ];
+
+            $this->permissionRepository->create($data);
+
+            DB::commit();
+
             return ['status' => 'success'];
         } catch (\Exception $exception) {
             DB::rollBack();

@@ -31,6 +31,7 @@ Route::group(['prefix' => 'v1/', 'middleware' => 'auth:api'], function () {
         Route::get('user/attendant', 'UserController@getAttendant');
         Route::get('user/{id}', 'UserController@edit');
         Route::get('permissions', 'PermissionController@index');
+        Route::post('user/permission', 'UserController@permission');
         Route::put('user/{id}', 'UserController@update');
         Route::delete('user/{id}', 'UserController@delete');
         Route::patch('user/{id}', 'UserController@updateStatus');

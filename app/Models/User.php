@@ -77,4 +77,34 @@ class User extends \ApiWebPsp\Models\Base\User implements Transformable,
             }
         }
     }
+
+    /**
+     * Determine if the user has verified their email address.
+     *
+     * @return bool
+     */
+    public function hasVerifiedEmail()
+    {
+        // TODO: Implement hasVerifiedEmail() method.
+    }
+
+    /**
+     * Mark the given user's email as verified.
+     *
+     * @return bool
+     */
+    public function markEmailAsVerified()
+    {
+        // TODO: Implement markEmailAsVerified() method.
+    }
+
+    /**
+     * Send the email verification notification.
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        // TODO: Implement sendEmailVerificationNotification() method.
+    }
 }

@@ -38,7 +38,7 @@ return [
         |
         */
 
-        'namespace' => 'ApiWebSac\Models',
+        'namespace' => 'ApiWebPsp\Models',
 
         /*
         |--------------------------------------------------------------------------
