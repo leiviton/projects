@@ -81,9 +81,30 @@ class UserController extends Controller
 
 
     /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
+    public function permission(Request $request)
+    {
+        $data = $request->all();
+
+        $result = $this->service->createPermission($data['user_id'],$data['permission_id']);
+
+        if ($result['status'] == 'success') {
+            return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success', 'title' => 'Sucesso'], 201);
+        } else if ($result['status'] == 'error') {
+            return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
+        } else {
+            return response()->json(['message' => 'Erro desconhecido, contate o Good do software', 'status' => 'error', 'title' => 'Erro'], 400);
+        }
+    }
+
+    /**
      * @param $id
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function updatePassword($id, Request $request)
     {
@@ -132,6 +153,7 @@ class UserController extends Controller
      * @param $id
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function updateStatus($id, Request $request)
     {
@@ -149,6 +171,7 @@ class UserController extends Controller
      * @param $id
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function update($id, Request $request)
     {
@@ -181,6 +204,7 @@ class UserController extends Controller
     /**
      * @param $id
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function delete($id) {
         $result = $this->service->delete($id);
