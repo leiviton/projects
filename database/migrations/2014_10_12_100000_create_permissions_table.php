@@ -17,6 +17,7 @@ class CreatePermissionsTable extends Migration
             $table->increments('id');
             $table->string('name',50);
             $table->string('label',100);
+            $table->string('entity',191)->default('/users');
             $table->timestamps();
         });
 

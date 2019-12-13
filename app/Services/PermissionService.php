@@ -31,6 +31,6 @@ class PermissionService
      */
     public function get()
     {
-        return $this->repository->get();
+        return $this->repository->orderBy('entity')->all();
     }
 }
