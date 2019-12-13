@@ -12,7 +12,7 @@ use ApiWebPsp\Models\User;
  */
 class UserTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['company'];
+    protected $defaultIncludes = ['company','permission'];
 
     /**
      * Transform the User entity.
@@ -45,5 +45,10 @@ class UserTransformer extends TransformerAbstract
     public function includeCompany(User $user)
     {
         return $user->company ? $this->item($user->company, new CompanyTransformer()): null;
+    }
+
+    public function includePermission(User $user)
+    {
+        return $user->permissions ? $this->collection($user->permissions, new PermissionTransformer()) : null;
     }
 }

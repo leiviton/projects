@@ -71,5 +71,9 @@ class RepositoryServiceProvider extends ServiceProvider
             'ApiWebPsp\Repositories\PermissionRepository',
             'ApiWebPsp\Repositories\PermissionRepositoryEloquent'
         );
+        $this->app->bind(
+            'ApiWebPsp\Repositories\UserPermissionRepository',
+            'ApiWebPsp\Repositories\UserPermissionRepositoryEloquent'
+        );
     }
 }
