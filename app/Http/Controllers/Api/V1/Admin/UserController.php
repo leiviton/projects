@@ -71,7 +71,7 @@ class UserController extends Controller
         $result = $this->service->create($data);
 
         if ($result['status'] == 'success') {
-            return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success', 'title' => 'Sucesso','id' => $result], 201);
+            return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success', 'title' => 'Sucesso','user' => $result['user']], 201);
         } else if ($result['status'] == 'error') {
             return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
         } else {
