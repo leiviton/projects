@@ -14,19 +14,23 @@ class PermissionTableSeeder extends Seeder
     {
         DB::table('permissions')->insert([
             'name' => 'createUser',
-            'label' => 'Criar usuario'
+            'label' => 'Criar usuario',
+            'entity' => '/users',
         ]);
         DB::table('permissions')->insert([
             'name' => 'updateUser',
-            'label' => 'Atualizar usuario'
+            'label' => 'Atualizar usuario',
+            'entity' => '/users',
         ]);
         DB::table('permissions')->insert([
             'name' => 'viewUser',
-            'label' => 'Visualizar usuario'
+            'label' => 'Visualizar usuario',
+            'entity' => '/users',
         ]);
         DB::table('permissions')->insert([
             'name' => 'getUsers',
-            'label' => 'Listar usuarios'
+            'label' => 'Listar usuarios',
+            'entity' => '/users',
         ]);
     }
 }
