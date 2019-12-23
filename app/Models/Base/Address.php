@@ -16,6 +16,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $id
  * @property int $patient_id
  * @property string $street
+ * @property string $alias
  * @property string $number
  * @property string $complement
  * @property string $neighborhood
