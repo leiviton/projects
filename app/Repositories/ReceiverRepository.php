@@ -15,13 +15,13 @@ interface ReceiverRepository extends RepositoryInterface
      * @param $status
      * @return mixed
      */
-    public function listPatients();
+    public function listReceivers();
 
     /**
      * @param $status
      * @return mixed
      */
-    public function listPatientsTrash();
+    public function listReceiversTrash();
 
     /**
      * @param $cpf

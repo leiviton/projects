@@ -2,18 +2,18 @@
 
 namespace ApiWebPsp\Repositories;
 
-use ApiWebPsp\Presenters\PatientPresenter;
+use ApiWebPsp\Presenters\ReceiverPresenter;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use ApiWebPsp\Models\Receiver;
 
 /**
- * Class PatientRepositoryEloquent.
+ * Class ReceiverRepositoryEloquent.
  *
  * @package namespace ApiWebPsp\Repositories;
  */
-class ReceiverRepositoryEloquent extends BaseRepository implements PatientRepository
+class ReceiverRepositoryEloquent extends BaseRepository implements ReceiverRepository
 {
     protected $skipPresenter = true;
 
@@ -42,14 +42,14 @@ class ReceiverRepositoryEloquent extends BaseRepository implements PatientReposi
      */
     public function presenter()
     {
-        return PatientPresenter::class;
+        return ReceiverPresenter::class;
     }
 
     /**
      * @param $status
      * @return mixed
      */
-    public function listPatients()
+    public function listReceivers()
     {
         $result = $this->model->orderBy('name')
             ->paginate();
@@ -80,7 +80,7 @@ class ReceiverRepositoryEloquent extends BaseRepository implements PatientReposi
      * @param $status
      * @return mixed
      */
-    public function listPatientsTrash()
+    public function listReceiversTrash()
     {
         $result = $this->model->where('deleted_at', '<>', null)->orderBy('name')->withTrashed()
             ->paginate();
