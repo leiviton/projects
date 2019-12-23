@@ -65,7 +65,7 @@ $factory->define(SolicitationItem::class, function (Faker $faker){
 
 $factory->define(Receiver::class, function (Faker $faker) {
     return [
-        'name' => $faker->phoneNumber,
+        'name' => $faker->name,
         'document' => $faker->numerify('###.###.###-##'),
         'genre' => 'masculino',
         'date_birth' => $faker->date()

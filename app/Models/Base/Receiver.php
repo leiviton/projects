@@ -7,7 +7,6 @@
 
 namespace ApiWebPsp\Models\Base;
 
-use ApiWebPsp\Models\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
@@ -17,8 +16,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $id
  * @property int $user_id
  * @property string $name
- * @property string $cpf
- * @property string $cpf_verify
+ * @property string $document
+ * @property string $type
+ * @property string $genre
  * @property \Carbon\Carbon $date_birth
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
