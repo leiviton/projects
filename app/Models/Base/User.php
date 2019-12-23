@@ -21,6 +21,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $img_profile
  * @property \Carbon\Carbon $email_verified_at
  * @property string $password
+ * @property string $extension
  * @property string $remember_token
  * @property \Carbon\Carbon $last_login_at
  * @property string $deleted_at

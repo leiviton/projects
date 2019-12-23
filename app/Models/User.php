@@ -40,7 +40,7 @@ class User extends \ApiWebPsp\Models\Base\User implements Transformable,
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role','company_id','img_profile','status','last_login_at'
+        'name', 'email', 'password','extension','role','company_id','img_profile','status','last_login_at'
     ];
 
     /**

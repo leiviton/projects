@@ -19,6 +19,7 @@ Route::group(['prefix' => 'v1/', 'middleware' => 'auth:api'], function () {
         /*util*/
         Route::get('cnpj/{cnpj}', 'UtilController@getCnpj');
         Route::get('cep/{cep}', 'UtilController@getCep');
+        Route::get('calls', 'UtilController@initCall');
         Route::get('feriados', 'UtilController@diasFeriados');
         Route::delete('file/delete/{image}/{folder}', 'UtilController@deleteFile');
         Route::post('sms/send', 'CalledController@send');
@@ -45,17 +46,17 @@ Route::group(['prefix' => 'v1/', 'middleware' => 'auth:api'], function () {
         Route::put('company/{id}', 'CompaniesController@update');
         Route::patch('company/{id}', 'CompaniesController@updateStatus');
 
-        /*patient*/
-        Route::post('patient', 'PatientsController@store');
-        Route::post('patient/upload/{folder}', 'PatientsController@upload');
-        Route::get('patient', 'PatientsController@index');
-        Route::get('patient/cpf/{cpf}', 'PatientsController@getCpf');
-        Route::get('patient/{id}', 'PatientsController@edit');
-        Route::put('patient/{id}', 'PatientsController@update');
-        Route::patch('patient/{id}', 'PatientsController@updateStatus');
-        Route::delete('patient/{id}', 'PatientsController@delete');
+        /*receiver*/
+        Route::post('receiver', 'ReceiversController@store');
+        Route::post('receiver/upload/{folder}', 'ReceiversController@upload');
+        Route::get('receiver', 'ReceiversController@index');
+        Route::get('receiver/cpf/{cpf}', 'ReceiversController@getCpf');
+        Route::get('receiver/{id}', 'ReceiversController@edit');
+        Route::put('receiver/{id}', 'ReceiversController@update');
+        Route::patch('receiver/{id}', 'ReceiversController@updateStatus');
+        Route::delete('receiver/{id}', 'ReceiversController@delete');
 
-        /*patient*/
+        /*Receiver*/
         Route::post('product', 'ProductsController@store');
         Route::get('product', 'ProductsController@index');
         Route::get('product/filter', 'ProductsController@productFilter');

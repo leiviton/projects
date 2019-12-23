@@ -5,14 +5,14 @@ namespace ApiWebPsp\Repositories;
 use ApiWebPsp\Presenters\PatientContactPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebPsp\Models\PatientContact;
+use ApiWebPsp\Models\ReceiverContact;
 
 /**
  * Class PatientContactRepositoryEloquent.
  *
  * @package namespace ApiWebPsp\Repositories;
  */
-class PatientContactRepositoryEloquent extends BaseRepository implements PatientContactRepository
+class ReceiverContactRepositoryEloquent extends BaseRepository implements PatientContactRepository
 {
     protected $skipPresenter = true;
     /**
@@ -22,7 +22,7 @@ class PatientContactRepositoryEloquent extends BaseRepository implements Patient
      */
     public function model()
     {
-        return PatientContact::class;
+        return ReceiverContact::class;
     }
 
 

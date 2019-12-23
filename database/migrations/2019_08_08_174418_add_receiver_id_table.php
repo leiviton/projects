@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPatientIdTable extends Migration
+class AddReceiverIdTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddPatientIdTable extends Migration
     public function up()
     {
         Schema::table('addresses', function (Blueprint $table) {
-            $table->bigInteger('patient_id')->unsigned()->nullable();
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->bigInteger('receiver_id')->unsigned()->nullable();
+            $table->foreign('receiver_id')->references('id')->on('receivers');
         });
     }
 
@@ -27,7 +27,7 @@ class AddPatientIdTable extends Migration
     public function down()
     {
         Schema::table('addresses', function (Blueprint $table) {
-            $table->dropColumn('patient_id');
+            $table->dropColumn('receivers_id');
         });
     }
 }

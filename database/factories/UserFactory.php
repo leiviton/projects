@@ -3,9 +3,9 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use ApiWebPsp\Models\Address;
+use ApiWebPsp\Models\Receiver;
 use ApiWebPsp\Models\SolicitationItem;
 use ApiWebPsp\Models\Company;
-use ApiWebPsp\Models\Patient;
 use ApiWebPsp\Models\Product;
 use ApiWebPsp\Models\Solicitation;
 use ApiWebPsp\Models\User;
@@ -63,11 +63,10 @@ $factory->define(SolicitationItem::class, function (Faker $faker){
     ];
 });
 
-$factory->define(Patient::class, function (Faker $faker) {
+$factory->define(Receiver::class, function (Faker $faker) {
     return [
         'name' => $faker->phoneNumber,
-        'cpf' => $faker->numerify('###.###.###-##'),
-        'cpf_verify' => 'sim',
+        'document' => $faker->numerify('###.###.###-##'),
         'genre' => 'masculino',
         'date_birth' => $faker->date()
     ];
@@ -76,7 +75,7 @@ $factory->define(Patient::class, function (Faker $faker) {
 $factory->define(Solicitation::class, function (Faker $faker){
     return [
         'id' =>\Faker\Provider\Uuid::uuid(),
-        'patient_id' => rand(1,10),
+        'receiver_id' => rand(1,10),
         'status' => 'created',
         'voucher' => $faker->numerify('###A###X###E##')
     ];

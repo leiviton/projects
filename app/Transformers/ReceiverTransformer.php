@@ -3,25 +3,25 @@
 namespace ApiWebPsp\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use ApiWebPsp\Models\Patient;
+use ApiWebPsp\Models\Receiver;
 
 /**
  * Class PatientTransformer.
  *
  * @package namespace ApiWebPsp\Transformers;
  */
-class PatientTransformer extends TransformerAbstract
+class ReceiverTransformer extends TransformerAbstract
 {
     protected $defaultIncludes = ['address','contact'];
 
     /**
      * Transform the Patient entity.
      *
-     * @param \ApiWebPsp\Models\Patient $model
+     * @param \ApiWebPsp\Models\Receiver $model
      *
      * @return array
      */
-    public function transform(Patient $model)
+    public function transform(Receiver $model)
     {
         return [
             'id'         => $model->id,

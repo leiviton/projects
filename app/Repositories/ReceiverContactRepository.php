@@ -9,7 +9,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  *
  * @package namespace ApiWebPsp\Repositories;
  */
-interface PatientContactRepository extends RepositoryInterface
+interface ReceiverContactRepository extends RepositoryInterface
 {
     //
 }
