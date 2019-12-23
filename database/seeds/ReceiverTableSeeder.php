@@ -2,6 +2,7 @@
 
 use ApiWebPsp\Models\Address;
 use ApiWebPsp\Models\Receiver;
+use ApiWebPsp\Models\ReceiverContact;
 use Illuminate\Database\Seeder;
 
 class ReceiverTableSeeder extends Seeder
@@ -16,6 +17,7 @@ class ReceiverTableSeeder extends Seeder
         factory(Receiver::class,10)->create()->each(function ($p) {
             for ($i=0; $i<3; $i++) {
                 $p->addresses()->save(factory(Address::class)->make());
+                $p->receiver_contacts()->save(factory(ReceiverContact::class)->make());
             }
         });
     }
