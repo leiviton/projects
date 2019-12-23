@@ -23,6 +23,7 @@ class AddressTransformer extends TransformerAbstract
     {
         return [
             'id'         => $model->id,
+            'alias'         => $model->alias,
             'street' => $model->street,
             'number' => $model->number,
             'complement' => $model->complement,
