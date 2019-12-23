@@ -22,7 +22,7 @@ class AddAddressesTable extends Migration
             $table->char('postal_code', 15);
             $table->string('city');
             $table->string('uf');
-            $table->enum('type',['entrega','cobrança'])->default('cobrança');
+            $table->enum('type',['entrega','cobrança'])->default('entrega');
             $table->enum('status',['ativo','inativo'])->default('ativo');
             $table->softDeletes();
             $table->timestamps();

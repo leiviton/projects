@@ -13,7 +13,7 @@ class AddUserIdTable extends Migration
      */
     public function up()
     {
-        Schema::table('patients', function (Blueprint $table) {
+        Schema::table('receivers', function (Blueprint $table) {
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
         });
@@ -31,7 +31,7 @@ class AddUserIdTable extends Migration
      */
     public function down()
     {
-        Schema::table('patients', function (Blueprint $table) {
+        Schema::table('eceivers', function (Blueprint $table) {
             $table->dropColumn('user_id');
             $table->dropForeign('user_id');
         });

@@ -2,7 +2,7 @@
 
 namespace ApiWebPsp\Presenters;
 
-use ApiWebPsp\Transformers\PatientContactTransformer;
+use ApiWebPsp\Transformers\ReceiverContactTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
@@ -10,7 +10,7 @@ use Prettus\Repository\Presenter\FractalPresenter;
  *
  * @package namespace ApiWebPsp\Presenters;
  */
-class PatientContactPresenter extends FractalPresenter
+class ReceiverContactPresenter extends FractalPresenter
 {
     /**
      * Transformer
@@ -19,6 +19,6 @@ class PatientContactPresenter extends FractalPresenter
      */
     public function getTransformer()
     {
-        return new PatientContactTransformer();
+        return new ReceiverContactTransformer();
     }
 }

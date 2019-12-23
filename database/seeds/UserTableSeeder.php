@@ -18,6 +18,7 @@ class UserTableSeeder extends Seeder
                 'name' => 'Leiviton Carlos',
                 'email' => 'leivitoncs@gmail.com',
                 'role' => 'admin',
+                'extension' => '9172',
                 'password' => bcrypt(123456),
                 'remember_token' => str_random(10),
             ]);

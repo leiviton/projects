@@ -9,25 +9,23 @@
 namespace ApiWebPsp\Services;
 
 use ApiWebPsp\Repositories\AddressRepository;
-use ApiWebPsp\Repositories\PatientContactRepository;
-use ApiWebPsp\Repositories\PatientRepository;
+use ApiWebPsp\Repositories\ReceiverContactRepository;
+use ApiWebPsp\Repositories\ReceiverRepository;
 use Faker\Provider\DateTime;
 use Illuminate\Support\Facades\DB;
 
-class PatientService
+class ReceiverService
 {
     /**
-     * @var PatientRepository
+     * @var ReceiverRepository
      */
     private $repository;
 
     /**
      * CompanyService constructor.
-     * @param PatientRepository $repository
-     * @param AddressRepository $addressRepository
-     * @param PatientContactRepository $contactRepository
+     * @param ReceiverRepository $repository
      */
-    public function __construct(PatientRepository $repository)
+    public function __construct(ReceiverRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -70,7 +68,7 @@ class PatientService
 
             $contact = $data['contact'];
 
-            $result->patient_contacts()->create($contact);
+            $result->receiver_contacts()->create($contact);
 
             DB::commit();
 
@@ -85,7 +83,7 @@ class PatientService
     /**
      * @return mixed
      */
-    public function getPatients()
+    public function getReceivers()
     {
         return $this->repository->skipPresenter(false)->paginate();
     }
@@ -94,6 +92,7 @@ class PatientService
      * @param $id
      * @param $data
      * @return array
+     * @throws \Exception
      */
     public function update($id, $data)
     {
@@ -101,13 +100,13 @@ class PatientService
         try {
             $data['date_birth'] = $this->invertDate($data['date_birth']);
 
-            $patient = $this->repository->find($id);
-            $patient->cpf = $data['cpf'];
-            $patient->cpf_verify = $data['cpf_verify'];
-            $patient->date_birth = $data['date_birth'];
-            $patient->name = $data['name'];
+            $Receiver = $this->repository->find($id);
+            $Receiver->cpf = $data['cpf'];
+            $Receiver->cpf_verify = $data['cpf_verify'];
+            $Receiver->date_birth = $data['date_birth'];
+            $Receiver->name = $data['name'];
             //$result = $this->repository->update($data, $id);
-            $patient->save();
+            $Receiver->save();
             DB::commit();
 
             return ['status' => 'success', 'id' => $id];
@@ -118,6 +117,11 @@ class PatientService
         }
     }
 
+    /**
+     * @param $id
+     * @return array
+     * @throws \Exception
+     */
     public function delete($id)
     {
         DB::beginTransaction();
