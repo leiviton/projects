@@ -6,7 +6,7 @@ use League\Fractal\TransformerAbstract;
 use ApiWebPsp\Models\Receiver;
 
 /**
- * Class PatientTransformer.
+ * Class ReceiverTransformer.
  *
  * @package namespace ApiWebPsp\Transformers;
  */
@@ -15,7 +15,7 @@ class ReceiverTransformer extends TransformerAbstract
     protected $defaultIncludes = ['address','contact'];
 
     /**
-     * Transform the Patient entity.
+     * Transform the Receiver entity.
      *
      * @param \ApiWebPsp\Models\Receiver $model
      *
@@ -37,20 +37,20 @@ class ReceiverTransformer extends TransformerAbstract
     }
 
     /**
-     * @param Patient $patient
+     * @param Receiver $receiver
      * @return \League\Fractal\Resource\Collection|null
      */
-    public function includeAddress(Patient $patient)
+    public function includeAddress(Receiver $receiver)
     {
-        return $patient->addresses ? $this->collection($patient->addresses, new AddressTransformer()) : null;
+        return $receiver->addresses ? $this->collection($receiver->addresses, new AddressTransformer()) : null;
     }
 
     /**
-     * @param Patient $patient
+     * @param Receiver $receiver
      * @return \League\Fractal\Resource\Collection|null
      */
-    public function includeContact(Patient $patient)
+    public function includeContact(Receiver $receiver)
     {
-        return $patient->patient_contacts ? $this->collection($patient->patient_contacts, new PatientContactTransformer()) : null;
+        return $receiver->receiver_contacts ? $this->collection($receiver->receiver_contacts, new ReceiverContactTransformer()) : null;
     }
 }
