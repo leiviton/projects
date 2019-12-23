@@ -4,6 +4,7 @@
 
 use ApiWebPsp\Models\Address;
 use ApiWebPsp\Models\Receiver;
+use ApiWebPsp\Models\ReceiverContact;
 use ApiWebPsp\Models\SolicitationItem;
 use ApiWebPsp\Models\Company;
 use ApiWebPsp\Models\Product;
@@ -39,6 +40,7 @@ $factory->define(Company::class, function (Faker $faker){
 
 $factory->define(Address::class, function (Faker $faker){
     return [
+        'alias' => 'casa',
         'street' => $faker->streetName,
         'number' => $faker->numberBetween(0,1000),
         'complement' => $faker->word,
@@ -68,6 +70,15 @@ $factory->define(Receiver::class, function (Faker $faker) {
         'name' => $faker->name,
         'document' => $faker->numerify('###.###.###-##'),
         'genre' => 'masculino',
+        'date_birth' => $faker->date()
+    ];
+});
+
+$factory->define(ReceiverContact::class, function (Faker $faker) {
+    return [
+        'email' => $faker->email,
+        'cellphone' => $faker->phoneNumber,
+        'phone' => $faker->phoneNumber,
         'date_birth' => $faker->date()
     ];
 });
