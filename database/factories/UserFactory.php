@@ -78,8 +78,7 @@ $factory->define(ReceiverContact::class, function (Faker $faker) {
     return [
         'email' => $faker->email,
         'cellphone' => $faker->phoneNumber,
-        'phone' => $faker->phoneNumber,
-        'date_birth' => $faker->date()
+        'phone' => $faker->phoneNumber
     ];
 });
 
