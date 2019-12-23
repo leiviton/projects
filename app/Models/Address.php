@@ -24,6 +24,7 @@ class Address extends \ApiWebPsp\Models\Base\Address implements Transformable,Au
      */
     protected $fillable = [
         'patient_id',
+        'alias',
         'street',
         'number',
         'complement',
