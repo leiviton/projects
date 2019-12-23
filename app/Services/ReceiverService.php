@@ -8,10 +8,7 @@
 
 namespace ApiWebPsp\Services;
 
-use ApiWebPsp\Repositories\AddressRepository;
-use ApiWebPsp\Repositories\ReceiverContactRepository;
 use ApiWebPsp\Repositories\ReceiverRepository;
-use Faker\Provider\DateTime;
 use Illuminate\Support\Facades\DB;
 
 class ReceiverService
