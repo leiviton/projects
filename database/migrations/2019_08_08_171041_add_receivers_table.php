@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPatientsTable extends Migration
+class AddReceiversTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class AddPatientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('patients', function (Blueprint $table) {
+        Schema::create('receivers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 120);
-            $table->string('cpf', 14);
-            $table->enum('cpf_verify', ['sim', 'nao', 'offline'])->default('nao');
-            $table->enum('genre', ['masculino', 'feminino'])->default('masculino');
-            $table->date('date_birth');
+            $table->string('document', 20);
+            $table->enum('genre', ['masculino', 'feminino'])->nullable();
+            $table->enum('type', ['paciente', 'clinica'])->nullable();
+            $table->date('date_birth')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class AddPatientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('patients');
+        Schema::dropIfExists('receivers');
     }
 }

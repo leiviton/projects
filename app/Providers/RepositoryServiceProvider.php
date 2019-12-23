@@ -36,16 +36,16 @@ class RepositoryServiceProvider extends ServiceProvider
             'ApiWebPsp\Repositories\AddressRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebPsp\Repositories\PatientRepository',
-            'ApiWebPsp\Repositories\PatientRepositoryEloquent'
+            'ApiWebPsp\Repositories\ReceiverRepository',
+            'ApiWebPsp\Repositories\ReceiverRepositoryEloquent'
         );
         $this->app->bind(
             'ApiWebPsp\Repositories\ProductRepository',
             'ApiWebPsp\Repositories\ProductRepositoryEloquent'
         );
         $this->app->bind(
-            'ApiWebPsp\Repositories\PatientContactRepository',
-            'ApiWebPsp\Repositories\PatientContactRepositoryEloquent'
+            'ApiWebPsp\Repositories\ReceiverContactRepository',
+            'ApiWebPsp\Repositories\ReceiverContactRepositoryEloquent'
         );
         $this->app->bind(
             'ApiWebPsp\Repositories\SolicitationRepository',

@@ -17,7 +17,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property string $id
  * @property int $company_id
- * @property int $patient_id
+ * @property int $receiver_id
  * @property int $address_id
  * @property int $user_id
  * @property string $voucher
@@ -30,7 +30,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * 
  * @property \ApiWebPsp\Models\Company $company
- * @property \ApiWebPsp\Models\Patient $patient
+ * @property \ApiWebPsp\Models\Receiver $receiver
  * @property \ApiWebPsp\Models\Address $address
  * @property \ApiWebPsp\Models\User $user
  * @property \Illuminate\Database\Eloquent\Collection $scheduling_solicitations
@@ -69,9 +69,9 @@ class Solicitation extends Eloquent
 		return $this->belongsTo(\ApiWebPsp\Models\Company::class);
 	}
 
-	public function patient()
+	public function receiver()
 	{
-		return $this->belongsTo(\ApiWebPsp\Models\Patient::class);
+		return $this->belongsTo(\ApiWebPsp\Models\Receiver::class);
 	}
 
     public function address()

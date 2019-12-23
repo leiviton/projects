@@ -27,7 +27,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \ApiWebPsp\Models\Patient $patient
+ * @property \ApiWebPsp\Models\Receiver $receiver
  *
  * @package ApiWebPsp\Models\Base
  */
@@ -46,6 +46,6 @@ class Address extends Eloquent
 
 	public function patient()
 	{
-		return $this->belongsTo(\ApiWebPsp\Models\Patient::class);
+		return $this->belongsTo(\ApiWebPsp\Models\Receiver::class);
 	}
 }

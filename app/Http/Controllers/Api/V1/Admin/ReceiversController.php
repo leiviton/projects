@@ -9,24 +9,24 @@
 namespace ApiWebPsp\Http\Controllers\Api\V1\Admin;
 
 use ApiWebPsp\Http\Controllers\Controller;
-use ApiWebPsp\Services\PatientService;
+use ApiWebPsp\Services\ReceiverService;
 use Illuminate\Http\Request;
 
-class PatientsController extends Controller
+class ReceiversController extends Controller
 {
 
     use UtilTrait;
 
     /**
-     * @var PatientService
+     * @var ReceiverService
      */
     private $service;
 
     /**
      * UserController constructor.
-     * @param PatientService $service
+     * @param ReceiverService $service
      */
-    public function __construct(PatientService $service)
+    public function __construct(ReceiverService $service)
     {
         $this->service = $service;
     }
@@ -37,7 +37,7 @@ class PatientsController extends Controller
      */
     public function index()
     {
-        return $this->service->getPatients();
+        return $this->service->getReceivers();
     }
 
     /**
@@ -58,8 +58,7 @@ class PatientsController extends Controller
     {
         $validator = Validator($request->all(), [
             'name' => 'required|min:4',
-            'cpf' => 'required|unique:patients,cpf',
-            'cpf_verify' => 'required',
+            'document' => 'required|unique:Receivers,document',
             'date_birth' => 'required',
             'contact.cellphone' => 'required',
             'address.postal_code' => 'required',
@@ -71,9 +70,8 @@ class PatientsController extends Controller
         ], [
             'name.required' => 'Nome do usuário é obrigatório',
             'name.length' => 'Nome deve conter no minimo 4 caracteres',
-            'cpf.unique' => 'CPF já está em uso no sistema',
-            'cpf.required' => 'Cpf é obrigatorio',
-            'cpf_verify.required' => 'Cpf Verificado é obrigatorio',
+            'document.unique' => 'Cpf/Cnpj já está em uso no sistema',
+            'document.required' => 'Cpf/Cnpj é obrigatorio',
             'contact.cellphone.required' => 'Celular é obrigatório',
             'contact.email.required' => 'Bairro é obrigatório',
             'contact.email.unique' => 'Email já utilizado no sistema',
@@ -99,10 +97,10 @@ class PatientsController extends Controller
         $result = $this->service->create($data);
 
         //dd($result);
-        $patient = $this->service->getId($result['id']);
+        $Receiver = $this->service->getId($result['id']);
 
         if ($result['status'] == 'success') {
-            return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success', 'title' => 'Sucesso','id' => $result['id'], 'patient' => $patient], 201);
+            return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success', 'title' => 'Sucesso','id' => $result['id'], 'Receiver' => $Receiver], 201);
         } else if ($result['status'] == 'error') {
             return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
         } else {
@@ -111,11 +109,11 @@ class PatientsController extends Controller
     }
 
 
-
     /**
      * @param $id
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function update($id, Request $request)
     {
@@ -123,8 +121,8 @@ class PatientsController extends Controller
         $result = $this->service->update($id, $request->all());
 
         if ($result['status'] == 'success') {
-            $patient = $this->service->getId($id);
-            return response()->json(['message' => 'Paciente atualizado com sucesso', 'status' => 'success', 'title' => 'Sucesso','patient' => $patient], 200);
+            $Receiver = $this->service->getId($id);
+            return response()->json(['message' => 'Paciente atualizado com sucesso', 'status' => 'success', 'title' => 'Sucesso','Receiver' => $Receiver], 200);
         } else if ($result['status'] == 'error') {
             return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
         } else {
@@ -135,6 +133,7 @@ class PatientsController extends Controller
     /**
      * @param $id
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function delete($id) {
         $result = $this->service->delete($id);

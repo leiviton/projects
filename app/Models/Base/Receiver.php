@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Patient
+ * Class Receiver
  * 
  * @property int $id
  * @property int $user_id
@@ -31,7 +31,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  *
  * @package ApiWebPsp\Models\Base
  */
-class Patient extends Eloquent
+class Receiver extends Eloquent
 {
 	use SoftDeletes;
 
@@ -54,9 +54,9 @@ class Patient extends Eloquent
 		return $this->hasMany(\ApiWebPsp\Models\Address::class);
 	}
 
-	public function patient_contacts()
+	public function receiver_contacts()
 	{
-		return $this->hasMany(\ApiWebPsp\Models\PatientContact::class);
+		return $this->hasMany(\ApiWebPsp\Models\ReceiverContact::class);
 	}
 
 	public function solicitations()

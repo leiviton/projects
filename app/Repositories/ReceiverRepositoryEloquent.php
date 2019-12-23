@@ -6,14 +6,14 @@ use ApiWebPsp\Presenters\PatientPresenter;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use ApiWebPsp\Models\Patient;
+use ApiWebPsp\Models\Receiver;
 
 /**
  * Class PatientRepositoryEloquent.
  *
  * @package namespace ApiWebPsp\Repositories;
  */
-class PatientRepositoryEloquent extends BaseRepository implements PatientRepository
+class ReceiverRepositoryEloquent extends BaseRepository implements PatientRepository
 {
     protected $skipPresenter = true;
 
@@ -24,7 +24,7 @@ class PatientRepositoryEloquent extends BaseRepository implements PatientReposit
      */
     public function model()
     {
-        return Patient::class;
+        return Receiver::class;
     }
 
 

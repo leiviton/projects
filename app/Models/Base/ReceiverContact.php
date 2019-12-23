@@ -14,7 +14,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * Class PatientContact
  * 
  * @property int $id
- * @property int $patient_id
+ * @property int $receiver_id
  * @property string $email
  * @property string $cellphone
  * @property string $phone
@@ -23,11 +23,11 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
- * @property \ApiWebPsp\Models\Patient $patient
+ * @property \ApiWebPsp\Models\Receiver $receiver
  *
  * @package ApiWebPsp\Models\Base
  */
-class PatientContact extends Eloquent
+class ReceiverContact extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -38,6 +38,6 @@ class PatientContact extends Eloquent
 
 	public function patient()
 	{
-		return $this->belongsTo(\ApiWebPsp\Models\Patient::class);
+		return $this->belongsTo(\ApiWebPsp\Models\Receiver::class);
 	}
 }

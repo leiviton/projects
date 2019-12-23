@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 /**
  * Class CreatePatientContactsTable.
  */
-class CreatePatientContactsTable extends Migration
+class CreateReceiverContactsTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -16,10 +16,10 @@ class CreatePatientContactsTable extends Migration
 	 */
 	public function up()
 	{
-        Schema::create('patient_contacts', function (Blueprint $table) {
+        Schema::create('receiver_contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('patient_id')->unsigned()->nullable();
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->bigInteger('receiver_id')->unsigned()->nullable();
+            $table->foreign('receiver_id')->references('id')->on('receivers');
             $table->string('email')->nullable();
             $table->string('cellphone');
             $table->string('phone')->nullable();
@@ -36,6 +36,6 @@ class CreatePatientContactsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('patient_contacts');
+		Schema::drop('receiver_contacts');
 	}
 }

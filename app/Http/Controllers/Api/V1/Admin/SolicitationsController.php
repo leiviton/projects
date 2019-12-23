@@ -62,22 +62,21 @@ class SolicitationsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator($request->all(), [
-            'protocol' => 'required|unique:solicitations,protocol',
-            'manifestation' => 'required|unique:solicitations,manifestation',
+            'voucher' => 'required|unique:solicitations,protocol',
             'items' => 'required|array|min:1',
             'items.*.product_id' => 'required',
+            'items.*.qtd' => 'required',
             'type' => 'required',
             'patient_id' => 'required',
         ], [
-            'protocol.required' => 'Nome do usuário é obrigatório',
-            'protocol.unique' => 'Protocolo já existe no sistema',
-            'manifestation.unique' => 'Manifestação já existe no sistema',
+            'voucher.required' => 'Nome do usuário é obrigatório',
+            'voucher.unique' => 'Protocolo já existe no sistema',
             'items.*.product_id.required' => 'Produto é obrigatório',
+            'items.*.qtd.required' => 'Quantidade é obrigatória',
             'items.required' => 'É necessário selecionar ao menos um produto',
             'items.length' => 'É necessário selecionar ao menos um produto',
             'type.required' => 'Tipo é obrigatório',
             'patient_id.required' => 'Paciente é obrigatório',
-            'manifestation.required' => 'Manifestação é obrigatória'
         ]);
 
         if ($validator->fails()) {

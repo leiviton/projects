@@ -17,8 +17,8 @@ class CreateSolicitationsTable extends Migration
             $table->uuid('id')->primary();
             $table->bigInteger('company_id')->unsigned()->nullable();
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->bigInteger('patient_id')->unsigned()->nullable();
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->bigInteger('receiver_id')->unsigned()->nullable();
+            $table->foreign('receiver_id')->references('id')->on('receivers');
             $table->bigInteger('address_id')->unsigned()->nullable();
             $table->foreign('address_id')->references('id')->on('addresses');
             $table->bigInteger('user_id')->unsigned()->nullable();

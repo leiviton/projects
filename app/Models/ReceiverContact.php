@@ -6,7 +6,12 @@ use OwenIt\Auditing\Contracts\Auditable;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class Patient extends \ApiWebPsp\Models\Base\Patient implements Transformable,Auditable
+/**
+ * Class PatientContact.
+ *
+ * @package namespace ApiWebPsp\Models;
+ */
+class ReceiverContact extends \ApiWebPsp\Models\Base\ReceiverContact implements Transformable,Auditable
 {
     use TransformableTrait;
     use \OwenIt\Auditing\Auditable;
@@ -16,11 +21,11 @@ class Patient extends \ApiWebPsp\Models\Base\Patient implements Transformable,Au
      *
      * @var array
      */
-	protected $fillable = [
-		'user_id',
-		'name',
-		'cpf',
-		'cpf_verify',
-		'date_birth'
-	];
+    protected $fillable = [
+        'patient_id',
+        'email',
+        'cellphone',
+        'phone'
+    ];
+
 }
