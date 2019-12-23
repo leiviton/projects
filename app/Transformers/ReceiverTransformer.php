@@ -26,9 +26,10 @@ class ReceiverTransformer extends TransformerAbstract
         return [
             'id'         => $model->id,
             'name' => $model->name,
-            'cpf' => $model->cpf,
+            'document' => $model->document,
             'cpf_verify' => $model->cpf_verify,
             'date_birth' => $model->date_birth,
+            'type' => $model->type,
             /* place your other model properties here */
 
             'created_at' => $model->created_at,
