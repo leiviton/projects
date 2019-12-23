@@ -26,7 +26,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property \ApiWebPsp\Models\User $user
  * @property \Illuminate\Database\Eloquent\Collection $addresses
- * @property \Illuminate\Database\Eloquent\Collection $patient_contacts
+ * @property \Illuminate\Database\Eloquent\Collection $receiver_contacts
  * @property \Illuminate\Database\Eloquent\Collection $solicitations
  *
  * @package ApiWebPsp\Models\Base
