@@ -60,12 +60,12 @@ class ReceiversController extends Controller
             'name' => 'required|min:4',
             'document' => 'required|unique:receivers,document',
             'date_birth' => 'required',
-            'contact.cellphone' => 'required',
-            'address.postal_code' => 'required',
-            'address.street' => 'required',
-            'address.number' => 'required',
-            'address.city' => 'required',
-            'address.uf' => 'required'
+            'contact.*.cellphone' => 'required',
+            'address.*.postal_code' => 'required',
+            'address.*.street' => 'required',
+            'address.*.number' => 'required',
+            'address.*.city' => 'required',
+            'address.*.uf' => 'required'
         ], [
             'name.required' => 'Nome do usuário é obrigatório',
             'name.length' => 'Nome deve conter no minimo 4 caracteres',
@@ -95,10 +95,10 @@ class ReceiversController extends Controller
         $result = $this->service->create($data);
 
         //dd($result);
-        $Receiver = $this->service->getId($result['id']);
+        $receiver = $this->service->getId($result['id']);
 
         if ($result['status'] == 'success') {
-            return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success', 'title' => 'Sucesso','id' => $result['id'], 'Receiver' => $Receiver], 201);
+            return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success', 'title' => 'Sucesso','id' => $result['id'], 'receiver' => $receiver], 201);
         } else if ($result['status'] == 'error') {
             return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
         } else {
