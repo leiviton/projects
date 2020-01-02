@@ -104,9 +104,8 @@ class ReceiverService
             $data['date_birth'] = $this->invertDate($data['date_birth']);
 
             $Receiver = $this->repository->find($id);
-            $Receiver->cpf = $data['cpf'];
-            $Receiver->cpf_verify = $data['cpf_verify'];
-            $Receiver->date_birth = $data['date_birth'];
+            $Receiver->document = $data['document'];
+            $Receiver->date_birth = $data['date_birth'] == "" ? null : $data['date_birth'];
             $Receiver->name = $data['name'];
             //$result = $this->repository->update($data, $id);
             $Receiver->save();
