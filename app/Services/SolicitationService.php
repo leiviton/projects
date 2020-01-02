@@ -9,7 +9,7 @@
 namespace ApiWebPsp\Services;
 
 use ApiWebPsp\Repositories\AddressRepository;
-use ApiWebPsp\Repositories\PatientRepository;
+use ApiWebPsp\Repositories\ReceiverRepository;
 use ApiWebPsp\Repositories\SchedulingAttemptRepository;
 use ApiWebPsp\Repositories\SchedulingSolicitationRepository;
 use ApiWebPsp\Repositories\SolicitationRepository;
@@ -23,9 +23,9 @@ class SolicitationService
      */
     private $repository;
     /**
-     * @var PatientRepository
+     * @var ReceiverRepository
      */
-    private $repositoryPatient;
+    private $repositoryReceiver;
     /**
      * @var SchedulingSolicitationRepository
      */
@@ -42,19 +42,19 @@ class SolicitationService
     /**
      * SolicitationService constructor.
      * @param SolicitationRepository $repository
-     * @param PatientRepository $repositoryPatient
+     * @param ReceiverRepository $repositoryReceiver
      * @param SchedulingSolicitationRepository $schedulingSolicitationRepository
      * @param AddressRepository $addressRepository
      * @param SchedulingAttemptRepository $attemptRepository
      */
     public function __construct(SolicitationRepository $repository,
-                                PatientRepository $repositoryPatient,
+                                ReceiverRepository $repositoryReceiver,
                                 SchedulingSolicitationRepository $schedulingSolicitationRepository,
                                 AddressRepository $addressRepository,
                                 SchedulingAttemptRepository $attemptRepository)
     {
         $this->repository = $repository;
-        $this->repositoryPatient = $repositoryPatient;
+        $this->repositoryReceiver = $repositoryReceiver;
         $this->schedulingSolicitationRepository = $schedulingSolicitationRepository;
         $this->addressRepository = $addressRepository;
         $this->attemptRepository = $attemptRepository;
@@ -139,6 +139,7 @@ class SolicitationService
     /**
      * @param $id
      * @return array
+     * @throws \Exception
      */
     public function delete($id)
     {
@@ -162,12 +163,12 @@ class SolicitationService
      * @return mixed
      * @throws \Exception
      */
-    public function createPatient($data)
+    public function createReceiver($data)
     {
         DB::beginTransaction();
         try {
 
-            $result = $this->repositoryPatient->create($data);
+            $result = $this->repositoryReceiver->create($data);
 
             $address = $data['address'];
 
@@ -175,7 +176,7 @@ class SolicitationService
 
             $contact = $data['contact'];
 
-            $result->patient_contacts()->create($contact);
+            $result->Receiver_contacts()->create($contact);
 
             DB::commit();
 
@@ -226,6 +227,7 @@ class SolicitationService
     /**
      * @param $id
      * @return array
+     * @throws \Exception
      */
     public function initSolicitation($id)
     {
@@ -252,6 +254,7 @@ class SolicitationService
     /**
      * @param $data
      * @return array
+     * @throws \Exception
      */
     public function scheduling($data)
     {
@@ -283,6 +286,7 @@ class SolicitationService
     /**
      * @param $id
      * @return array
+     * @throws \Exception
      */
     public function canledScheduling($id)
     {
@@ -315,6 +319,7 @@ class SolicitationService
      * @param $id
      * @param $all
      * @return array
+     * @throws \Exception
      */
     public function updateAddress($id, $all)
     {
@@ -342,6 +347,7 @@ class SolicitationService
     /**
      * @param $data
      * @return array
+     * @throws \Exception
      */
     public function attempt($data)
     {
@@ -371,6 +377,12 @@ class SolicitationService
         return $this->repository->countMounth($statusCancelados->id, $statusConcluido->id);
     }
 
+    /**
+     * @param $idSolicitation
+     * @param $idUser
+     * @return array
+     * @throws \Exception
+     */
     public function updateAttendant($idSolicitation, $idUser)
     {
         DB::beginTransaction();
