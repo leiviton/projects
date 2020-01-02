@@ -59,7 +59,6 @@ class ReceiversController extends Controller
         $validator = Validator($request->all(), [
             'name' => 'required|min:4',
             'document' => 'required|unique:receivers,document',
-            'date_birth' => 'required',
             'contact.*.cellphone' => 'required',
             'address.*.postal_code' => 'required',
             'address.*.street' => 'required',
@@ -71,13 +70,11 @@ class ReceiversController extends Controller
             'name.length' => 'Nome deve conter no minimo 4 caracteres',
             'document.unique' => 'Cpf/Cnpj já está em uso no sistema',
             'document.required' => 'Cpf/Cnpj é obrigatorio',
-            'contact.cellphone.required' => 'Celular é obrigatório',
-            'contact.*.email.required' => 'Bairro é obrigatório',
-            'contact.*.email.unique' => 'Email já utilizado no sistema',
-            'contact.*.email.email' => 'Email necessita ser um email valido',
+            'contact.*.cellphone.required' => 'Celular é obrigatório',
             'address.*.street.required' => 'Logradouro é obrigatório',
             'address.*.neighborhood.required' => 'Bairro é obrigatório',
             'address.*.number.required' => 'Numero endereço é obrigatório',
+            'address.*.city.required' => 'Cidade do endereço é obrigatória',
             'address.*.uf.required' => 'UF endereço é obrigatório',
             'address.*.postal_code.required' => 'Cep é obrigatório'
         ]);
