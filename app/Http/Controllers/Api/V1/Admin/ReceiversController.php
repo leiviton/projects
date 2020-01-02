@@ -64,6 +64,7 @@ class ReceiversController extends Controller
             'address.*.street' => 'required',
             'address.*.number' => 'required',
             'address.*.city' => 'required',
+            'address.*.neighborhood' => 'required',
             'address.*.uf' => 'required'
         ], [
             'name.required' => 'Nome do usuário é obrigatório',
@@ -92,9 +93,9 @@ class ReceiversController extends Controller
         $result = $this->service->create($data);
 
         //dd($result);
-        $receiver = $this->service->getId($result['id']);
 
         if ($result['status'] == 'success') {
+            $receiver = $this->service->getId($result['id']);
             return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success', 'title' => 'Sucesso','id' => $result['id'], 'receiver' => $receiver], 201);
         } else if ($result['status'] == 'error') {
             return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
