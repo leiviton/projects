@@ -11,8 +11,13 @@
 |
 */
 
+use Mpociot\ApiDoc\ApiDoc;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+ApiDoc::routes("apidoc");
 
 Auth::routes(['verify' => true]);

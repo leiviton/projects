@@ -55,17 +55,23 @@ class ReceiverService
         DB::beginTransaction();
         try {
 
-            $data['date_birth'] = $this->invertDate($data['date_birth']);
+            $data['date_birth'] = $data['date_birth'] != '' ? $this->invertDate($data['date_birth']) : null;
 
             $result = $this->repository->create($data);
 
-            $address = $data['address'];
+            $addresses = $data['address'];
 
-            $result->addresses()->create($address);
+            foreach ($addresses as $address)
+            {
+                $result->addresses()->create($address);
+            }
 
-            $contact = $data['contact'];
+            $contacts = $data['contact'];
 
-            $result->receiver_contacts()->create($contact);
+            foreach ($contacts as $contact)
+            {
+                $result->receiver_contacts()->create($contact);
+            }
 
             DB::commit();
 
