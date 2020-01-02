@@ -33,6 +33,9 @@ class UserController extends Controller
     /**
      * @param Request $request
      * @return mixed
+     *
+     * @transformercollection \ApiWebPsp\Transformers\UserTransformer
+     * @transformerModel \ApiWebPsp\Models\User
      */
     public function index(Request $request)
     {
@@ -43,6 +46,10 @@ class UserController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
+     *
+     * @bodyParam name string required. Example: Leiviton
+     * @bodyParam email string required e email valido. Example: example@example.com
+     * @bodyParam role nivel do usuário. Example: admin
      */
     public function store(Request $request)
     {

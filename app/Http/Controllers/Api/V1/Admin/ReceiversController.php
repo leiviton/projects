@@ -58,30 +58,28 @@ class ReceiversController extends Controller
     {
         $validator = Validator($request->all(), [
             'name' => 'required|min:4',
-            'document' => 'required|unique:Receivers,document',
+            'document' => 'required|unique:receivers,document',
             'date_birth' => 'required',
             'contact.cellphone' => 'required',
             'address.postal_code' => 'required',
             'address.street' => 'required',
             'address.number' => 'required',
             'address.city' => 'required',
-            'address.uf' => 'required',
-            'address.type' => 'required',
+            'address.uf' => 'required'
         ], [
             'name.required' => 'Nome do usuário é obrigatório',
             'name.length' => 'Nome deve conter no minimo 4 caracteres',
             'document.unique' => 'Cpf/Cnpj já está em uso no sistema',
             'document.required' => 'Cpf/Cnpj é obrigatorio',
             'contact.cellphone.required' => 'Celular é obrigatório',
-            'contact.email.required' => 'Bairro é obrigatório',
-            'contact.email.unique' => 'Email já utilizado no sistema',
-            'contact.email.email' => 'Email necessita ser um email valido',
-            'address.street.required' => 'Logradouro é obrigatório',
-            'address.neighborhood.required' => 'Bairro é obrigatório',
-            'address.number.required' => 'Numero endereço é obrigatório',
-            'address.uf.required' => 'UF endereço é obrigatório',
-            'address.type.required' => 'Tipo endereço é obrigatório',
-            'address.postal_code.required' => 'Cep é obrigatório'
+            'contact.*.email.required' => 'Bairro é obrigatório',
+            'contact.*.email.unique' => 'Email já utilizado no sistema',
+            'contact.*.email.email' => 'Email necessita ser um email valido',
+            'address.*.street.required' => 'Logradouro é obrigatório',
+            'address.*.neighborhood.required' => 'Bairro é obrigatório',
+            'address.*.number.required' => 'Numero endereço é obrigatório',
+            'address.*.uf.required' => 'UF endereço é obrigatório',
+            'address.*.postal_code.required' => 'Cep é obrigatório'
         ]);
 
         if ($validator->fails()) {
