@@ -60,12 +60,12 @@ class ReceiversController extends Controller
             'name' => 'required|min:4',
             'document' => 'required|unique:receivers,document',
             'date_birth' => 'required',
-            'contact.cellphone' => 'required',
-            'address.postal_code' => 'required',
-            'address.street' => 'required',
-            'address.number' => 'required',
-            'address.city' => 'required',
-            'address.uf' => 'required'
+            'contact.*.cellphone' => 'required',
+            'address.*.postal_code' => 'required',
+            'address.*.street' => 'required',
+            'address.*.number' => 'required',
+            'address.*.city' => 'required',
+            'address.*.uf' => 'required'
         ], [
             'name.required' => 'Nome do usuário é obrigatório',
             'name.length' => 'Nome deve conter no minimo 4 caracteres',
