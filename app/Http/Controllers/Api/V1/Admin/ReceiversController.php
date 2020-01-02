@@ -51,6 +51,15 @@ class ReceiversController extends Controller
 
     /**
      * @param Request $request
+     * @return mixed
+     */
+    public function edit($id)
+    {
+        return $this->service->getId($id);
+    }
+
+    /**
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
      */
