@@ -117,6 +117,7 @@ class SolicitationService
      * @param $id
      * @param $data
      * @return array
+     * @throws \Exception
      */
     public function update($id, $data)
     {
