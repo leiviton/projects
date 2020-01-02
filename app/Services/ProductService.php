@@ -79,6 +79,7 @@ class ProductService
      * @param $id
      * @param $data
      * @return array
+     * @throws \Exception
      */
     public function update($id, $data)
     {
@@ -97,6 +98,11 @@ class ProductService
         }
     }
 
+    /**
+     * @param $id
+     * @return array
+     * @throws \Exception
+     */
     public function delete($id)
     {
         DB::beginTransaction();

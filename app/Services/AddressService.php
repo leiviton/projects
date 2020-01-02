@@ -10,7 +10,7 @@ namespace ApiWebPsp\Services;
 
 
 use ApiWebPsp\Repositories\AddressRepository;
-use ApiWebPsp\Repositories\PatientRepository;
+use ApiWebPsp\Repositories\ReceiverRepository;
 use Illuminate\Support\Facades\DB;
 
 class AddressService
@@ -20,20 +20,20 @@ class AddressService
      */
     private $addressRepository;
     /**
-     * @var PatientRepository
+     * @var ReceiverRepository
      */
-    private $patientRepository;
+    private $ReceiverRepository;
 
 
     /**
      * AddressService constructor.
      * @param AddressRepository $addressRepository
-     * @param PatientRepository $patientRepository
+     * @param ReceiverRepository $receiverRepository
      */
-    public function __construct(AddressRepository $addressRepository, PatientRepository $patientRepository)
+    public function __construct(AddressRepository $addressRepository, ReceiverRepository $receiverRepository)
     {
         $this->addressRepository = $addressRepository;
-        $this->patientRepository = $patientRepository;
+        $this->ReceiverRepository = $receiverRepository;
     }
 
     /**
@@ -58,6 +58,7 @@ class AddressService
      * @param $data
      * @param int $id
      * @return array
+     * @throws \Exception
      */
     public function update($data, int $id)
     {
@@ -80,6 +81,7 @@ class AddressService
     /**
      * @param $data
      * @return array
+     * @throws \Exception
      */
     public function create($data)
     {
@@ -101,8 +103,8 @@ class AddressService
      * @param $id
      * @return mixed
      */
-    public function patient($id)
+    public function Receiver($id)
     {
-        return $this->patientRepository->skipPresenter(false)->find($id);
+        return $this->ReceiverRepository->skipPresenter(false)->find($id);
     }
 }
