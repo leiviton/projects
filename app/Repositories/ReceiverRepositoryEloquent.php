@@ -65,7 +65,7 @@ class ReceiverRepositoryEloquent extends BaseRepository implements ReceiverRepos
      */
     public function getCpf($cpf)
     {
-        $result = $this->model->where('cpf',$cpf)
+        $result = $this->model->where('document',$cpf)
             ->first();
 
         if ($result) {
