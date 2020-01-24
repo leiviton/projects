@@ -20,10 +20,10 @@ class CreateReceiverContactsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('receiver_id')->unsigned()->nullable();
             $table->foreign('receiver_id')->references('id')->on('receivers');
-            $table->string('email')->nullable();
-            $table->string('cellphone');
-            $table->string('phone')->nullable();
+            $table->string('value');
             $table->enum('status', ['ativo', 'inativo'])->default('ativo');
+            $table->enum('type', ['phone', 'cellphone','email'])->default('phone');
+            $table->boolean('principal')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -18,6 +18,7 @@ class ReceiverTableSeeder extends Seeder
             for ($i=0; $i<3; $i++) {
                 $p->addresses()->save(factory(Address::class)->make());
                 $p->receiver_contacts()->save(factory(ReceiverContact::class)->make());
+                $p->authorized_people()->save(factory(\ApiWebPsp\Models\AuthorizedPerson::class)->make());
             }
         });
     }

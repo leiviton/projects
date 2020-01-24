@@ -23,9 +23,10 @@ class ReceiverContactTransformer extends TransformerAbstract
     {
         return [
             'id'         =>  $model->id,
-            'email' => $model->email,
-            'cellphone' => $model->cellphone,
-            'phone' => $model->phone,
+            'type' => $model->type,
+            'value' => $model->value,
+            'status' => $model->status,
+            'principal' => $model->principal,
             /* place your other model properties here */
 
             'created_at' => $model->created_at,

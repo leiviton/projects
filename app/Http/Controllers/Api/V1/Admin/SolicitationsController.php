@@ -39,9 +39,9 @@ class SolicitationsController extends Controller
      * @param Request $request
      * @return mixed
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->service->getSolicitations();
+        return $this->service->getSolicitations($request->get('status'));
     }
 
     /**
@@ -113,6 +113,7 @@ class SolicitationsController extends Controller
      * @param $id
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function update($id, Request $request)
     {
@@ -131,6 +132,7 @@ class SolicitationsController extends Controller
      * Delte logico
      * @param $id
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function delete($id)
     {
@@ -254,6 +256,7 @@ class SolicitationsController extends Controller
      * Iniciar atendimento
      * @param $id
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function initSolicitation($id)
     {
@@ -272,6 +275,7 @@ class SolicitationsController extends Controller
      * Cancelar agendamento
      * @param $id
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function canceledSchedule($id)
     {
@@ -291,6 +295,7 @@ class SolicitationsController extends Controller
      * @param $id
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function updateAddress($id, Request $request)
     {
@@ -310,6 +315,7 @@ class SolicitationsController extends Controller
      * Criar agendamento caso nao tenha agendamento ativo
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function schedulingAttempt(Request $request)
     {
@@ -368,9 +374,15 @@ class SolicitationsController extends Controller
         return $this->service->countMounth();
     }
 
+    public function countNow()
+    {
+        return $this->service->countNow();
+    }
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function updateAttendant(Request $request)
     {
