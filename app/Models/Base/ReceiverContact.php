@@ -15,9 +15,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property int $id
  * @property int $receiver_id
- * @property string $email
- * @property string $cellphone
- * @property string $phone
+ * @property string $type
+ * @property string $value
+ * @property boolean $principal
  * @property string $status
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
@@ -31,12 +31,7 @@ class ReceiverContact extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-	protected $casts = [
-		'patient_id' => 'string',
-        'id' => 'string'
-	];
-
-	public function patient()
+	public function receiver()
 	{
 		return $this->belongsTo(\ApiWebPsp\Models\Receiver::class);
 	}

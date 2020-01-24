@@ -42,10 +42,11 @@ $factory->define(Address::class, function (Faker $faker){
     return [
         'alias' => 'casa',
         'street' => $faker->streetName,
-        'number' => $faker->numberBetween(0,1000),
+        'number' => $faker->numberBetween(0,100),
         'complement' => $faker->word,
         'neighborhood' => $faker->word,
         'postal_code' => $faker->postcode,
+        'reference' => $faker->locale,
         'city' => $faker->city,
         'uf' => 'SP'
     ];
@@ -74,11 +75,19 @@ $factory->define(Receiver::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(\ApiWebPsp\Models\AuthorizedPerson::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'document' => $faker->numerify('###.###.###-##'),
+        'phone' =>  $faker->numerify('(##) ####-######')
+    ];
+});
+
 $factory->define(ReceiverContact::class, function (Faker $faker) {
     return [
-        'email' => $faker->email,
-        'cellphone' => $faker->phoneNumber,
-        'phone' => $faker->phoneNumber
+        'value' => $faker->email,
+        'type' => 'email',
+        'principal' => $faker->boolean
     ];
 });
 
@@ -86,7 +95,7 @@ $factory->define(Solicitation::class, function (Faker $faker){
     return [
         'id' =>\Faker\Provider\Uuid::uuid(),
         'receiver_id' => rand(1,10),
-        'status' => 'created',
+        'status' => 'aberto',
         'voucher' => $faker->numerify('###A###X###E##')
     ];
 });

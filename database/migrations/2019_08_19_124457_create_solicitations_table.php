@@ -23,10 +23,15 @@ class CreateSolicitationsTable extends Migration
             $table->foreign('address_id')->references('id')->on('addresses');
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->enum('status',['created','sent','pending','success','frustrated','cancelled'])->default('created');
+            $table->enum('status',['aberto','despachado','pendente','concluido','frustado','cancelado'])->default('aberto');
             $table->string('voucher');
             $table->string('description_other_type')->nullable();
             $table->string('document')->nullable();
+            $table->date('data_despachado')->nullable();
+            $table->date('data_pendente')->nullable();
+            $table->date('data_concluido')->nullable();
+            $table->date('data_frustado')->nullable();
+            $table->date('data_cancelado')->nullable();
             $table->enum('type',['delivery','collect','other','exchange'])->default('delivery');
             $table->softDeletes();
             $table->timestamps();
@@ -41,6 +46,5 @@ class CreateSolicitationsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('solicitations');
-        Schema::dropIfExists('status_solicitation');
     }
 }

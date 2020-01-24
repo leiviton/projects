@@ -149,7 +149,7 @@ trait UtilTrait
         $ano_pascoa = date('Y', $pascoa);
 
         $feriados = array(
-            // Tatas Fixas dos feriados Nacionail Basileiras
+            // Datas Fixas dos feriados Nacionail Basileiras
             date('d/m/Y',mktime(0, 0, 0, 1,  1,   $ano)), // Confraternização Universal - Lei nº 662, de 06/04/49
             date('d/m/Y',mktime(0, 0, 0, 4,  21,  $ano)), // Tiradentes - Lei nº 662, de 06/04/49
             date('d/m/Y',mktime(0, 0, 0, 5,  1,   $ano)), // Dia do Trabalhador - Lei nº 662, de 06/04/49
@@ -195,6 +195,7 @@ trait UtilTrait
      */
     public function initCall(Request $request)
     {
+       // dd($request);
         $destination = substr($request->get('destination'),0,2) == '11' ? substr($request->get('destination'),2,9) : $request->get('destination');
 
         $user = Auth::user();
@@ -218,6 +219,7 @@ trait UtilTrait
             $ch, CURLOPT_HTTPHEADER, array
             (
                 'Content-Type: application/json',
+                'Accept: application/json',
                 'Content-Length: ' . strlen($data_clicktocall_json),
                 'Authorization: 23057bed-ae05-44b5-b702-7e4dc2fd65d6'
             )
@@ -234,8 +236,6 @@ trait UtilTrait
         close connection
          */
         curl_close($ch);
-
-        //dd(json_decode((string)$result),true);
 
         return $result;
     }

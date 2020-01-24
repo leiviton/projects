@@ -32,7 +32,13 @@ interface SolicitationRepository extends RepositoryInterface
 
     /**
      * @param $user
+     * @param $status
      * @return mixed
      */
-    public function getSolicitations($user);
+    public function getSolicitations($user,$status);
+
+    /**
+     * @return mixed
+     */
+    public function countStatusNow();
 }
