@@ -8,7 +8,6 @@
 
 namespace ApiWebPsp\Services;
 
-use ApiWebPsp\Repositories\AuthorizedPersonRepository;
 use ApiWebPsp\Repositories\ReceiverRepository;
 use Illuminate\Support\Facades\DB;
 
@@ -18,20 +17,14 @@ class ReceiverService
      * @var ReceiverRepository
      */
     private $repository;
-    /**
-     * @var AuthorizedPersonRepository
-     */
-    private $authorizedPersonRepository;
 
     /**
      * CompanyService constructor.
      * @param ReceiverRepository $repository
-     * @param AuthorizedPersonRepository $authorizedPersonRepository
      */
-    public function __construct(ReceiverRepository $repository, AuthorizedPersonRepository $authorizedPersonRepository)
+    public function __construct(ReceiverRepository $repository)
     {
         $this->repository = $repository;
-        $this->authorizedPersonRepository = $authorizedPersonRepository;
     }
 
     /**
@@ -177,6 +170,54 @@ class ReceiverService
             $receiver = $this->repository->find($id);
 
             $result = $receiver->authorized_people()->create($data);
+
+            DB::commit();
+
+            return ['status' => 'success', 'result' => $result];
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return ['status' => 'error', 'message' => $exception->getMessage(), 'title' => 'Erro'];
+        }
+    }
+
+    /**
+     * @param $id
+     * @param array $data
+     * @return array
+     * @throws \Exception
+     */
+    public function address($id, array $data)
+    {
+        DB::beginTransaction();
+        try {
+            $receiver = $this->repository->find($id);
+
+            $result = $receiver->addresses()->create($data);
+
+            DB::commit();
+
+            return ['status' => 'success', 'result' => $result];
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return ['status' => 'error', 'message' => $exception->getMessage(), 'title' => 'Erro'];
+        }
+    }
+
+    /**
+     * @param $id
+     * @param array $data
+     * @return array
+     * @throws \Exception
+     */
+    public function contact($id, array $data)
+    {
+        DB::beginTransaction();
+        try {
+            $receiver = $this->repository->find($id);
+
+            $result = $receiver->receiver_contacts()->create($data);
 
             DB::commit();
 

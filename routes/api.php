@@ -49,6 +49,8 @@ Route::group(['prefix' => 'v1/', 'middleware' => 'auth:api'], function () {
         /*receiver*/
         Route::post('receiver', 'ReceiversController@store');
         Route::post('receiver/people/{id}', 'ReceiversController@people');
+        Route::post('receiver/address/{id}', 'ReceiversController@address');
+        Route::post('receiver/contact/{id}', 'ReceiversController@contact');
         Route::post('receiver/upload/{folder}', 'ReceiversController@upload');
         Route::get('receiver', 'ReceiversController@index');
         Route::get('receiver/cpf/{cpf}', 'ReceiversController@getCpf');
