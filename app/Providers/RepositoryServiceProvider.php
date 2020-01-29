@@ -32,6 +32,10 @@ class RepositoryServiceProvider extends ServiceProvider
             'ApiWebPsp\Repositories\CompanyRepositoryEloquent'
         );
         $this->app->bind(
+            'ApiWebPsp\Repositories\StatusCompanyRepository',
+            'ApiWebPsp\Repositories\StatusCompanyRepositoryEloquent'
+        );
+        $this->app->bind(
             'ApiWebPsp\Repositories\AddressRepository',
             'ApiWebPsp\Repositories\AddressRepositoryEloquent'
         );

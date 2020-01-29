@@ -2,14 +2,11 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 19 Aug 2019 15:30:22 +0000.
+ * Date: Mon, 27 Jan 2020 13:43:20 -0200.
  */
 
 namespace ApiWebPsp\Models\Base;
 
-use ApiWebPsp\Models\Traits\UuidTrait;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Ramsey\Uuid\Uuid;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -22,28 +19,29 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $phone
  * @property string $email
  * @property string $logo
+ * @property bool $ativo
  * @property int $fiscal
- * @property string $status
  * @property string $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
  * @property \Illuminate\Database\Eloquent\Collection $products
  * @property \Illuminate\Database\Eloquent\Collection $solicitations
+ * @property \Illuminate\Database\Eloquent\Collection $status_companies
  * @property \Illuminate\Database\Eloquent\Collection $users
  *
  * @package ApiWebPsp\Models\Base
  */
 class Company extends Eloquent
 {
-	use SoftDeletes;
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [
-		'fiscal' => 'int',
-        'id' => 'int'
+		'ativo' => 'bool',
+		'fiscal' => 'int'
 	];
 
-    public function products()
+	public function products()
 	{
 		return $this->hasMany(\ApiWebPsp\Models\Product::class);
 	}
@@ -51,6 +49,11 @@ class Company extends Eloquent
 	public function solicitations()
 	{
 		return $this->hasMany(\ApiWebPsp\Models\Solicitation::class);
+	}
+
+	public function status_companies()
+	{
+		return $this->hasMany(\ApiWebPsp\Models\StatusCompany::class);
 	}
 
 	public function users()
