@@ -151,4 +151,128 @@ class ReceiversController extends Controller
             return response()->json(['message' => 'Erro desconhecido, contate o Good do software', 'status' => 'error', 'title' => 'Erro'], 400);
         }
     }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
+    public function people($id, Request $request)
+    {
+        $validator = Validator($request->all(),[
+            'name' => 'required|min:4',
+            'document' => 'required',
+            'phone' => 'required',
+        ], [
+            'name.required' => 'Nome do contato é obrigatório',
+            'name.length' => 'Nome deve conter no minimo 4 caracteres',
+            'document.required' => 'Documento é obrigatorio',
+            'phone.required' => 'Documento é obrigatorio'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'title' => 'Erro',
+                'status' => 'error',
+                'message' => $validator->errors()->unique()
+            ], 406);
+        }
+
+        $data = $request->all();
+
+        $result = $this->service->people($id,$data);
+
+        if ($result['status'] == 'success') {
+            return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success', 'title' => 'Sucesso', 'result' => $result['result']], 201);
+        } else if ($result['status'] == 'error') {
+            return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
+        } else {
+            return response()->json(['message' => 'Erro desconhecido, contate o Good do software', 'status' => 'error', 'title' => 'Erro'], 400);
+        }
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
+    public function address($id, Request $request)
+    {
+        $validator = Validator($request->all(), [
+            'street' => 'required',
+            'neighborhood' => 'required',
+            'number' => 'required',
+            'city' => 'required',
+            'uf' => 'required',
+            'postal_code' => 'required'
+        ], [
+            'street.required' => 'Logradouro é obrigatório',
+            'neighborhood.required' => 'Bairro é obrigatório',
+            'number.required' => 'Numero endereço é obrigatório',
+            'city.required' => 'Cidade é obrigatória',
+            'uf.required' => 'Estado é obrigatória',
+            'postal_code.required' => 'Cep é obrigatório'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'title' => 'Erro',
+                'status' => 'error',
+                'message' => $validator->errors()->unique()
+            ], 406);
+        }
+
+        $data = $request->all();
+
+        $result = $this->service->address($id,$data);
+
+        if ($result['status'] == 'success') {
+            return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success', 'title' => 'Sucesso', 'result' => $result['result']], 201);
+        } else if ($result['status'] == 'error') {
+            return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
+        } else {
+            return response()->json(['message' => 'Erro desconhecido, contate o Good do software', 'status' => 'error', 'title' => 'Erro'], 400);
+        }
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
+    public function contact($id, Request $request)
+    {
+        $validator = Validator($request->all(), [
+            'type' => 'required',
+            'value' => 'required',
+            'principal' => 'required',
+        ], [
+            'type.required' => 'Tipo é obrigatório',
+            'value.required' => 'Valor é obrigatório',
+            'principal.required' => 'Principal é obrigatório'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'title' => 'Erro',
+                'status' => 'error',
+                'message' => $validator->errors()->unique()
+            ], 406);
+        }
+
+        $data = $request->all();
+
+        $result = $this->service->contact($id,$data);
+
+        if ($result['status'] == 'success') {
+            return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success', 'title' => 'Sucesso', 'result' => $result['result']], 201);
+        } else if ($result['status'] == 'error') {
+            return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
+        } else {
+            return response()->json(['message' => 'Erro desconhecido, contate o Good do software', 'status' => 'error', 'title' => 'Erro'], 400);
+        }
+    }
 }

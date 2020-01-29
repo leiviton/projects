@@ -12,7 +12,7 @@ use ApiWebPsp\Models\Company;
  */
 class CompanyTransformer extends TransformerAbstract
 {
-    protected $availableIncludes = ['products'];
+    protected $availableIncludes = ['products','status'];
 
     /**
      * Transform the Company entity.
@@ -30,8 +30,8 @@ class CompanyTransformer extends TransformerAbstract
             'email' => $model->email,
             'phone' => $model->phone,
             'contact_name' => $model->contact_name,
-            'logo' => env('APP_URL') . '/storage/companies/' . $model->logo,
-            'status' => $model->status,
+            'ativo' => $model->ativo,
+            'status' => $this->getStatus($model->status),
             /* place your other model properties here */
 
             'created_at' => $model->created_at,
@@ -41,5 +41,10 @@ class CompanyTransformer extends TransformerAbstract
 
     public function includeProducts(Company $model) {
         return $this->collection($model->products, new ProductTransformer());
+    }
+
+    public function getStatus($status)
+    {
+        return $status != '' && $status != null ? explode(',',$status) : null;
     }
 }

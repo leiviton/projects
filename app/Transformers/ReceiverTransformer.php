@@ -12,7 +12,7 @@ use ApiWebPsp\Models\Receiver;
  */
 class ReceiverTransformer extends TransformerAbstract
 {
-    protected $defaultIncludes = ['address','contact'];
+    protected $defaultIncludes = ['address','contact','authorized'];
 
     /**
      * Transform the Receiver entity.
@@ -54,4 +54,15 @@ class ReceiverTransformer extends TransformerAbstract
     {
         return $receiver->receiver_contacts ? $this->collection($receiver->receiver_contacts, new ReceiverContactTransformer()) : null;
     }
+
+    /**
+     * @param Receiver $receiver
+     * @return \League\Fractal\Resource\Collection|null
+     */
+    public function includeAuthorized(Receiver $receiver)
+    {
+        return $receiver->authorized_people ? $this->collection($receiver->authorized_people, new AuthorizedPersonTransformer()) : null;
+    }
+
+
 }

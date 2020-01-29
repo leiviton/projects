@@ -48,6 +48,9 @@ Route::group(['prefix' => 'v1/', 'middleware' => 'auth:api'], function () {
 
         /*receiver*/
         Route::post('receiver', 'ReceiversController@store');
+        Route::post('receiver/people/{id}', 'ReceiversController@people');
+        Route::post('receiver/address/{id}', 'ReceiversController@address');
+        Route::post('receiver/contact/{id}', 'ReceiversController@contact');
         Route::post('receiver/upload/{folder}', 'ReceiversController@upload');
         Route::get('receiver', 'ReceiversController@index');
         Route::get('receiver/cpf/{cpf}', 'ReceiversController@getCpf');
@@ -86,6 +89,7 @@ Route::group(['prefix' => 'v1/', 'middleware' => 'auth:api'], function () {
         Route::put('solicitation', 'SolicitationsController@updateAttendant');
         Route::patch('solicitation/init/{id}', 'SolicitationsController@initSolicitation');
         Route::get('count', 'SolicitationsController@counts');
+        Route::get('count/now', 'SolicitationsController@countNow');
         Route::get('mounth', 'SolicitationsController@countMounth');
 
         /*Audits*/

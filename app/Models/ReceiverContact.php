@@ -22,10 +22,11 @@ class ReceiverContact extends \ApiWebPsp\Models\Base\ReceiverContact implements 
      * @var array
      */
     protected $fillable = [
-        'patient_id',
-        'email',
-        'cellphone',
-        'phone'
+        'receiver_id',
+        'value',
+        'type',
+        'status',
+        'principal'
     ];
 
 }

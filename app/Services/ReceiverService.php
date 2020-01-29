@@ -61,15 +61,13 @@ class ReceiverService
 
             $addresses = $data['address'];
 
-            foreach ($addresses as $address)
-            {
+            foreach ($addresses as $address) {
                 $result->addresses()->create($address);
             }
 
             $contacts = $data['contact'];
 
-            foreach ($contacts as $contact)
-            {
+            foreach ($contacts as $contact) {
                 $result->receiver_contacts()->create($contact);
             }
 
@@ -146,15 +144,88 @@ class ReceiverService
      * @return \DateTime
      * @throws \Exception
      */
-    public function invertDate($date){
+    public function invertDate($date)
+    {
         $result = '';
-        if(count(explode("/",$date)) > 1){
-            $result = implode("-",array_reverse(explode("/",$date)));
+        if (count(explode("/", $date)) > 1) {
+            $result = implode("-", array_reverse(explode("/", $date)));
             return new \DateTime($result);
-        }elseif(count(explode("-",$date)) > 1){
-            $result1 = implode("/",array_reverse(explode("-",$date)));
-            $result = implode("-",array_reverse(explode("/",$result1)));
+        } elseif (count(explode("-", $date)) > 1) {
+            $result1 = implode("/", array_reverse(explode("-", $date)));
+            $result = implode("-", array_reverse(explode("/", $result1)));
             return new \DateTime($result);
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $data
+     * @return array
+     * @throws \Exception
+     */
+    public function people($id, $data)
+    {
+        DB::beginTransaction();
+        try {
+            $receiver = $this->repository->find($id);
+
+            $result = $receiver->authorized_people()->create($data);
+
+            DB::commit();
+
+            return ['status' => 'success', 'result' => $result];
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return ['status' => 'error', 'message' => $exception->getMessage(), 'title' => 'Erro'];
+        }
+    }
+
+    /**
+     * @param $id
+     * @param array $data
+     * @return array
+     * @throws \Exception
+     */
+    public function address($id, array $data)
+    {
+        DB::beginTransaction();
+        try {
+            $receiver = $this->repository->find($id);
+
+            $result = $receiver->addresses()->create($data);
+
+            DB::commit();
+
+            return ['status' => 'success', 'result' => $result];
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return ['status' => 'error', 'message' => $exception->getMessage(), 'title' => 'Erro'];
+        }
+    }
+
+    /**
+     * @param $id
+     * @param array $data
+     * @return array
+     * @throws \Exception
+     */
+    public function contact($id, array $data)
+    {
+        DB::beginTransaction();
+        try {
+            $receiver = $this->repository->find($id);
+
+            $result = $receiver->receiver_contacts()->create($data);
+
+            DB::commit();
+
+            return ['status' => 'success', 'result' => $result];
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return ['status' => 'error', 'message' => $exception->getMessage(), 'title' => 'Erro'];
         }
     }
 }

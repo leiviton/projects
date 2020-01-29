@@ -35,7 +35,7 @@ class CompaniesController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->service->getCompanies($request->get('status'));
+        return $this->service->getCompanies($request->get('ativo'));
     }
 
     /**
@@ -46,7 +46,7 @@ class CompaniesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
+        //dd($data);
         $validator = Validator($data,
             [
                 'cnpj' => 'required',
@@ -85,6 +85,8 @@ class CompaniesController extends Controller
 
         $data["logo"] = $upload['file'];*/
 
+        //dd(json_decode($data['status'],true));
+
         $result = $this->service->create($data);
 
         if ($result['status'] == 'success') {
@@ -103,6 +105,7 @@ class CompaniesController extends Controller
      * @param $id
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function update($id, Request $request)
     {
@@ -162,10 +165,9 @@ class CompaniesController extends Controller
 
     /**
      * @param $id
-     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function updateStatus($id, Request $request)
+    public function updateStatus($id)
     {
 
         $result = $this->service->updateStatus($id);

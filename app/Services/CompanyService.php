@@ -62,15 +62,16 @@ class CompanyService
     /**
      * @return mixed
      */
-    public function getCompanies($status)
+    public function getCompanies($ativo)
     {
-        return $this->repository->skipPresenter(false)->listCompanies($status);
+        return $this->repository->skipPresenter(false)->listCompanies($ativo);
     }
 
     /**
      * @param $id
      * @param $data
      * @return array
+     * @throws \Exception
      */
     public function update($id, $data) {
         DB::beginTransaction();
@@ -98,6 +99,7 @@ class CompanyService
     /**
      * @param $id
      * @return array
+     * @throws \Exception
      */
     public function delete($id)
     {
@@ -116,6 +118,7 @@ class CompanyService
      * @param $id
      * @param $password
      * @return array
+     * @throws \Exception
      */
     public function updateStatus($id)
     {
@@ -124,10 +127,10 @@ class CompanyService
 
             $user = $this->repository->find($id);
 
-            if ($user->status == 'ativo') {
-                $user->status = 'inativo';
+            if ($user->ativo == true) {
+                $user->ativo = false;
             } else {
-                $user->status = 'ativo';
+                $user->ativo = true;
             }
 
             $user->save();

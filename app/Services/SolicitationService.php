@@ -15,6 +15,7 @@ use ApiWebPsp\Repositories\SchedulingSolicitationRepository;
 use ApiWebPsp\Repositories\SolicitationRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class SolicitationService
 {
@@ -94,6 +95,8 @@ class SolicitationService
                 $result->solicitation_items()->create($item);
             }
 
+            QrCode::format('png')->size(350)->generate($result->voucher,public_path("storage/qrcode/".$result->voucher.'.png'));
+
             DB::commit();
 
             return ['status' => 'success', 'id' => $result->id];
@@ -107,10 +110,10 @@ class SolicitationService
     /**
      * @return mixed
      */
-    public function getSolicitations()
+    public function getSolicitations($status = 'aberto')
     {
         $user = Auth::guard('api')->user();
-        return $this->repository->skipPresenter(false)->orderBy('created_at', 'desc')->getSolicitations($user);
+        return $this->repository->skipPresenter(false)->orderBy('created_at', 'desc')->getSolicitations($user,$status);
     }
 
     /**
@@ -372,8 +375,8 @@ class SolicitationService
      */
     public function countMounth()
     {
-        $statusConcluido = $this->repository->findWhere(['status' => 'success'])->first();
-        $statusCancelados = $this->repository->findWhere(['status' => 'cancelled'])->first();
+        $statusConcluido = $this->repository->findWhere(['status' => 'aberto'])->first();
+        $statusCancelados = $this->repository->findWhere(['status' => ''])->first();
 
         return $this->repository->countMounth($statusCancelados->id, $statusConcluido->id);
     }
@@ -401,4 +404,12 @@ class SolicitationService
             return ['status' => 'error', 'message' => $exception->getMessage(), 'title' => 'Erro'];
         }
     }
+
+    public function countNow()
+    {
+        return $this->repository->countStatusNow();
+    }
+
+
+
 }
