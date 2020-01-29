@@ -156,7 +156,7 @@ class SolicitationRepositoryEloquent extends BaseRepository implements Solicitat
      * @param $status
      * @return mixed
      */
-    public function getSolicitations($user,$status)
+    public function getSolicitations($user,$status='aberto')
     {
         if ($user->role == 'drs-attendant') {
             $results = $this->model

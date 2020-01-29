@@ -41,7 +41,10 @@ class SolicitationsController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->service->getSolicitations($request->get('status'));
+        //dd($request->get('status'));
+        $status = $request->get('status') != '' || $request->get('status') != null ? $request->get('status'): 'aberto';
+        //dd($status);
+        return $this->service->getSolicitations($status);
     }
 
     /**
@@ -62,15 +65,14 @@ class SolicitationsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator($request->all(), [
-            'voucher' => 'required|unique:solicitations,protocol',
+            'voucher' => 'required',
             'items' => 'required|array|min:1',
             'items.*.product_id' => 'required',
             'items.*.qtd' => 'required',
             'type' => 'required',
-            'patient_id' => 'required',
+            'receiver_id' => 'required',
         ], [
-            'voucher.required' => 'Nome do usuário é obrigatório',
-            'voucher.unique' => 'Protocolo já existe no sistema',
+            'voucher.required' => 'Voucher é obrigatório',
             'items.*.product_id.required' => 'Produto é obrigatório',
             'items.*.qtd.required' => 'Quantidade é obrigatória',
             'items.required' => 'É necessário selecionar ao menos um produto',
@@ -96,8 +98,8 @@ class SolicitationsController extends Controller
         if ($result['status'] == 'success') {
             $solicitation = $this->service->getSolicitation($result['id']);
 
-            Mail::to(['cs.novonordisk@drsgroup.com.br', 'leiviton.silva@drsgroup.com.br', 'michel.santos@drsgroup.com.br', 'caio.moraes@drsgroup.com.br','raquel.mota@drsgroup.com.br'])
-                ->queue(new InvoiceOrder('allan.santos@drsgroup.com.br', $solicitation));
+           /* Mail::to(['cs.novonordisk@drsgroup.com.br', 'leiviton.silva@drsgroup.com.br', 'michel.santos@drsgroup.com.br', 'caio.moraes@drsgroup.com.br','raquel.mota@drsgroup.com.br'])
+                ->queue(new InvoiceOrder('allan.santos@drsgroup.com.br', $solicitation));*/
 
             return response()->json(['message' => 'Chamado incluído com sucesso', 'status' => 'success', 'title' => 'Sucesso'], 201);
         } else if ($result['status'] == 'error') {

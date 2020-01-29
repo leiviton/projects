@@ -51,7 +51,8 @@ class CompanyRepositoryEloquent extends BaseRepository implements CompanyReposit
      */
     public function listCompanies($status)
     {
-        $result = $this->model->where('status',$status)->orderBy('name')
+        //dd($status);
+        $result = $this->model->where('ativo',$status)->orderBy('name')
             ->paginate();
         if ($result){
             return $this->parserResult($result);

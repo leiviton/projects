@@ -25,7 +25,7 @@ class Solicitation extends \ApiWebPsp\Models\Base\Solicitation implements Transf
         'company_id',
         'patient_id',
         'status_solicitation_id',
-        'protocol',
+        'voucher',
         'manifestation',
         'description_other_type',
         'type',

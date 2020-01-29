@@ -168,6 +168,7 @@ return [
         Appointer\Swaggervel\SwaggervelServiceProvider::class,
         OwenIt\Auditing\AuditingServiceProvider::class,
         Rebing\GraphQL\GraphQLServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -229,7 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'GraphQL' => Rebing\GraphQL\Support\Facades\GraphQL::class,
-
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
     ],
 
 ];

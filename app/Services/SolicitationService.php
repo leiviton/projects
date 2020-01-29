@@ -15,6 +15,7 @@ use ApiWebPsp\Repositories\SchedulingSolicitationRepository;
 use ApiWebPsp\Repositories\SolicitationRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class SolicitationService
 {
@@ -93,6 +94,8 @@ class SolicitationService
                 //$item['expiration_date'] = $item['expiration_date'] != '' && $item['expiration_date'] != null ? $this->invertDate($item['expiration_date']) : null;
                 $result->solicitation_items()->create($item);
             }
+
+            QrCode::format('png')->size(350)->generate($result->voucher,public_path("storage/qrcode/".$result->voucher.'.png'));
 
             DB::commit();
 
