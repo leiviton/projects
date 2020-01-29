@@ -402,4 +402,13 @@ class SolicitationsController extends Controller
             return response()->json(['message' => 'Erro desconhecido comunique o administrador do sistema', 'status' => 'error', 'title' => 'Erro'], 400);
         }
     }
+
+    /**
+     * @param $voucher
+     * @return int
+     */
+    public function getVoucher($voucher)
+    {
+        return $this->service->getVoucher($voucher);
+    }
 }
