@@ -80,6 +80,7 @@ Route::group(['prefix' => 'v1/', 'middleware' => 'auth:api'], function () {
         Route::post('solicitation/upload/{folder}', 'SolicitationsController@upload');
         Route::get('solicitation', 'SolicitationsController@index');
         Route::get('solicitation/{id}', 'SolicitationsController@edit');
+        Route::get('solicitation/send/{voucher}', 'SolicitationsController@getVoucher');
         Route::get('solicitation/user', 'SolicitationsController@getUserId');
         Route::put('solicitation/{id}', 'SolicitationsController@update');
         Route::put('solicitation/schedule/{id}', 'SolicitationsController@canceledSchedule');

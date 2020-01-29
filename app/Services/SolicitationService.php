@@ -410,6 +410,13 @@ class SolicitationService
         return $this->repository->countStatusNow();
     }
 
+    public function getVoucher($voucher)
+    {
+        $result = $this->repository->orderBy('created_at','desc')->findWhere(['voucher'=>$voucher])->first();
+
+        $nextSend = $result->sends + 1;
+        return $nextSend;
+    }
 
 
 }
