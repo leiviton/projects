@@ -178,6 +178,7 @@ return [
         ApiWebPsp\Providers\EventServiceProvider::class,
         ApiWebPsp\Providers\RouteServiceProvider::class,
         ApiWebPsp\Providers\RepositoryServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -231,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'GraphQL' => Rebing\GraphQL\Support\Facades\GraphQL::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
