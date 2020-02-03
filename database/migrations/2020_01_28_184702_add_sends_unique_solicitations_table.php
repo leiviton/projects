@@ -15,7 +15,7 @@ class AddSendsUniqueSolicitationsTable extends Migration
     {
         Schema::table('solicitations', function (Blueprint $table) {
             $table->smallInteger('sends')->default(1);
-            $table->unique('voucher', 'sends');
+            $table->unique(['voucher', 'sends']);
         });
     }
 
@@ -28,7 +28,7 @@ class AddSendsUniqueSolicitationsTable extends Migration
     {
         Schema::table('solicitations', function (Blueprint $table) {
             $table->dropColumn('sends');
-            $table->dropUnique('sends','voucher');
+            $table->dropUnique(['sends','voucher']);
         });
     }
 }

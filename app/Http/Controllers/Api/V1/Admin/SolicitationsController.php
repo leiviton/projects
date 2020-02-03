@@ -9,11 +9,13 @@
 namespace ApiWebPsp\Http\Controllers\Api\V1\Admin;
 
 use ApiWebPsp\Http\Controllers\Controller;
+use ApiWebPsp\Imports\SolicitationsImport;
 use ApiWebPsp\Mail\RegisterBuyer;
 use ApiWebPsp\Services\SolicitationService;
 use ApiWebPsp\Mail\InvoiceOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SolicitationsController extends Controller
 {
@@ -410,5 +412,23 @@ class SolicitationsController extends Controller
     public function getVoucher($voucher)
     {
         return $this->service->getVoucher($voucher);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
+    public function import(Request $request)
+    {
+        //dd('aquui');
+        if ($request->hasFile('excel') && $request->file('excel')->isValid()) {
+
+            Excel::import(new SolicitationsImport(), $request->excel);
+
+            //throw new \Exception();
+
+            return response()->json(['message' => 'Chamado cadastrado com sucesso', 'status' => 'success', 'title' => 'Sucesso'], 200);
+        }
     }
 }

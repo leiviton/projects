@@ -9,6 +9,16 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group([
+    'namespace' => 'Auth',
+    'middleware' => 'api',
+    'prefix' => 'password'
+], function () {
+    Route::post('create', 'PasswordResetController@create');
+    Route::get('find/{token}', 'PasswordResetController@find');
+    Route::post('reset', 'PasswordResetController@reset');
+});
+
 Route::group(['namespace' => 'Api\V1\Admin'],function (){
     Route::get('solicitation', 'SolicitationsController@index');
 });
@@ -88,6 +98,7 @@ Route::group(['prefix' => 'v1/', 'middleware' => 'auth:api'], function () {
         Route::patch('solicitation/{id}', 'SolicitationsController@updateStatus');
         Route::delete('solicitation/{id}', 'SolicitationsController@delete');
         Route::put('solicitation', 'SolicitationsController@updateAttendant');
+        Route::post('import', 'SolicitationsController@import');
         Route::patch('solicitation/init/{id}', 'SolicitationsController@initSolicitation');
         Route::get('count', 'SolicitationsController@counts');
         Route::get('count/now', 'SolicitationsController@countNow');

@@ -34,6 +34,7 @@ class SolicitationTransformer extends TransformerAbstract
             'description_other_type' => $model->description_other_type,
             'type' => $model->type,
             'status' => $model->status,
+            'sends' => $model->sends,
             /* place your other model properties here */
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at

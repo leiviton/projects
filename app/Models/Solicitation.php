@@ -23,15 +23,13 @@ class Solicitation extends \ApiWebPsp\Models\Base\Solicitation implements Transf
      */
     protected $fillable = [
         'company_id',
-        'patient_id',
-        'status_solicitation_id',
+        'receiver_id',
         'voucher',
-        'manifestation',
-        'description_other_type',
         'type',
         'date_scheduling',
         'schedule_time',
-        'address_id'
+        'address_id',
+        'sends'
     ];
 
 }
