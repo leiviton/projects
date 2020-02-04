@@ -20,6 +20,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $receiver_id
  * @property int $address_id
  * @property int $user_id
+ * @property int $sends
  * @property string $voucher
  * @property string $document
  * @property string $description_other_type
@@ -51,6 +52,7 @@ class Solicitation extends Eloquent
         'company_id' => 'int',
         'patient_id' => 'int',
         'address_id' => 'int',
+        'sends' => 'int',
         'id' => 'string'
     ];
 
