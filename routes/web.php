@@ -18,6 +18,5 @@ Route::get('/', function () {
 });
 
 
-ApiDoc::routes("apidoc");
 
 Auth::routes(['verify' => true]);
