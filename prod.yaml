@@ -20,7 +20,7 @@ services:
             - DB_DATABASE=api-web-sac
             - DB_USERNAME=root
             - DB_PASSWORD=root
-            - APP_URL=http://10.0.108.137:8080
+            - APP_URL=http://10.0.108.137
         volumes:
             - .:/var/www
         networks:

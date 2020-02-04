@@ -13,20 +13,20 @@ services:
     api-web-psp:
         build: .
         container_name: api-web-psp
-        entrypoint:  dockerize -template ./.docker/app/.env:.env -wait tcp://db-api-web-psp:3306 -timeout 40s ./.docker/entrypoint.sh
+        entrypoint:  dockerize -template ./.docker/app/.env:.env -wait tcp://127.0.0.1:3306 -timeout 40s ./.docker/entrypoint.sh
         environment:
-            - DB_HOST=db-api-web-psp
+            - DB_HOST=127.0.0.1
             - DB_PORT=3306
-            - DB_DATABASE=api-web-psp
-            - DB_USERNAME=root
-            - DB_PASSWORD=root
-            - APP_URL=http://10.0.108.137:8080
+            - DB_DATABASE=laravel
+            - DB_USERNAME=api_psp
+            - DB_PASSWORD=LOLbug72@
+            - APP_URL=http://localhost
         volumes:
             - .:/var/www
         networks:
             - api-web-psp-network
         depends_on:
-            - db-api-web-psp
+            # - db-api-web-psp
             - redis-api-web-psp
 
     nginx-api-web-psp:
@@ -35,29 +35,29 @@ services:
         restart: always
         tty: true
         ports:
-            - "8080:80"
+            - "80:80"
         volumes:
             - .:/var/www
         networks:
             - api-web-psp-network
         depends_on:
             - api-web-psp
-    db-api-web-psp:
-        image: mysql:5.7
-        command: --innodb-use-native-aio=0
-        container_name: db-api-web-psp
-        restart: always
-        tty: true
-        ports:
-            - "3306"
-        volumes:
-            - ./.docker/dbdata:/var/lib/mysql
-        environment:
-            - MYSQL_DATABASE=api-web-psp
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_USER=root
-        networks:
-            - api-web-psp-network
+    # db-api-web-psp:
+    #     image: mysql:5.7
+    #     command: --innodb-use-native-aio=0
+    #     container_name: db-api-web-psp
+    #     restart: always
+    #     tty: true
+    #     ports:
+    #         - "3306"
+    #     volumes:
+    #         - ./.docker/dbdata:/var/lib/mysql
+    #     environment:
+    #         - MYSQL_DATABASE=laravel
+    #         - MYSQL_USER=api_psp
+    #         - MYSQL_ROOT_PASSWORD=LOLbug72@
+    #     networks:
+    #         - api-web-psp-network
 
     redis-api-web-psp:
         image: redis:alpine
