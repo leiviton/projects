@@ -16,6 +16,7 @@ class AddReceiversTable extends Migration
         Schema::create('receivers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 120);
+            $table->string('brand', 120)->nullable();
             $table->string('document', 20);
             $table->enum('genre', ['masculino', 'feminino'])->nullable();
             $table->enum('type', ['paciente', 'clinica'])->nullable();

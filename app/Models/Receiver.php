@@ -19,6 +19,7 @@ class Receiver extends \ApiWebPsp\Models\Base\Receiver implements Transformable,
 	protected $fillable = [
 		'user_id',
 		'name',
+        'brand',
 		'document',
 		'type',
         'genre',
