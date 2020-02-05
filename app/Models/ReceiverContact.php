@@ -23,7 +23,7 @@ class ReceiverContact extends \ApiWebPsp\Models\Base\ReceiverContact implements 
      */
     protected $fillable = [
         'receiver_id',
-        'value',
+        'content',
         'type',
         'status',
         'principal'

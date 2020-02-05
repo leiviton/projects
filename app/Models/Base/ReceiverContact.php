@@ -16,7 +16,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $id
  * @property int $receiver_id
  * @property string $type
- * @property string $value
+ * @property string $content
  * @property boolean $principal
  * @property string $status
  * @property string $deleted_at

@@ -2,6 +2,7 @@
 
 namespace ApiWebPsp\Models;
 
+use ApiWebPsp\Notifications\ResetPassword;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -106,5 +107,10 @@ class User extends \ApiWebPsp\Models\Base\User implements Transformable,
     public function sendEmailVerificationNotification()
     {
         // TODO: Implement sendEmailVerificationNotification() method.
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token, $this->email));
     }
 }
