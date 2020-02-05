@@ -24,7 +24,7 @@ class ReceiverContactTransformer extends TransformerAbstract
         return [
             'id'         =>  $model->id,
             'type' => $model->type,
-            'value' => $model->value,
+            'content' => $model->content,
             'status' => $model->status,
             'principal' => $model->principal,
             /* place your other model properties here */

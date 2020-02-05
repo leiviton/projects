@@ -14,6 +14,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property int $id
  * @property string $name
+ * @property string $brand
  * @property string $document
  * @property string $genre
  * @property string $type

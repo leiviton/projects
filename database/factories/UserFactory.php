@@ -85,7 +85,7 @@ $factory->define(\ApiWebPsp\Models\AuthorizedPerson::class, function (Faker $fak
 
 $factory->define(ReceiverContact::class, function (Faker $faker) {
     return [
-        'value' => $faker->email,
+        'content' => $faker->email,
         'type' => 'email',
         'principal' => $faker->boolean
     ];

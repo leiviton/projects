@@ -1,6 +1,6 @@
 <?php
 
-namespace Stock\Notifications;
+namespace ApiWebPsp\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -58,7 +58,7 @@ class ResetPassword extends Notification
             ->from('noreply@drsgroup.com.br', 'Portal Drs 360')
             ->subject('Nova Senha Portal DRS 360')
             ->line('Você está recebendo este e-mail porque recebemos uma solicitação de redefinição de senha para sua conta.')
-            ->action('Clique Aqui', url(config('app.url').route('password.reset', $this->token, false)))
+            ->action('Clique Aqui', url(env('URL_APP').route('password.reset', $this->token, false)))
             ->line('Se você não solicitou uma redefinição de senha, nenhuma ação adicional será necessária.');
     }
 }
