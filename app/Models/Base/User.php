@@ -72,8 +72,6 @@ class User extends Eloquent
 
 	public function permissions()
 	{
-		return $this->belongsToMany(\ApiWebPsp\Models\Permission::class, 'user_permissions')
-					->withPivot('id')
-					->withTimestamps();
+		return $this->hasMany(\ApiWebPsp\Models\UserPermission::class);
 	}
 }

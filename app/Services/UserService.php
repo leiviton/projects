@@ -94,6 +94,16 @@ class UserService
             //dd($data);
             $result = $this->userRepository->create($data);
 
+            $permissions = $data['permissions'];
+
+            if (count($permissions) > 0) {
+                foreach ($permissions as $permission)
+                {
+                    $result->permissions()->create($permission);
+                }
+            }
+
+
             DB::commit();
 
             return ['status' => 'success', 'user' => $result];
