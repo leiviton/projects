@@ -413,8 +413,8 @@ class SolicitationService
     public function getVoucher($voucher)
     {
         $result = $this->repository->orderBy('created_at','desc')->findWhere(['voucher'=>$voucher])->first();
-
-        $nextSend = $result->sends + 1;
+           // dd($result);
+        $nextSend = $result == null ? 1 : $result->sends + 1;
         return $nextSend;
     }
 
