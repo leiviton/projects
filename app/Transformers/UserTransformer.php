@@ -50,6 +50,6 @@ class UserTransformer extends TransformerAbstract
 
     public function includePermission(User $user)
     {
-        return $user->permissions ? $this->collection($user->permissions, new PermissionTransformer()) : null;
+        return $user->permissions ? $this->collection($user->permissions, new UserPermissionTransformer()) : null;
     }
 }
