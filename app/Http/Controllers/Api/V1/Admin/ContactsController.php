@@ -60,20 +60,6 @@ class ContactsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator($request->all(), [
-            'cellphone' => 'required'
-        ], [
-            'cellphone.required' => 'Celular é obrigatório'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'title' => 'Erro',
-                'status' => 'error',
-                'message' => $validator->errors()->unique()
-            ], 406);
-        }
-
         $data = $request->all();
 
         return ReceiverContact::update($data);
