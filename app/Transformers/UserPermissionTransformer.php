@@ -12,6 +12,7 @@ use ApiWebPsp\Models\UserPermission;
  */
 class UserPermissionTransformer extends TransformerAbstract
 {
+    protected $defaultIncludes = ['permission'];
     /**
      * Transform the UserPermission entity.
      *
@@ -29,5 +30,10 @@ class UserPermissionTransformer extends TransformerAbstract
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];
+    }
+
+    public function includePermission(UserPermission $model)
+    {
+        return $this->item($model->permission, new PermissionTransformer());
     }
 }
