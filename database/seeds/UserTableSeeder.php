@@ -14,21 +14,10 @@ class UserTableSeeder extends Seeder
     {
         factory(User::class)->create(
             [
-                
                 'name' => 'Leiviton Carlos',
                 'email' => 'leivitoncs@gmail.com',
                 'role' => 'admin',
                 'extension' => '9172',
-                'password' => bcrypt(123456),
-                'remember_token' => str_random(10),
-            ]);
-
-        factory(User::class)->create(
-            [
-                
-                'name' => 'Caio Lavos',
-                'email' => 'caio.moraes@drsgroup.com.br',
-                'role' => 'admin',
                 'password' => bcrypt(123456),
                 'remember_token' => str_random(10),
             ]);
@@ -45,7 +34,6 @@ class UserTableSeeder extends Seeder
 
         factory(User::class)->create(
             [
-                
                 'name' => 'Raquel Mota',
                 'email' => 'raquel.mota@drsgroup.com.br',
                 'role' => 'admin',
@@ -55,9 +43,8 @@ class UserTableSeeder extends Seeder
 
         factory(User::class)->create(
             [
-                
                 'name' => 'Lucas Rilko',
-                'email' => 'lucas.rolko@drsgroup.com.br',
+                'email' => 'lucas.rilko@drsgroup.com.br',
                 'role' => 'admin',
                 'password' => bcrypt(123456),
                 'remember_token' => str_random(10),
