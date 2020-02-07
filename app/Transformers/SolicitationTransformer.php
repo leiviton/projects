@@ -16,7 +16,7 @@ class SolicitationTransformer extends TransformerAbstract
     /**
      * @var array include relationships
      */
-    protected $defaultIncludes = ['patient','items','company','scheduling','address','user','attempts'];
+    protected $defaultIncludes = ['receiver','items','company','scheduling','address','user','attempts'];
 
     /**
      * Transform the Solicitation entity.
@@ -85,10 +85,10 @@ class SolicitationTransformer extends TransformerAbstract
      * @param Solicitation $solicitation
      * @return \League\Fractal\Resource\Item|null
      */
-    public function includePatient(Solicitation $solicitation)
+    public function includeReceiver(Solicitation $solicitation)
     {
-        return $solicitation->patient ? $this->item($solicitation->patient,
-            new PatientTransformer()) : null;
+        return $solicitation->receiver ? $this->item($solicitation->receiver,
+            new ReceiverTransformer()) : null;
     }
 
     /**
