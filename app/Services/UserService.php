@@ -184,8 +184,6 @@ class UserService
 
             $user->role = $data['role'];
 
-            $user->img_profile = $data['img_profile'];
-
             $user->save();
 
             DB::commit();
@@ -227,19 +225,30 @@ class UserService
         try{
             $user = $this->userRepository->find($id);
 
+
             $data = [
               "user_id" => $user->id,
               "permission_id" => $permissionId
             ];
 
-            $this->permissionRepository->create($data);
+            $permiision = $this->permissionRepository->findWhere($data)->first();
+            //$message = '';
+            if($permiision == null){
+                $this->permissionRepository->create($data);
+                $message = 'Permissão adicionada';
+            } else {
+                $message = 'Permissão revogada';
+                $this->permissionRepository->delete($permiision->id);
+            }
 
             DB::commit();
 
-            return ['status' => 'success'];
+            return ['status' => 'success','message' => $message];
         } catch (\Exception $exception) {
             DB::rollBack();
             return ['status' => 'error', 'message' => $exception->getMessage(), 'title' => 'Erro'];
         }
     }
+
+
 }

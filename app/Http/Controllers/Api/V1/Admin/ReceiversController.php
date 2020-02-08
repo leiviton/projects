@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 class ReceiversController extends Controller
 {
 
-    use UtilTrait;
+    use UtilTrait,ValidationControllerTrait;
 
     /**
      * @var ReceiverService
@@ -65,6 +65,28 @@ class ReceiversController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->get('type') == 'clinica') {
+            $validate = $this->validateCnpj($request->get('document'));
+
+            if ($validate == false) {
+                return response()->json([
+                    'title' => 'Erro',
+                    'status' => 'error',
+                    'message' => 'CNPJ precisa ser válido'
+                ], 406);
+            }
+        } else {
+            $validate = $this->validateCPF($request->get('document'));
+
+            if ($validate == false) {
+                return response()->json([
+                    'title' => 'Erro',
+                    'status' => 'error',
+                    'message' => 'CPF precisa ser válido'
+                ], 406);
+            }
+        }
+
         $validator = Validator($request->all(), [
             'name' => 'required|min:4',
             'document' => 'required|unique:receivers,document',
@@ -162,6 +184,16 @@ class ReceiversController extends Controller
      */
     public function person($id, Request $request)
     {
+        $receiver = $this->service->getId($id);
+
+        if($receiver->document == $request->document) {
+                return response()->json([
+                    'title' => 'Erro',
+                    'status' => 'error',
+                    'message' => 'CPF não pode ser igual do receptor principal'
+                ], 406);
+        }
+
         $validator = Validator($request->all(),[
             'name' => 'required|min:4',
             'document' => 'required',
