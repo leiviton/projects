@@ -57,17 +57,25 @@ class ReceiverService
 
             $data['date_birth'] = $data['date_birth'] != '' ? $this->invertDate($data['date_birth']) : null;
 
+            $data['document'] = $this->clear($data['document']);
+
             $result = $this->repository->create($data);
 
             $addresses = $data['address'];
 
             foreach ($addresses as $address) {
+
+                $address['postal_code'] = $this->clear($address['postal_code']);
+
                 $result->addresses()->create($address);
             }
 
             $contacts = $data['contact'];
 
             foreach ($contacts as $contact) {
+
+                $contact['content'] = $contact['type'] == 'phone' || $contact['type'] == 'cellphone' ?
+                    $this->clear($contact['content']) : $contact['content'];
                 $result->receiver_contacts()->create($contact);
             }
 
@@ -102,7 +110,7 @@ class ReceiverService
             $data['date_birth'] = $this->invertDate($data['date_birth']);
 
             $Receiver = $this->repository->find($id);
-            $Receiver->document = $data['document'];
+            $Receiver->document = $this->clear($data['document']);
             $Receiver->date_birth = $data['date_birth'] == "" ? null : $data['date_birth'];
             $Receiver->name = $data['name'];
             //$result = $this->repository->update($data, $id);
@@ -217,6 +225,9 @@ class ReceiverService
         try {
             $receiver = $this->repository->find($id);
 
+            $data['content'] = $data['type'] == 'phone' || $data['type'] == 'cellphone' ?
+                $this->clear($data['content']):$data['content'];
+
             $result = $receiver->receiver_contacts()->create($data);
 
             DB::commit();
@@ -227,5 +238,22 @@ class ReceiverService
             DB::rollBack();
             return ['status' => 'error', 'message' => $exception->getMessage(), 'title' => 'Erro'];
         }
+    }
+
+    /**
+     * @param $valor
+     * @return mixed|string
+     */
+    public function clear($valor)
+    {
+        $valor = trim($valor);
+        $valor = str_replace(".", "", $valor);
+        $valor = str_replace(",", "", $valor);
+        $valor = str_replace("-", "", $valor);
+        $valor = str_replace("/", "", $valor);
+        $valor = str_replace("(", "", $valor);
+        $valor = str_replace(")", "", $valor);
+        $valor = str_replace(" ", "", $valor);
+        return $valor;
     }
 }

@@ -239,4 +239,21 @@ trait UtilTrait
 
         return $result;
     }
+
+    /**
+     * @param $valor
+     * @return mixed|string
+     */
+    public function clear($valor)
+    {
+        $valor = trim($valor);
+        $valor = str_replace(".", "", $valor);
+        $valor = str_replace(",", "", $valor);
+        $valor = str_replace("-", "", $valor);
+        $valor = str_replace("/", "", $valor);
+        $valor = str_replace("(", "", $valor);
+        $valor = str_replace(")", "", $valor);
+        $valor = str_replace(" ", "", $valor);
+        return $valor;
+    }
 }

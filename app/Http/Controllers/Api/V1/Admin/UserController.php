@@ -99,7 +99,7 @@ class UserController extends Controller
         $result = $this->service->createPermission($data['user_id'],$data['permission_id']);
 
         if ($result['status'] == 'success') {
-            return response()->json(['message' => 'Cadastro realizado com sucesso', 'status' => 'success', 'title' => 'Sucesso'], 201);
+            return response()->json(['message' => $result['message'], 'status' => 'success', 'title' => 'Sucesso'], 201);
         } else if ($result['status'] == 'error') {
             return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
         } else {
