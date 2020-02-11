@@ -29,6 +29,7 @@ class ReceiverTransformer extends TransformerAbstract
             'document' => $model->document,
             'genre' => $model->genre,
             'date_birth' => $model->date_birth,
+            'brand' => $model->brand,
             'type' => $model->type,
             /* place your other model properties here */
 
