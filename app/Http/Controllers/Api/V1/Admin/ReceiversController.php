@@ -281,12 +281,10 @@ class ReceiversController extends Controller
     {
         $validator = Validator($request->all(), [
             'type' => 'required',
-            'value' => 'required',
-            'principal' => 'required',
+            'value' => 'required'
         ], [
             'type.required' => 'Tipo é obrigatório',
-            'value.required' => 'Valor é obrigatório',
-            'principal.required' => 'Principal é obrigatório'
+            'value.required' => 'Valor é obrigatório'
         ]);
 
         if ($validator->fails()) {
