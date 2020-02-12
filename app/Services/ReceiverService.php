@@ -31,9 +31,9 @@ class ReceiverService
      * @param $id
      * @return mixed
      */
-    public function getId($id)
+    public function getId($id,$skipe=true)
     {
-        return $this->repository->skipPresenter(false)->find($id);
+        return $this->repository->skipPresenter($skipe)->find($id);
     }
 
     /**
