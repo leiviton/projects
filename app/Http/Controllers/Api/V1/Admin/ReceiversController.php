@@ -55,7 +55,7 @@ class ReceiversController extends Controller
      */
     public function edit($id)
     {
-        return $this->service->getId($id);
+        return $this->service->getId($id,false);
     }
 
     /**
