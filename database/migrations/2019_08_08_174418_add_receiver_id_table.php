@@ -16,6 +16,7 @@ class AddReceiverIdTable extends Migration
         Schema::table('addresses', function (Blueprint $table) {
             $table->bigInteger('receiver_id')->unsigned()->nullable();
             $table->foreign('receiver_id')->references('id')->on('receivers');
+            $table->boolean('principal')->default(true);
         });
     }
 
