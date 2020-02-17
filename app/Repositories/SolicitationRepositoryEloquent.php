@@ -144,7 +144,8 @@ class SolicitationRepositoryEloquent extends BaseRepository implements Solicitat
           'aberto' => $count1aberto,
           'despachado' => $count1despachado,
           'pendente' => $count1pendente,
-          'frustado' => $count1frustado
+          'frustado' => $count1frustado,
+          'cancelado' => $count1cancelado,
         ];
 
         return $result;

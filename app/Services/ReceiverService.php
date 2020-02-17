@@ -63,6 +63,8 @@ class ReceiverService
 
             $addresses = $data['address'];
 
+            $persons = $data['person'];
+
             foreach ($addresses as $address) {
 
                 $address['postal_code'] = $this->clear($address['postal_code']);
@@ -77,6 +79,13 @@ class ReceiverService
                 $contact['content'] = $contact['type'] == 'phone' || $contact['type'] == 'cellphone' ?
                     $this->clear($contact['content']) : $contact['content'];
                 $result->receiver_contacts()->create($contact);
+            }
+
+            if(count($persons) > 0) {
+                foreach ($persons as $person) {
+                    $person['document'] = $this->clear($person['document']);
+                    $result->authorized_people()->create($person);
+                }
             }
 
             DB::commit();

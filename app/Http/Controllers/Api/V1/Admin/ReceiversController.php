@@ -89,28 +89,43 @@ class ReceiversController extends Controller
 
         $validator = Validator($request->all(), [
             'name' => 'required|min:4',
-            'document' => 'required|unique:receivers,document',
-            'contact.*.content' => 'required',
-            'contact.*.type' => 'required',
-            'address.*.postal_code' => 'required',
-            'address.*.street' => 'required',
-            'address.*.number' => 'required',
-            'address.*.city' => 'required',
-            'address.*.neighborhood' => 'required',
-            'address.*.uf' => 'required'
+            'document' => 'required|unique:receivers,document|min:11',
+            'contact.*.content' => 'required|min:11',
+            'contact.*.type' => 'required|min:3',
+            'address.*.postal_code' => 'required|min:8',
+            'address.*.street' => 'required|min:3',
+            'address.*.number' => 'required|min:1',
+            'address.*.city' => 'required|min:3',
+            'address.*.neighborhood' => 'required|min:3',
+            'address.*.uf' => 'required|min:2',
+            'person.*.name' => 'required|min:2',
+            'person.*.document' => 'required|min:2',
+            'person.*.phone' => 'required|min:2'
         ], [
             'name.required' => 'Nome do usuário é obrigatório',
             'name.length' => 'Nome deve conter no minimo 4 caracteres',
             'document.unique' => 'Cpf/Cnpj já está em uso no sistema',
+            'document.length' => 'CPF/CNPJ deve conter no minimo 4 caracteres',
             'document.required' => 'Cpf/Cnpj é obrigatorio',
             'contact.*.content.required' => 'Valor do contato é obrigatório',
+            'contact.*.content.length' => 'Contato tem que ter no minimo 11 caracteres',
+            'contact.*.type.length' => 'Tipo contato tem que ter no minimo 3 caracteres',
             'contact.*.type.required' => 'Tipo do contato é obrigatório',
             'address.*.street.required' => 'Logradouro é obrigatório',
+            'address.*.street.length' => 'Endereço tem que no minimo 3 caracteres',
+            'address.*.number.length' => 'Número do endereço tem que no minimo 1 caracteres',
+            'address.*.city.length' => 'Cidade do endereço tem que no minimo 3 caracteres',
+            'address.*.uf.length' => 'UF do endereço tem que no minimo 2 caracteres',
+            'address.*.postal_code.length' => 'Cep do endereço tem que no minimo 8 caracteres',
+            'address.*.neighborhood.length' => 'Bairro/Distrito tem que no minimo 3 caracteres',
             'address.*.neighborhood.required' => 'Bairro é obrigatório',
             'address.*.number.required' => 'Numero endereço é obrigatório',
             'address.*.city.required' => 'Cidade do endereço é obrigatória',
             'address.*.uf.required' => 'UF endereço é obrigatório',
-            'address.*.postal_code.required' => 'Cep é obrigatório'
+            'address.*.postal_code.required' => 'Cep é obrigatório',
+            'person.*.name.required' => 'Nome pessoa autorizada é obrigatório',
+            'person.*.document.required' => 'Documento pessoa autorizada é obrigatório',
+            'person.*.phone.required' => 'Telefone pessoa autorizada é obrigatório'
         ]);
 
         if ($validator->fails()) {

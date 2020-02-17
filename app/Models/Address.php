@@ -23,7 +23,7 @@ class Address extends \ApiWebPsp\Models\Base\Address implements Transformable,Au
      * @var array
      */
     protected $fillable = [
-        'patient_id',
+        'receiver_id',
         'alias',
         'street',
         'number',
@@ -32,7 +32,8 @@ class Address extends \ApiWebPsp\Models\Base\Address implements Transformable,Au
         'type',
         'city',
         'uf',
-        'postal_code'
+        'postal_code',
+        'principal'
     ];
 
 }
