@@ -49,9 +49,9 @@ class AddressService
     {
         DB::beginTransaction();
         try {
-            $result = $this->addressRepository->delete($id);
+            $this->addressRepository->delete($id);
             DB::commit();
-            return ['status' => 'success', 'id' => $result->id];
+            return ['status' => 'success'];
         } catch (\Exception $exception) {
             DB::rollBack();
 
