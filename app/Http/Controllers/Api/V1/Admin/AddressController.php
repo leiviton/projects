@@ -121,4 +121,18 @@ class AddressController extends Controller
             return response()->json(['message' => 'Erro desconhecido, contate o Good do software', 'status' => 'error', 'title' => 'Erro'], 400);
         }
     }
+    
+    public function delete($id){
+    
+        $result = $this->service->delete($id);
+        
+        if ($result['status'] == 'success') {
+            return response()->json(['message' => 'Endereço excluido com sucesso', 'status' => 'success', 'title' => 'Sucesso'], 200);
+        } else if ($result['status'] == 'error') {
+            return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
+        } else {
+            return response()->json(['message' => 'Erro desconhecido, contate o Good do software', 'status' => 'error', 'title' => 'Erro'], 400);
+        }
+        
+    }
 }
