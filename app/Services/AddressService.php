@@ -44,6 +44,20 @@ class AddressService
     {
         return $this->addressRepository->skipPresenter(false)->paginate($limit);
     }
+    
+    public function delete($id)
+    {
+        DB::beginTransaction();
+        try {
+            $result = $this->addressRepository->delete($id);
+            DB::commit();
+            return ['status' => 'success', 'id' => $result->id];
+        } catch (\Exception $exception) {
+            DB::rollBack();
+
+            return ['status' => 'error', 'message' => $exception->getMessage(), 'title' => 'Erro'];
+        }
+    }
 
     /**
      * @param $id
