@@ -33,7 +33,7 @@ class ContactsController extends Controller
         $validator = Validator($request->all(), [
             'cellphone' => 'required'
         ], [
-            'cellphone.required' => 'Celular Ã© obrigatÃ³rio'
+            'cellphone.required' => 'Celular Ž obrigat—rio'
         ]);
 
         if ($validator->fails()) {
@@ -63,5 +63,10 @@ class ContactsController extends Controller
         $data = $request->all();
 
         return ReceiverContact::update($data);
+    }
+    
+    public function delete($id)
+    {
+        return ReceiverContact::delete($id);
     }
 }
