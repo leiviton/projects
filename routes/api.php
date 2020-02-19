@@ -83,7 +83,7 @@ Route::group(['prefix' => 'v1/', 'middleware' => 'auth:api'], function () {
         Route::put('address/{id}', 'AddressController@update');
         Route::post('address', 'AddressController@store');
         Route::delete('address/{id}', 'AddressController@delete');
-        Route::delete('contact/{id}', 'ContactController@delete');
+        Route::delete('contact/{id}', 'ContactsController@delete');
 
         /*solicitation*/
         Route::post('solicitation', 'SolicitationsController@store');

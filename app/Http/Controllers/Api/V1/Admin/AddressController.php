@@ -133,6 +133,5 @@ class AddressController extends Controller
         } else {
             return response()->json(['message' => 'Erro desconhecido, contate o Good do software', 'status' => 'error', 'title' => 'Erro'], 400);
         }
-        
     }
 }
