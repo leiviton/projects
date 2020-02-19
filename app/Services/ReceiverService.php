@@ -8,6 +8,7 @@
 
 namespace ApiWebPsp\Services;
 
+use ApiWebPsp\Repositories\AuthorizedPersonRepository;
 use ApiWebPsp\Repositories\ReceiverRepository;
 use Illuminate\Support\Facades\DB;
 
@@ -17,14 +18,20 @@ class ReceiverService
      * @var ReceiverRepository
      */
     private $repository;
+    /**
+     * @var AuthorizedPersonRepository
+     */
+    private $authorizedPersonRepository;
 
     /**
      * CompanyService constructor.
      * @param ReceiverRepository $repository
+     * @param AuthorizedPersonRepository $authorizedPersonRepository
      */
-    public function __construct(ReceiverRepository $repository)
+    public function __construct(ReceiverRepository $repository, AuthorizedPersonRepository $authorizedPersonRepository)
     {
         $this->repository = $repository;
+        $this->authorizedPersonRepository = $authorizedPersonRepository;
     }
 
     /**
@@ -264,5 +271,26 @@ class ReceiverService
         $valor = str_replace(")", "", $valor);
         $valor = str_replace(" ", "", $valor);
         return $valor;
+    }
+
+    /**
+     * @param $id
+     * @return array
+     * @throws \Exception
+     */
+    public function deletePerson($id)
+    {
+        DB::beginTransaction();
+        try {
+            $this->authorizedPersonRepository->delete($id);
+
+            DB::commit();
+
+            return ['status' => 'success'];
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return ['status' => 'error', 'message' => $exception->getMessage(), 'title' => 'Erro'];
+        }
     }
 }
