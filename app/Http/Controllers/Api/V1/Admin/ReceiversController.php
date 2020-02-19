@@ -209,6 +209,25 @@ class ReceiversController extends Controller
         }
 
     }
+    
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
+    public function deleteContact($id)
+    {
+        $result = $this->service->deleteContact($id);
+
+        if ($result['status'] == 'success') {
+            return response()->json(['message' => 'Contato excluido com sucesso', 'status' => 'success', 'title' => 'Sucesso', 'result' => $result['result']], 201);
+        } else if ($result['status'] == 'error') {
+            return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
+        } else {
+            return response()->json(['message' => 'Erro desconhecido, contate o Good do software', 'status' => 'error', 'title' => 'Erro'], 400);
+        }
+
+    }
     /**
      * @param $id
      * @param Request $request
