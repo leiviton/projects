@@ -193,6 +193,24 @@ class ReceiversController extends Controller
 
     /**
      * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
+    public function deletePerson($id)
+    {
+        $result = $this->service->deletePerson($id);
+
+        if ($result['status'] == 'success') {
+            return response()->json(['message' => 'Contato autorizado excluido com sucesso', 'status' => 'success', 'title' => 'Sucesso', 'result' => $result['result']], 201);
+        } else if ($result['status'] == 'error') {
+            return response()->json(['message' => $result['message'], 'status' => 'error', 'title' => 'Erro'], 400);
+        } else {
+            return response()->json(['message' => 'Erro desconhecido, contate o Good do software', 'status' => 'error', 'title' => 'Erro'], 400);
+        }
+
+    }
+    /**
+     * @param $id
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
@@ -201,7 +219,7 @@ class ReceiversController extends Controller
     {
         $receiver = $this->service->getId($id);
 
-        if($receiver->document == $request->document) {
+        if($this->clear($receiver->document) == $this->clear($request->document)) {
                 return response()->json([
                     'title' => 'Erro',
                     'status' => 'error',
