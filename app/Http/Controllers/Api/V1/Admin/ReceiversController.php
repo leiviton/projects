@@ -55,7 +55,7 @@ class ReceiversController extends Controller
      */
     public function edit($id)
     {
-        return $this->service->getId($id);
+        return $this->service->getId($id,false);
     }
 
     /**
@@ -296,12 +296,10 @@ class ReceiversController extends Controller
     {
         $validator = Validator($request->all(), [
             'type' => 'required',
-            'value' => 'required',
-            'principal' => 'required',
+            'content' => 'required'
         ], [
             'type.required' => 'Tipo é obrigatório',
-            'value.required' => 'Valor é obrigatório',
-            'principal.required' => 'Principal é obrigatório'
+            'content.required' => 'Valor é obrigatório'
         ]);
 
         if ($validator->fails()) {

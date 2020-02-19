@@ -31,9 +31,9 @@ class ReceiverService
      * @param $id
      * @return mixed
      */
-    public function getId($id)
+    public function getId($id,$skipe=true)
     {
-        return $this->repository->skipPresenter(false)->find($id);
+        return $this->repository->skipPresenter($skipe)->find($id);
     }
 
     /**
@@ -118,12 +118,12 @@ class ReceiverService
         try {
             $data['date_birth'] = $this->invertDate($data['date_birth']);
 
-            $Receiver = $this->repository->find($id);
-            $Receiver->document = $this->clear($data['document']);
-            $Receiver->date_birth = $data['date_birth'] == "" ? null : $data['date_birth'];
-            $Receiver->name = $data['name'];
-            //$result = $this->repository->update($data, $id);
-            $Receiver->save();
+            //$Receiver = $this->repository->find($id);
+            //$Receiver->document = $this->clear($data['document']);
+            //$Receiver->date_birth = $data['date_birth'] == "" ? null : $data['date_birth'];
+            //$Receiver->name = $data['name'];
+            $result = $this->repository->update($data, $id);
+            //$Receiver->save();
             DB::commit();
 
             return ['status' => 'success', 'id' => $id];
