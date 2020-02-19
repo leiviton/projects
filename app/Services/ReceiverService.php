@@ -10,6 +10,7 @@ namespace ApiWebPsp\Services;
 
 use ApiWebPsp\Repositories\AuthorizedPersonRepository;
 use ApiWebPsp\Repositories\ReceiverRepository;
+use ApiWebPsp\Repositories\ReceiverContactRepository;
 use Illuminate\Support\Facades\DB;
 
 class ReceiverService
@@ -22,16 +23,21 @@ class ReceiverService
      * @var AuthorizedPersonRepository
      */
     private $authorizedPersonRepository;
+    /**
+     * @var ReceiverContactRepository
+     */    
+    private $contactRepository;
 
     /**
      * CompanyService constructor.
      * @param ReceiverRepository $repository
      * @param AuthorizedPersonRepository $authorizedPersonRepository
      */
-    public function __construct(ReceiverRepository $repository, AuthorizedPersonRepository $authorizedPersonRepository)
+    public function __construct(ReceiverRepository $repository, AuthorizedPersonRepository $authorizedPersonRepository, ReceiverRepository $contactRepository)
     {
         $this->repository = $repository;
         $this->authorizedPersonRepository = $authorizedPersonRepository;
+        $this->contactRepository = $contactRepository;
     }
 
     /**
@@ -283,6 +289,27 @@ class ReceiverService
         DB::beginTransaction();
         try {
             $this->authorizedPersonRepository->delete($id);
+
+            DB::commit();
+
+            return ['status' => 'success'];
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return ['status' => 'error', 'message' => $exception->getMessage(), 'title' => 'Erro'];
+        }
+    }
+    
+    /**
+     * @param $id
+     * @return array
+     * @throws \Exception
+     */
+    public function deleteContact($id)
+    {
+        DB::beginTransaction();
+        try {
+            $this->contactRepository->delete($id);
 
             DB::commit();
 
